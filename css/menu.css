@@ -1,0 +1,118 @@
+.navbar--faam {
+  background-color: var(--cor-tertiary);
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  display: flex;
+  font-weight: 100;
+  z-index: 1;
+}
+
+.navbar--faam a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar--faam .dropdown {
+  float: left;
+  overflow: hidden;
+  position: unset;
+}
+
+.navbar--faam .dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.navbar--faam a:hover,
+.dropdown:hover .dropbtn {
+  background-color: var(--cor-primary);
+}
+
+.navbar--faam .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 100%;
+  left: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.navbar--faam .dropdown-content .header {
+  background: var(--cor-primary);
+  padding: 16px;
+  color: white;
+}
+
+.navbar--faam .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar--faam .column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  background-color: #fff;
+  height: 250px;
+}
+
+.navbar--faam .column a {
+  float: none;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.navbar--faam .column a:hover {
+  background-color: beige;
+}
+
+.navbar--faam .row--menu:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Brand */
+.brand {
+  padding: 0 !important;
+  background-color: transparent!important;
+}
+.brand img {
+  height: 52px;
+}
+
+/* Menu Vertical */
+.menu--vertical {
+  min-width: 160px !important;
+  width: auto !important;
+  left: unset !important;
+}
+.menu--vertical a {
+  float: none !important;
+  color: #000;
+  display: block;
+}
+.menu--vertical a:hover {
+  color: #000;
+  background: beige;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar--faam .column {
+    width: 100%;
+    height: auto;
+  }
+}
