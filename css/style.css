@@ -1,13 +1,11 @@
-
-
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,300;1,700;1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,300;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&display=swap');
 :root {
   --cor-primary: #013334;
   --cor-second: #fdbd00;
-  --cor-tertiary : #012a48;
+  --cor-tertiary: #012a48;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -46,7 +44,6 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  
 }
 
 body {
@@ -60,11 +57,103 @@ body {
   outline: 0 !important;
 }
 
-#owl-demo .item img{
+#owl-banners .item img {
   display: block;
   width: 100%;
-  height: 100vh;
+  height: 752px;
   object-fit: cover;
 }
+/* Topo */
+.topo--header {
+  height: 100px;
+  display: flex;
+}
+.topo--header > div:first-child {
+  width: 30%;
+}
+.topo--header > div:nth-child(2) {
+  width: 63%;
+  padding-top: 18px;
+}
+.topo--header > div:nth-child(3) {
+  width: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topo--header ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.topo--header ul li {
+  flex: 1 1 100px;
+  margin: 4px 2px;
+  text-align: center;
+}
 
+.box {
+  display: flex;
+}
+.box div h3{
+  font-size: 14px;
+  color: #6c757d;
+  text-align: left;
+}
+.box div h5{
+  font-size: 14px;
+  text-align: left;
+}
+.box div {
+  width: 100%;
+}
+.box div:first-child {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box div:last-child {
+  width: 80%;
+}
+.topo--header .redes--socials li {
+  background-color: var(--cor-primary) ;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  padding: 2px 0;
+  flex: auto ;
+  transition: all .2s;
+}
+.topo--header .redes--socials a {
+  color: #fff;
+}
+.topo--header .redes--socials li:hover {
+background-color: var(--cor-second);
+}
 
+/* Section */
+.page--section{
+  padding: 4rem 0;
+}
+
+.page--section h2{
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-family: "Roboto", sans-serif;
+
+}
+.page--section h3{
+  font-style: italic;
+  font-size: 1em;
+  padding-top: 10px;
+  font-family: 'Playfair Display', serif;
+  color: #6c757d
+}
+.page--section hr{
+    border: 2px solid var(--cor-primary);
+    width: 200px;
+    margin: 0 auto;
+}
