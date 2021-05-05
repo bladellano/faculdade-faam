@@ -2,14 +2,25 @@
 (function (doc, win) {
 
     'use strict';
-    
-     /* OWL CAROUSEL */
+
+    $('.slick_parceiros').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        });
+
+    $('.box--course > div').hover(function () {
+        $(this).find('img,p').toggleClass("to--hide--img")
+    });
+
+
+    /* OWL CAROUSEL */
     $("#owl-banners").owlCarousel({
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-        navigation:false,
-        autoPlay:true
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true,
+        navigation: false,
+        autoPlay: true
     });
 
     /* FIXA O NAVBAR */
