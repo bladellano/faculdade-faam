@@ -255,6 +255,7 @@ body {
   position: relative;
 
   background-image: url("../images/71352.jpg");
+  /* background-image: url("../images/pattern.jpg"); */
   background-repeat: none;
   background-position: center center;
   background-size: cover;
@@ -277,7 +278,7 @@ body {
 }
 
 #video_institucional {
-  border-top: 1px solid var(--cor-second);
+  /* border-top: 1px solid var(--cor-second); */
 }
 
 .slick-prev:before,
@@ -288,7 +289,7 @@ body {
 /* Footer */
 .bg--footer {
   padding: 40px 0;
-  background-image: linear-gradient(to right, #02308c, #950b1a);
+  background-image: linear-gradient(to right, #013334, #004c00);
 }
 
 .bg--footer h4 {
@@ -333,4 +334,34 @@ body {
   border-top: 1px dashed rgba(253, 189, 0, 0.3);
   color: #fff4;
   font-size: .9rem;
+}
+
+/* Custom Cronometro */
+.stat-number {
+  font-size: 3rem;
+}
+.bg-stat-number h4{
+  text-align: center;
+  margin: 0;
+  padding-top: 20px;
+}
+.bg-stat-number h5{
+  font-size: .9rem;
+  font-weight: 400;
+  line-height: 28px;
+  padding: 25px 0;
+  margin: 0;
+}
+.bg-stat-number {
+  /* background-color: chartreuse; */
+  color: #fff;
+}
+.counter-item{
+  text-align: center;
+}
+.bg--top--start--number{
+  background-color: var(--cor-primary);
+}
+.bg--bottom--start--number{
+  background-color: #116E25;
 }
