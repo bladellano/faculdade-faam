@@ -3,6 +3,23 @@
 
     'use strict';
 
+    /* Appear - Exibição do botão topo */
+    $(window).scroll(function (e) {
+        
+        console.log($(this).scrollTop())
+        if ($(this).scrollTop() - 1000 > 0) {
+            $('.topo').fadeIn();
+        } else {
+            $('.topo').fadeOut();
+        }
+    });
+
+    $('.topo').click(function(e) {
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: 0
+		}, 500)
+	});
 
     /* Appear - Exibição de dados em cronometro */
     $('.bg-stat-number').appear();
@@ -56,6 +73,7 @@
         infinite: true,
         slidesToShow: 5,
         slidesToScroll: 5,
+
     });
 
     /* Faz parte do evento onmouse para exibir o 
