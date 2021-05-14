@@ -6,7 +6,6 @@
     /* Appear - Exibição do botão topo */
     $(window).scroll(function (e) {
         
-        console.log($(this).scrollTop())
         if ($(this).scrollTop() - 1000 > 0) {
             $('.topo').fadeIn();
         } else {

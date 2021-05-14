@@ -87,9 +87,8 @@ body {
   font-size: 14px;
   text-align: left;
 }
-.box div i{
+.box div i {
   color: #006f23;
-
 }
 .box div {
   width: 100%;
@@ -125,7 +124,7 @@ body {
 
 /* Section */
 .page--section {
-  padding: 4rem 0;
+  padding: 3rem 0;
 }
 
 .page--section h2 {
@@ -184,11 +183,11 @@ body {
   top: 50%;
   transform: translateY(-50%);
   line-height: 24px;
-  color: #fff;
+  /* color: #fff; */
   font-weight: 300;
 }
 .box--course > div p {
-  color: #fff;
+  /* color: #fff; */
   transition: ease 0.3s;
 }
 .box--course {
@@ -285,11 +284,21 @@ body {
 #video_institucional {
   /* border-top: 1px solid var(--cor-second); */
 }
+.slick_parceiros div img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: ease-in .2s;
+  width: 150px;
+}
+.slick_parceiros div img:hover {
+  opacity: 1;
+  filter: none;
 
+}
 .slick-prev:before,
 .slick-next:before {
-  color: var(--cor-primary);  
-  font-family: 'FontAwesome';
+  color: var(--cor-primary);
+  font-family: "FontAwesome";
 }
 .slick-next:before {
   content: "\f061";
@@ -345,20 +354,20 @@ body {
 .end--footer {
   border-top: 1px dashed rgba(253, 189, 0, 0.3);
   color: #fff4;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 /* Custom Cronometro */
 .stat-number {
   font-size: 3rem;
 }
-.bg-stat-number h4{
+.bg-stat-number h4 {
   text-align: center;
   margin: 0;
   padding-top: 20px;
 }
-.bg-stat-number h5{
-  font-size: .9rem;
+.bg-stat-number h5 {
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 28px;
   padding: 25px 0;
@@ -368,21 +377,21 @@ body {
   /* background-color: chartreuse; */
   color: #fff;
 }
-.counter-item{
+.counter-item {
   text-align: center;
 }
-.bg--top--start--number{
+.bg--top--start--number {
   background-color: var(--cor-primary);
 }
-.bg--bottom--start--number{
-  background-color: #116E25;
+.bg--bottom--start--number {
+  background-color: #116e25;
 }
 
 .topo {
   background-color: var(--cor-second);
   width: 40px;
   height: 40px;
-  color:  var(--cor-primary);
+  color: var(--cor-primary);
   text-align: center;
   padding-top: 2px;
   cursor: pointer;
