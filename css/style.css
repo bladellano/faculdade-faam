@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&display=swap");
 :root {
   --cor-primary: #006f23;
+  /* --cor-second: #fdbd00; */
   --cor-second: #ff9100;
   --cor-tertiary: #012a48;
 
@@ -437,7 +438,7 @@ body {
   border: 1px solid salmon;
 }
 .bg--default {
-  background-color: var(--cor-second) !important;
+  background-color: #363a3d !important;
 }
 
 .details-contact h4 {
@@ -451,7 +452,7 @@ body {
 .details-contact h5 {
   font-weight: 700;
   font-size: 14px;
-  color: var(--cor-primary);
+  color: var(--primary-cor);
 }
 .details-contact i {
   color: var(--primary-cor);
@@ -462,24 +463,24 @@ body {
 }
 .wrap-form p {
   font-style: italic;
-  color: #004c00;
+  color: #fff;
 }
 .wrap-form h5 {
-  color: #004c00;
+  color: #fff;
   font-family: "Roboto", sans-serif;
   font-size: 22px;
   font-weight: bold;
 }
 
 .bg--send {
-  background-color: var(--cor-primary);
+  background-color:#fff;
   outline: 0;
-  color: #fff;
+  color: #333;
   border: none;
 }
 button.bg--send:hover {
   color: #fff;
-  background-color: var(--cor-primary);
+  background-color: #006f23;
   cursor: pointer;
   outline: 0;
 }

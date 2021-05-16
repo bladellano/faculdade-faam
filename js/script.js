@@ -137,6 +137,25 @@
         infinite: true,
         slidesToShow: 5,
         slidesToScroll: 5,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    infinite: true,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    infinite: true,
+                    dots: true,
+                    arrows: false
+                }
+            }]
 
     });
 
@@ -171,11 +190,11 @@
 
 /*Function of loading*/
 function load(action) {
-	var load_div = $('.ajax_load');
-	if (action === 'open') {
-		load_div.fadeIn().css('display', 'flex');
-	} else {
-		load_div.fadeOut();
-	}
+    var load_div = $('.ajax_load');
+    if (action === 'open') {
+        load_div.fadeIn().css('display', 'flex');
+    } else {
+        load_div.fadeOut();
+    }
 }
 

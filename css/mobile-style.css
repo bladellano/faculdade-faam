@@ -1,0 +1,55 @@
+/*===================*/
+/*   DEVICES MOBILE  */
+/*===================*/
+
+@media (max-width: 768px) {
+  .page--section h2 {
+    font-size: 1.2rem;
+  }
+
+  #owl-banners .item img {
+    height: 252px;
+  }
+
+  .page--section {
+    padding: 0.8rem 0;
+  }
+  .page--section h3 {
+    padding: 6px 0;
+  }
+  img.float-left.img-fluid {
+    width: 100% !important;
+  }
+
+  section img[alt="PROMOÇÃO"].img-fluid {
+    object-fit: cover;
+    height: 25px;
+    margin: 22px 0;
+  }
+  footer img[alt="Logo"] {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+  .bg--footer ul {
+    width: 204px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .end--footer {
+    display: none;
+  }
+  #form-contato input[name="name"] {
+    margin-bottom: 14px;
+  }
+  .topo {
+    bottom: 30px;
+    left: 42px;
+    width: 48px;
+    height: 48px;
+    padding-top: 6px;
+  }
+  .list--main--courses li {
+    flex: 1 1 140px;
+  }
+}
