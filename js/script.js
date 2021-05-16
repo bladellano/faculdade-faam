@@ -3,9 +3,74 @@
 
     'use strict';
 
+    /* Form - tentativa de contato */
+
+    $('#form-contato').validate({
+        rules: {
+            name: {
+                required: true,
+                maxlength: 100,
+                minlength: 3,
+                minWords: 2
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+                minlength: 15,
+            },
+            message: {
+                required: true,
+                minlength: 3,
+            }
+        },
+        submitHandler: function () {
+
+            var data = $('#form-contato').serializeArray();
+
+            ajaxSubmitFormContact(data);
+        }
+    });
+
+    const ajaxSubmitFormContact = (data) => {
+
+        $.ajax({
+            method: "POST",
+            url: "/send-form-contact",
+            data: data,
+            dataType: "json",
+            beforeSend: function () {
+                load('open');
+            },
+            success: function (r) {
+                if (r.success) {
+                    Swal.fire(
+                        'Tudo certo!',
+                        r.msg,
+                        'success'
+                    );
+                    $('#form-contato')[0].reset();
+                } else {
+                    Swal.fire(
+                        'Ooops!',
+                        r.msg,
+                        'error'
+                    );
+                }
+            },
+            complete: () => {
+                load('close');
+            }
+        });
+
+    }
+
+
     /* Appear - Exibição do botão topo */
     $(window).scroll(function (e) {
-        
+
         if ($(this).scrollTop() - 1000 > 0) {
             $('.topo').fadeIn();
         } else {
@@ -13,12 +78,12 @@
         }
     });
 
-    $('.topo').click(function(e) {
-		e.preventDefault();
-		$('html, body').animate({
-			scrollTop: 0
-		}, 500)
-	});
+    $('.topo').click(function (e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500)
+    });
 
     /* Appear - Exibição de dados em cronometro */
     $('.bg-stat-number').appear();
@@ -92,15 +157,25 @@
     });
 
     /* FIXA O NAVBAR */
-    const navbar = doc.querySelector('.navbar--faam');
+    // const navbar = doc.querySelector('.navbar--faam');
+    const navbar = doc.querySelector('nav.navbar');
     win.onscroll = () => {
         if (win.pageYOffset > 100) {
-            navbar.style.position = 'fixed';
-            navbar.style.top = 0;
+            navbar.classList.add('fixed-top');
         } else {
-            navbar.style.position = '';
+            navbar.classList.remove('fixed-top');
         }
     }
 
 })(document, window);
+
+/*Function of loading*/
+function load(action) {
+	var load_div = $('.ajax_load');
+	if (action === 'open') {
+		load_div.fadeIn().css('display', 'flex');
+	} else {
+		load_div.fadeOut();
+	}
+}
 

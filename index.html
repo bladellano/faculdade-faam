@@ -22,8 +22,17 @@
 
 <body>
 
-    <div class="container">
-        <div class="topo--header">
+    <!--AJAX LOAD-->
+    <div class="ajax_load">
+        <div class="ajax_load_box">
+            <div class="ajax_load_box_circle"></div>
+            <div class="ajax_load_box_title">Aguarde, carregando!</div>
+        </div>
+    </div>
+
+    <div class="container d-none d-lg-block">
+
+        <div class="topo--header ">
             <div>
                 <img src="./images/logo-color.png" alt="" width="185px">
             </div>
@@ -83,141 +92,123 @@
 
     </div>
 
-    <div class="navbar--faam">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <!-- <a href="#" class="brand"><img src="./images/logo-color.png" alt="FAAM"></a> -->
-            <div class="dropdown">
-                <button class="dropbtn">Institucional <i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content menu--vertical">
-                    <a href="#">Quem Somos</a>
-                    <a href="#">Organização Administrativa</a>
-                    <a href="#">Comissão Própria de Avaliação (CPA)</a>
-                    <a href="#">Regimento Institucional</a>
-                    <a href="#">Instalações</a>
-                </div>
-            </div>
-            <!--
-            <div class="dropdown">
-                <button class="dropbtn">Graduação
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <div class="header">
-                        <h2>Cursos de Graduação</h2>
-                    </div>
-                    <div class="row--menu">
-                        <div class="column">
-                            <h3>Administrativo</h3>
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                        <div class="column">
-                            <h3>Biomedicina</h3>
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                        <div class="column">
-                            <h3>Direito</h3>
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            -->
-            <!--
-            <div class="dropdown">
-                <button class="dropbtn">Pós-Graduação
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <div class="header">
-                        <h2>Cursos de Pós-Graduação</h2>
-                    </div>
-                    <div class="row--menu">
-                        <div class="column">
-                            <h3>Exatas</h3>
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                        <div class="column">
-                            <h3>Ciências Humanas</h3>
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                        <div class="column">
-                            <h3>Tecnologia</h3>
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-            -->
-            <div class="dropdown">
-                <button class="dropbtn">Graduação <i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content menu--vertical">
-                    <a href="#">Administração</a>
-                    <a href="#">Ciências Contábeis</a>
-                    <a href="#">Direito</a>
-                    <a href="#">Educação Física</a>
-                    <a href="#">Engenharia de Produção</a>
-                    <a href="#">Enfermagem</a>
-                    <a href="#">Gastronomia</a>
-                    <a href="#">Nutrição</a>
-                    <a href="#">Pedagogia</a>
-                    <a href="#">Psicologia</a>
-                    <a href="#">Serviço Social</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">Pós-Graduação <i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content menu--vertical">
-                    <a href="#">Lato Sensu</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="dropbtn">Vestibular <i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content menu--vertical">
-                    <a href="#">Faça sua inscrição</a>
-                    <a href="#">Vestibulares Anteriores</a>
-                    <a href="#">Formas de Ingresso</a>
-                </div>
-            </div>
-            <a href="#">Extensão</a>
+            <a class="navbar-brand d-lg-none d-sm-block" href="#">
+                <img src="./images/logo-pb.png" alt="FAAM" class="logo--brand">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="dropdown">
-                <button class="dropbtn">Calendário Acadêmico <i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content menu--vertical">
-                    <a href="#">Veterano</a>
-                    <a href="#">Calouro</a>
-                </div>
-            </div>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
 
-            <div class="dropdown">
-                <button class="dropbtn">Serviços On-lie <i class="fa fa-caret-down"></i></button>
-                <div class="dropdown-content menu--vertical">
-                    <a href="#">Aluno On-line</a>
-                    <a href="#">Docente On-line</a>
-                    <a href="#">Gestor</a>
-                    <a href="#">Webmail</a>
-                </div>
-            </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Institucional
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Quem Somos</a>
+                            <a class="dropdown-item" href="#">Organização Administrativa</a>
+                            <a class="dropdown-item" href="#">Comissão Própria de Avaliação (CPA)</a>
+                            <a class="dropdown-item" href="#">Regimento Institucional</a>
+                            <a class="dropdown-item" href="#">Instalações</a>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Graduação
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                            <a class="dropdown-item" href="#">Administração</a>
+                            <a class="dropdown-item" href="#">Ciências Contábeis</a>
+                            <a class="dropdown-item" href="#">Direito</a>
+                            <a class="dropdown-item" href="#">Educação Física</a>
+                            <a class="dropdown-item" href="#">Engenharia de Produção</a>
+                            <a class="dropdown-item" href="#">Enfermagem</a>
+                            <a class="dropdown-item" href="#">Gastronomia</a>
+                            <a class="dropdown-item" href="#">Nutrição</a>
+                            <a class="dropdown-item" href="#">Pedagogia</a>
+                            <a class="dropdown-item" href="#">Psicologia</a>
+                            <a class="dropdown-item" href="#">Serviço Social</a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Pós-Graduação
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                            <a class="dropdown-item" href="#">Lato Sensu</a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Vestibular
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Faça sua Inscrição</a>
+                            <a class="dropdown-item" href="#">Vestibulares Anteriores</a>
+                            <a class="dropdown-item" href="#">Formas de Ingresso</a>
+
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Extensão</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Calendário Acadêmico
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Calouro</a>
+                            <a class="dropdown-item" href="#">Veterano</a>
+
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Serviços On-line
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Aluno On-line</a>
+                            <a class="dropdown-item" href="#">Docente On-line</a>
+                            <a class="dropdown-item" href="#">Gestor</a>
+                            <a class="dropdown-item" href="#">Webmail</a>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
+    </nav>
 
+    <!-- CAROUSEL / BANNER -->
     <div id="owl-banners" class="owl-carousel owl-theme">
 
-        <div class="item"><img src="./images/banner_a.jpg" alt="The Last of us"></div>
+        <div class="item"><img src="./images/banner-site-scaled.jpg" alt="The Last of us"></div>
         <div class="item"><img src="./images/banner_b.jpg" alt="GTA V"></div>
         <div class="item"><img src="./images/banner_c.jpg" alt="Mirror Edge"></div>
 
@@ -237,7 +228,12 @@
                         <img width="100px" src="./images/academy.svg" alt="">
                     </div>
                     <p class="text-justify mt-3">
-                        A Faculdade da Amazônia tem como missão oferecer educação de excelência, enfatizando a importância da qualidade, para formar profissionais capacitados, éticos e conscientes do seu compromisso para com o desenvolvimento do Estado do Pará e da Região Amazônica.
+                        A Faculdade da Amazônia tem como missão oferecer educação de excelência, enfatizando a
+                        importância da qualidade, para formar profissionais capacitados, éticos e conscientes do seu
+                        compromisso... <button class="btn btn-warning btn-sm">Saiba Mais <i
+                                class="fa fa-arrow-right"></i>
+                        </button>
+
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -245,7 +241,12 @@
                         <img width="100px" src="./images/project-management.svg" alt="">
                     </div>
                     <p class="text-justify mt-3">
-                        Produzimos conteúdo digital complementar para ser inserido dentro da proposta curricular da instituição. Queremos elevar o patamar do ensino ao Século XXI com a nossa inovadora metodologia de ensino.
+                        Produzimos conteúdo digital complementar para ser inserido dentro da proposta curricular da
+                        instituição. Queremos elevar o patamar do ensino ao Século XXI com a nossa inovadora
+                        metodologia... <button class="btn btn-warning btn-sm">Saiba Mais <i
+                                class="fa fa-arrow-right"></i>
+                        </button>
+
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -253,7 +254,11 @@
                         <img width="100px" src="./images/teamwork.svg" alt="">
                     </div>
                     <p class="text-justify mt-3">
-                        Diante de nossas crenças e convicções, o que realmente importa é a ação. Palavras não são nada sem a devida ação. São ações que transformam o mundo e contribuem efetivamente para um amanhã mais digno e justo.
+                        Diante de nossas crenças e convicções, o que realmente importa é a ação. Palavras não são nada
+                        sem a devida ação. São ações que transformam o mundo e contribuem efetivamente para um amanhã...
+                        <button class="btn btn-warning btn-sm">Saiba Mais <i class="fa fa-arrow-right"></i>
+                        </button>
+
                     </p>
                 </div>
                 <div class="col-md-3">
@@ -261,7 +266,11 @@
                         <img width="100px" src="./images/insignia.svg" alt="">
                     </div>
                     <p class="text-justify mt-3">
-                        A Faculdade que oferece vantagens e benefícios exclusivos com combos promocionais. Excelência e qualidade no Ensino superior a distância. Nota 5 MEC. Horários flexíveis para o ensino a distância e preços acessíveis  
+                        A Faculdade que oferece vantagens e benefícios exclusivos com combos promocionais. Excelência e
+                        qualidade no Ensino superior a distância. Nota 5 MEC. Horários flexíveis para o ensino a
+                        distância... <button class="btn btn-warning btn-sm">Saiba Mais <i class="fa fa-arrow-right"></i>
+                        </button>
+
                     </p>
                 </div>
             </div>
@@ -343,7 +352,7 @@
                         <li>
                             <div class="box--course" style="background-image: url('images/bg_gastronomia.jpg')">
                                 <div>
-                                    <img src="images/chinese-food.svg" >
+                                    <img src="images/chinese-food.svg">
                                     <p>GASTRONOMIA</p>
                                 </div>
                             </div>
@@ -361,7 +370,7 @@
                         <li>
                             <div class="box--course" style="background-image: url('images/bg_pedagogia.jpg')">
                                 <div>
-                                    <img src="images/teacher.svg" >
+                                    <img src="images/teacher.svg">
                                     <p>PEDAGOGIA</p>
                                 </div>
                             </div>
@@ -388,20 +397,31 @@
 
     <!-- CURSOS DE GRADUAÇÃO -->
     <section class="page--section">
+
+        <div class="text-center">
+            <h2> SOBRE A FAAM</h2>
+            <hr>
+            <h3>Conheça mais sobre nossa história e propostas de melhoria do Ensino Superior no Estado do Pará</h3>
+        </div>
+
         <div class="container">
-            <h2><i class="fa fa-university" aria-hidden="true"></i>
-                SOBRE A FAAM</h2>
             <div class="row mt-3">
                 <div class="col-md-8">
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui temporibus, eius, quis asperiores
-                        mollitia quidem dolorem architecto libero earum dolore dolorum repellat atque illum, quo dicta
-                        facere recusandae expedita omnis quidem dolorem architecto libero earum dolore dolorum repellat
-                        atque illum, quo dicta facere recusandae expedita omnis quo dicta facere recusandae expedita
-                        omnis quo dicta facere recusandae expedita omnis quo dicta facere recusandae expedita omnis.
+                    <p class="text-justify">
+                        <img style="width: 320px; margin-right:4px" src="./images/faculdade.jpg" alt="FAAM"
+                            class="float-left img-fluid"> A Faculdade da Amazônia (FAAM), com sua sede também na BR 316,
+                        Km 07, n. 590 – bairro: Levilândia, centro da cidade de Ananindeua-Pará, iniciou suas atividades
+                        acadêmicas em 15 de junho de 2004, através da Portaria Ministerial nº 2.241 de 29/07/2004 que
+                        credencia o seu funcionamento, e da Portaria Ministerial nº 2.242, de 29 DE JULHO DE 2004, que
+                        autoriza o funcionamento do curso de Administração, com 200 vagas totais anuais. Tem como missão
+                        oferecer educação de excelência, enfatizando a importância da qualidade, para formar
+                        profissionais capacitados, éticos e conscientes do seu compromisso para com o desenvolvimento do
+                        Estado do Pará e da Região Amazônica. Hoje a FAAM possui 9 cursos de graduação: Bacharelado em
+                        Administração, Ciências Contábeis, Engenharia da Produção e Serviço Social, Enfermagem,
+                        Psicologia e Direito; E para os cursos de Licenciatura ofertamos: Educação Física, e Pedagogia
                         <button class="btn btn-primary btn-sm">Saiba Mais</button>
                     </p>
-                    </p>
+
                 </div>
                 <div class="col-md-4">
                     <img src="./images/student02.jpg" alt="IMAGE" class="img-fluid pl-2">
@@ -455,7 +475,6 @@
         <!--Container-fluid-->
 
         <div class="container-fluid bg--bottom--start--number">
-            <!--FOCO-->
 
             <div class="container">
                 <h4>Conteúdo Interativo</h4>
@@ -499,8 +518,28 @@
         <img src="./images/banner_promocao.jpg" alt="PROMOÇÃO" class="img-fluid">
     </section>
 
+    <!---PARCEIROS-->
+    <section class="page--section bg--gray">
+        <div class="text-center">
+            <h2>PARCEIROS</h2>
+            <hr>
+            <h3>Conheça alguns dos nossos maiores clientes e parceiros da instituição</h3>
+        </div>
+        <div class="container">
+            <div class="slick_parceiros">
+                <div> <img class="img-fluid d-block mx-auto" src="./images/hype.jpg" /></div>
+                <div> <img class="img-fluid d-block mx-auto" src="./images/ib_uppsveitir.gif" /></div>
+                <div> <img class="img-fluid d-block mx-auto" src="./images/smari_fc.gif" /></div>
+                <div> <img class="img-fluid d-block mx-auto" src="./images/ats_logo_wd.png" /></div>
+                <div> <img class="img-fluid d-block mx-auto" src="./images/air_djibouti_0.png" /></div>
+                <div> <img class="img-fluid d-block mx-auto" src="./images/rb_keflavik.gif" /></div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- VIDEO INSTITUCIONAL -->
-    <section class="page--section" id="video_institucional">
+    <section class="page--section" id="video_institucional" style="display: none;">
         <div class="container">
             <div class="text-right">
                 <h2><i class="fa fa-video-camera"></i>
@@ -592,7 +631,8 @@
                         </li>
                     </ul>
 
-                    <button class="btn btn-primary btn-sm">Veja Mais</button>
+                    <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>
+                    </button>
                 </div>
 
                 <div class="col-md-6">
@@ -653,7 +693,8 @@
 
                         </li>
                     </ul>
-                    <button class="btn btn-primary btn-sm">Veja Mais</button>
+                    <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>
+                    </button>
 
                 </div>
             </div>
@@ -661,25 +702,94 @@
 
     </section>
 
-    <!---PARCEIROS-->
-    <section class="page--section">
-        <div class="text-center">
-            <h2>PARCEIROS</h2>
-            <hr>
-            <h3>Conheça alguns dos nossos maiores clientes e parceiros da instituição</h3>
-        </div>
+
+    <!-- CONTATO-->
+
+    <section id="contato" style="padding: 0">
+
         <div class="container">
-            <div class="slick_parceiros">
-                <div> <img class="img-fluid d-block mx-auto" src="./images/hype.jpg" /></div>
-                <div> <img class="img-fluid d-block mx-auto" src="./images/ib_uppsveitir.gif" /></div>
-                <div> <img class="img-fluid d-block mx-auto" src="./images/smari_fc.gif" /></div>
-                <div> <img class="img-fluid d-block mx-auto" src="./images/ats_logo_wd.png" /></div>
-                <div> <img class="img-fluid d-block mx-auto" src="./images/air_djibouti_0.png" /></div>
-                <div> <img class="img-fluid d-block mx-auto" src="./images/rb_keflavik.gif" /></div>
+
+            <div class="row">
+
+                <div class="col-md-7 mt-5 details-contact">
+                    <h4>Contato-nos</h4>
+                    <p class="mt-4 mb-4"><i class="text-muted">
+                            Contate-nos por e-mail ou telefone de acordo com o departamento correspondente à sua
+                            solicitação
+                            ou dúvida.</i></p>
+                    <h5>Secretaria Escolar</h5>
+                    <p><i class="fa fa-phone fa-sm"></i> (91) 91 3081-5246/ 98880-0630</br>
+                        <i class="fa fa-envelope fa-sm"></i> secretaria@ensinoamazonia.com.br
+                    </p>
+
+                    <h5>Financeiro</h5>
+                    <p><i class="fa fa-phone fa-sm"></i> (91) 98893-0630 </br>
+                        <i class="fa fa-envelope fa-sm"></i> marketing@ensinoamazonia.com.br
+                    </p>
+
+                    <h5>Recursos Humanos </h5>
+                    <p><i class="fa fa-phone fa-sm"></i> (91) 3081-5246</br>
+                        <i class="fa fa-envelope fa-sm"></i> rh@ensinoamazonia.com.br
+                    </p>
+
+                </div>
+                <div class="col-md-5 bg--default">
+                    <div class="wrap-form">
+                        <!-- FOCO -->
+                        <form method="POST" name="form-contato" id="form-contato">
+                            <h5>Envie sua mensagem</h5>
+                            <p>Nosso setor de atendimento está sempre pronto para ouvir você. Contudo pedimos que envie
+                                sua
+                                mensagem e aguarde!</p>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Digite seu nome">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="phone" name="phone"
+                                            placeholder="Digite seu telefone">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Digite seu e-mail">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Digite sua mensagem" class="form-control" name="message"
+                                    id="message" cols="30" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn--default btn-lg bg--send" type="submit"> Enviar <i
+                                                class="fa fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form> <!-- End form -->
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- MAPA -->
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.689191901372!2d-48.3870412!3d-1.3733082!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x991a61f6b9c71641!2sSistema%20de%20Ensino%20Amaz%C3%B4nia!5e0!3m2!1spt-BR!2sbr!4v1609803343347!5m2!1spt-BR!2sbr"
+        width="100%" height="380" frameborder="0" style="border:0;margin-bottom: -12px;" allowfullscreen=""
+        aria-hidden="false" tabindex="0">
+    </iframe>
+
+    <!-- BTN TOPO -->
     <div class="topo">
         <i class="fa fa-arrow-up"></i>
     </div>
@@ -786,4 +896,12 @@
 <script src="js/jquery.appear.js"></script>
 <script src="js/slick.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
+
+<!-- JQUERY VALIDATE -->
+<script src="js/jquery.validate.js"></script>
+<script src="js/additional-methods.js"></script>
+<script src="js/localization/messages_pt_BR.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 <script src="js/script.js"></script>
