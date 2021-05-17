@@ -1,0 +1,124 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Banners
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/banners">Banner</a></li>
+            <li class="active"><a href="/admin/banners/create">Cadastrar</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-success">
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Novo Banner</h3>
+                    </div>
+                    <form role="form" action="/admin/banners/store" method="post" enctype="multipart/form-data">
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="title">Título</label>
+                                    <input value="{$_SESSION['recoversPost']['title']}" type="text" class="form-control"
+                                        id="title" name="title" placeholder="Digite o título do banner">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="resume">Resumo</label>
+                                    <input value="{$_SESSION['recoversPost']['resume']}" type="text"
+                                        class="form-control" id="resume" name="resume"
+                                        placeholder="Digite o resumo do banner">
+                                </div>
+                                <div class="form-group col-md-6">
+
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox" name="bool_cor_text" id="bool_cor_text" value=1
+                                            {if="$_SESSION['recoversPost']['bool_cor_text'] == 1"} checked {else} {/if}>
+                                            <strong>Deixar texto do TÍTULO e RESUMO na cor preta com fundo claro.</strong>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox" name="bool_banner_clicked" id="bool_banner_clicked" value=1
+                                            {if="$_SESSION['recoversPost']['bool_banner_clicked'] == 1"} checked {else} {/if}>
+                                            <strong>Tornar BANNER clicável.</strong>                                        
+                                            
+                                        </label>  
+                                        <a class="badge badge-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="No carousel do site quando um banner aparece com o curso ativado, poderá ser clicado e exibirá o conteudo referente aquele anúncio.">
+                                            <i class="fa fa-question" ></i>
+                                        </a>
+                                    </div>
+                                 </div>
+                                  
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-md-6">
+                                    <label for="slug">Slug <span class="text-danger ">*</span></label>
+                                    <input value="{$_SESSION['recoversPost']['slug']}" type="text" class="form-control"
+                                        id="slug" name="slug" placeholder="Url amigável">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="slug">Alinhar o texto à:</label>
+
+                                    <select class="form-control" name="align_text" id="align_text">
+                                        <option value="">SELECIONE</option>
+                                        <option value="left">ESQUERDA</option>
+                                        <option value="right">DIREITA</option>
+                                        <option value="center">CENTRO</option>
+                                        <option value="justify">JUSTIFICADO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Banner <span class="text-danger ">*</span></label>
+                                <input type="file" id="image" name="image"/>
+                                <p class="help-block">Adicione uma imagem para seu banner aqui.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description"><b>Descrição/Conteúdo:</b></label>
+                                <textarea class="form-control" name="description" id="description" cols="30" rows="5">
+                                    {$_SESSION['recoversPost']['description']}
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Autor</label>
+                                <input type="hidden" id="idperson" name="idperson"
+                                    value="{$_SESSION['User']['iduser']}">
+                                <input value="{$_SESSION['User']['desperson']}" type="text" class="form-control"
+                                    id="author" name="author" placeholder="Nome do autor do banner">
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

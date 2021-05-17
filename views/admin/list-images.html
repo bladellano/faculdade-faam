@@ -1,0 +1,31 @@
+<hr>
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-photos">
+                {loop="$images"}
+                <li>
+                    <div class="wrap-photo-edit">
+                        {if="$value.type == 'pdf'"}
+                        <img src="/public/assets/admin/img/pdf-file.svg" alt="{$value.path}">
+                        <span class="text-primary">{$value.name}</span>
+                        {else}
+                        <img src="../../{$value.path}" alt="{$value.path}">
+                        {/if}
+                    <div class="btn-delete-image">
+                        <a href="{$value.path}" data-id="{$value.id}" > <i class="fa fa-trash"></i></a>
+                    </div>
+                    <div class="btn-copy-image">
+                        <a href="/{$value.path}" value="{$value.path}" data-toggle="tooltip" title="Copiar">
+                            <i class="fa fa-copy"></i>
+                        </a>
+                    </div>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+            <input type="hidden" id="save_value" value="">
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,31 @@
+<div class="header-page"></div>
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <p></p>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/albuns">Galeria de Fotos</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Fotos</li>
+        </ol>
+    </nav>
+
+    <hr>
+
+    <div class="row mb-5">
+
+        <div class="col-md-12">
+            <ul class="list-photos">
+                {loop="$photos"}
+                <li>
+                    <a href="{#URL_BASE#}/{$value.image}" data-lightbox="image" data-title="{$value.title}">
+                        <img src="{#URL_BASE#}/{$value.image_thumb}" alt="{$value.title}">
+                    </a>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+
+    </div>
+
+</div><!-- container -->

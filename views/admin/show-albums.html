@@ -1,0 +1,53 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Todas as fotos do album "{$album.album}"
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active"><a href="/admin/album/{$album.id}">Album</a></li>
+        </ol>
+    </section>
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+                    <ul class="list-photos">
+                        {loop="$photos"}
+                        <li>
+                            <div class="wrap-photo-edit">
+
+                                <a href="../../{$value.image}" data-lightbox="image" data-title="{$value.title}">
+                                    <img class="" src="../../{$value.image_thumb}" alt="{$value.title}">
+                                </a>
+
+                                <div class="btn-delete-photo">
+                                    <a href="/admin/photos/{$value.id}/{$album.id}/delete"
+                                        onclick="return confirm('Deseja realmente excluir este registro?')">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-check-cover">
+                                    <a href="/admin/albums/change-cover/{$value.id}/{$album.id}"
+                                        class='{if="$album.id_photos_cover == $value.id"} active {else} {/if}'
+                                        data-toggle="tooltip" data-placement="bottom" title="Capa">
+                                        <i class="glyphicon glyphicon-check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

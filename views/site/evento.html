@@ -1,0 +1,37 @@
+<div class="header-page"></div>
+
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <p></p>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Eventos</li>
+    </ol>
+  </nav>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-9">
+
+      <p> <i class="fa fa-calendar-alt"></i> {function="toDatePtBr($evento.created_at)"}</p>
+      <h3 class="title-events">{$evento.title}<br/><span class="badge badge-success"><i class="far fa-calendar-check"></i> {function="toDatePtBr($evento.event_day,false)"}</span></h3>
+      <img class="img-events" src="{#URL_BASE}/{$evento.image_thumb}" alt="{$value.title}"> {$evento.description}
+
+    </div>
+    <div class="col-md-3">
+      <h3>Recentes</h3>
+
+      {loop="$eventos"}
+      <p><i class="fa fa-calendar-alt text-black-50"></i>
+        <small class="text-muted">{function="toDatePtBr($value.created_at)"}</small>
+        <br>
+        <a href="/evento/{$value.slug}">{function="resume($value.title,55)"}</a>
+      </p>
+      <hr>
+      {/loop}
+    </div>
+  </div>
+
+</div><!-- container -->

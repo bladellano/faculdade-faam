@@ -1,0 +1,29 @@
+<div class="header-page"></div>
+
+<div class="container height-page">
+
+    <nav aria-label="breadcrumb">
+        <p></p>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Eventos</li>
+        </ol>
+    </nav>
+
+    <hr>
+
+    <div class="row">
+        {loop="$eventos"}
+        <div class="col-md-12 col-sm-6  mb-3"> 
+            <a href="evento/{$value.slug}"><img class="img-events rounded" src="{$value.image_thumb}" alt="{$value.title}"></a>
+            <a href="evento/{$value.slug}"><h5>{$value.title} <span class="badge badge-success"><i class="far fa-calendar-check"></i> {function="toDatePtBr($evento.event_day,false)"}</span></h5></a>
+            {function="resume($value.description)"}
+        </div>
+        {/loop}
+    </div>
+
+    <!-- Pagination -->
+    {include="pagination"}
+    <!-- End - Pagination -->
+
+</div><!-- container -->

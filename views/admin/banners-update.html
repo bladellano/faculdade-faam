@@ -1,0 +1,122 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Lista de Banners
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Editar Banner</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form" action="/admin/banners/{$banner.id}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="_METHOD" value="PUT"/>
+                        {if="$msgError != ''"}
+                        <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <p>{$msgError}</p>
+                        </div>
+                        {/if}
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="title">Título</label>
+                                    <input value="{$banner.title}" type="text" class="form-control" id="title"
+                                        name="title" placeholder="Digite o título do artigo">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="resume">Resumo</label>
+                                    <input value="{$banner.resume}" type="text" class="form-control" id="resume"
+                                        name="resume" placeholder="Digite o resumo do artigo">
+                                </div>
+
+                                <div class="form-group col-md-6">
+
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox" name="bool_cor_text" id="bool_cor_text" value=1
+                                            {if="$banner.bool_cor_text == 1"} checked {else} {/if}>
+                                            <strong>Deixar texto do TÍTULO e RESUMO na cor preta com fundo claro.</strong>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox" name="bool_banner_clicked" id="bool_banner_clicked" value=1
+                                            {if="$banner.bool_banner_clicked == 1"} checked {else} {/if}>
+                                            <strong>Tornar BANNER clicável.</strong>                                        
+                                            
+                                        </label>  
+                                        <a class="badge badge-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="Torna o anúncio do banner clicável na página principal, deixando-o com conteúdo para exibição.">
+                                            <i class="fa fa-question" ></i>
+                                        </a>
+                                    </div>
+                                 </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="slug">Slug</label>
+                                    <input value="{$banner.slug}" type="text" class="form-control" id="slug" name="slug"
+                                        placeholder="Url amigável">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="slug">Alinhar o texto à:</label>
+                                    <select class="form-control" name="align_text" id="align_text">
+                                        <option value="">SELECIONE {$banner.align_text}</option>
+                                        <option value="left" {if="$banner.align_text == 'left'"} selected {else} {/if}>ESQUERDA</option>
+                                        <option value="right" {if="$banner.align_text == 'right'"} selected {else} {/if}>DIREITA</option>
+                                        <option value="center" {if="$banner.align_text == 'center'"} selected {else} {/if}>CENTRO</option>
+                                        <option value="justify" {if="$banner.align_text == 'justify'"} selected {else} {/if}>JUSTIFICADO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">   
+                                <div class="form-group col-md-6">
+                                    <label for="image">Capa</label>
+                                    <input type="file" id="image" name="image">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <img src="../../{$banner.image_thumb}" class="img-rounded img-object-fit">
+                                </div>
+                            </div>                           
+
+                            <div class="form-group">
+                                <label for="description"><b>Descrição/Conteúdo:</b></label>
+                                <textarea class="form-control" name="description" id="description" cols="30" rows="5">
+                                     {$banner.description}
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Autor</label>
+                                <input type="hidden" id="idperson" name="idperson" value="{$banner.idperson}">
+                                <input value="{$banner.author}" type="text" class="form-control" id="author" name="author" placeholder="Nome do autor do artigo">
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

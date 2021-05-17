@@ -1,0 +1,169 @@
+/**/
+
+ul.list-itens-main {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+ul.list-itens-main li {
+  position: relative;
+  margin: 4px;
+  width: 180px;
+  height: 180px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 4px;
+}
+
+ul.list-itens-main li div {
+  margin: auto 0;
+  top: 25%;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+.img-object-fit {
+  object-fit: cover;
+  width: 100%;
+  height: 150px;
+}
+
+.wrap-photo-edit {
+  position: relative;
+  box-sizing: border-box;
+  width: 186px;
+  margin: 2.5%;
+}
+
+.wrap-photo-edit .btn-delete-photo a {
+  color: #fff;
+}
+
+.wrap-photo-edit .btn-delete-photo {
+  position: absolute;
+  width: 30px;
+  height: 22px;
+  background-color: #3b4252;
+  bottom: 0;
+  right: 0;
+}
+
+.wrap-photo-edit .btn-check-cover {
+  position: absolute;
+  width: 30px;
+  right: 30px;
+  height: 22px;
+  background: #3b4252;
+  bottom: 0;
+}
+
+.wrap-photo-edit .btn-check-cover a {
+  color: #666;
+}
+
+.wrap-photo-edit .btn-check-cover a.active {
+  color: #fff;
+}
+
+.wrap-photo-edit .btn-delete-image{
+  position: absolute;
+  width: 30px;
+  right: 0px;
+  height: 22px;
+  background-color: #fff;
+  bottom: 0;
+}
+.wrap-photo-edit .btn-copy-image{
+  position: absolute;
+  width: 30px;
+  right: 30px;
+  height: 22px;
+  background-color: #fff;
+  bottom: 0;
+}
+
+/* File: show-albums.html */
+
+.list-photos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.list-photos li {
+  flex: 1 1 200px;
+  margin:4px 4px;
+  text-align: center;
+}
+
+.list-photos li img {
+  object-fit: cover;
+  width: 100%;
+  height: 150px;
+}
+
+/* Default load */
+
+.ajax_load {
+
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+
+.ajax_load_box {
+  margin: auto;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.ajax_load_box_circle {
+  border: 16px solid #e3e3e3;
+  border-top: 16px solid #3c8dbc;
+  border-radius: 50%;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: spin 1.2s linear infinite;
+  -o-animation: spin 1.2s linear infinite;
+  animation: spin 1.2s linear infinite;
+}
+
+.ajax_load_box_title {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

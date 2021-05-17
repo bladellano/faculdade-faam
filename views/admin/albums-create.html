@@ -1,0 +1,106 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Album
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/albums">Album</a></li>
+            <li class="active"><a href="/admin/albums/create">Cadastrar</a></li>
+        </ol>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalNewAlbum" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Criando nome para um album</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="image">Nome:</label>
+                        <input type="text" id="name_album" name="name_album" class="form-control">
+                        <div class="show-error"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveNewAlbum">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-success">
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Novo Album</h3>
+                    </div>
+                    <form role="form" action="/admin/albums/store" method="post" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <label for="image">Imagen(s):</label>
+                                <input type="file" id="images" accept="image/*" name="images[]" multiple>
+                                <p class="help-block">Selecione até 10 imagens para criar um album.</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="title">Título:</label>
+                                    <input type="text" class="form-control" id="title" name="title"
+                                        value="{$_SESSION['recoversPost']['title']}">
+                                    <p class="help-block">O mesmo título será replicado para todas as imagens.</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="album">Album:</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon">
+                                            <a href="#" data-toggle="modal" data-target="#modalNewAlbum">
+                                                <i class="fa fa-plus-square fa-lg"></i>
+                                            </a>
+                                        </span>
+                                        <select name="id_photos_albums" id="id_photos_albums" class="form-control">
+                                            <option value="">SELECIONE</option>
+                                            {loop="$albums"}
+                                            <option value="{$value.id}">{$value.album}</option>
+                                            {/loop}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Criar/Inserir</button>
+                            <button type="reset" class="btn btn-success">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,86 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1> Eventos </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/eventos">Evento</a></li>
+            <li class="active"><a href="/admin/eventos/create">Cadastrar</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-success">
+
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Novo Evento</h3>
+                    </div>
+
+                    <form action="/admin/eventos/store" method="post" enctype="multipart/form-data">
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div class="form-group">
+                                                <label>Título</label>
+                                                <input value="{$_SESSION['recoversPost']['title']}" type="text" class="form-control" id="title" name="title">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Slug</label>
+                                                <input value="{$_SESSION['recoversPost']['slug']}" type="text" class="form-control" id="slug" name="slug">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Dia do Evento</label>
+                                                <input value="{$_SESSION['recoversPost']['event_day']}" type="text" class="form-control datepicker" id="event_day" name="event_day">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Imagem</label>
+                                                    <input type="file" name="image" class="form-control" onchange="previewFile(this)">
+                                                    <img id="previewImg" alt="profile image" style="max-width:130px;margin-top:20px;display: none;" />
+                               
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="description"><b>Descrição/Conteúdo:</b></label>
+                                        <textarea class="form-control" name="description" id="description" cols="30" rows="5">{$_SESSION['recoversPost']['description']}</textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> <!---box-body--->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

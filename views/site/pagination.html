@@ -1,0 +1,11 @@
+<div class="row justify-content-md-center">
+    {if="count($pages) > 1"}
+    <ul class="pagination">
+        {loop="$pages"}
+        <li class="page-item {if=" $_GET['page'] == $value.text"} active {/if}">
+            <a class="page-link" href="{$value.href}">{$value.text}</a>
+        </li>
+        {/loop}
+    </ul>
+    {/if}
+</div>

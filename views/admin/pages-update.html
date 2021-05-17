@@ -1,0 +1,64 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Lista de Páginas
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Editar Página</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form" action="/admin/paginas/{$p.id}" method="post">
+          <input type="hidden" name="_METHOD" value="PUT"/>
+            {if="$msgError != ''"}
+            <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <p>{$msgError}</p>
+            </div>
+            {/if}
+            <div class="box-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="title">Título</label>
+                        <input value="{$p.title}" type="text" class="form-control" id="title" name="title" placeholder="Digite o título da página">
+                    </div>                                
+                    <div class="form-group col-md-6">
+                        <label for="slug">Slug</label>
+                        <input value="{$p.slug}" type="text" class="form-control" id="slug" name="slug" placeholder="Url amigável">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description"><b>Descrição/Conteúdo:</b></label>
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="5">
+                        {$p.description}
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="author">Autor</label>
+                    <input type="hidden" id="idperson" name="idperson" value="{$p.idperson}">
+                    <input value="{$p.author}" type="text" class="form-control" id="author" name="author" placeholder="Nome do autor da página">
+                </div>
+            </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </form>
+      </div>
+  	</div>
+  </div>
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

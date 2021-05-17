@@ -1,0 +1,431 @@
+<div id="carouselIndicators" class="carousel slide d-none d-sm-block" data-ride="carousel">
+    <div class="carousel-inner">
+        {loop="$banners"}
+        <div class="carousel-item {if="$counter == 0"} active {/if} ">
+            {if="$value.bool_banner_clicked != 1"}
+            <img class="img--object--fit--banner" src="{$value.image}" alt="{$value.title}">
+            {else}
+            <a href="/banners/{$value.slug}"><img class="img--object--fit--banner" src="{$value.image}" alt="{$value.title}"></a>
+            {/if}
+        </div>
+
+        {/loop}
+
+    </div>
+
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<section id="sobre-colegio">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>SOBRE A INSTITUIÇÃO</h2>
+                    <hr>
+                </div>
+
+                <div class="row justify-content-md-center">
+                    <div class="col-12 col-lg-4">
+                        <img class="img-fluid" src="{function="assets('site')"}images/predio.jpg" alt="">
+                        <p> O Sistema de Ensino Amazônia surgiu a partir da experiência da renomada gestora Amanda
+                            Coutinho, com o intuito de implantar um </p>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <p>ensino de qualidade, inovador e criativo, com estrutura compatível com seus anseios e
+                            expectativas. Desta maneira, proporcionando o pleno desenvolvimento do educando,
+                            preparando-o para o exercício da cidadania, formando um cidadão ético e capaz de pensar
+                            criticamente. Inspirado nos princípios da educação construtivista, busca educar com
+                            responsabilidade, contribuindo para a formação moral e social dos alunos.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ensinos">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title--section--left">
+                    <h2>ENSINOS</h2>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <a href="/ensino-fundamental-menor" class="card--ensinos">
+                            <div class="bg--ensinos bg--ens--fund--menor"></div>
+                            <p>ENSINO FUNDAMENTAL MENOR</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/ensino-fundamental-maior" class="card--ensinos">
+                            <div class="bg--ensinos bg--ens--fund--maior"></div>
+                            <p>ENSINO FUNDAMENTAL <br />MAIOR</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/ensino-medio" class="card--ensinos ">
+                            <div class="bg--ensinos bg--ens--medio"></div>
+                            <p>ENSINO MÉDIO</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section id="eventos">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="row d-flex flex-row-reverse">
+                    <div class="col-md-3 text-right">
+
+                        <div class="control-eventos">
+                            <i class="fas fa-chevron-left" id="slick-left"></i>
+                            <i class="fas fa-chevron-right" id="slick-right"></i>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="section-title">
+                            <h2 class="text-white"><span class="title-section-italic">agenda de</span> EVENTOS</h2>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-md-center">
+                    <div class="col-md-12">
+
+                        <div class="slick-eventos text-white">
+
+                            {loop="$eventos"}
+                            <div>
+                                <div class="content-slick">
+                                    <a href="/evento/{$value.slug}">
+                                        <span
+                                            class="title-section-italic">{function="toDatePtBr($value.event_day,false)"}</span>
+                                        <img class="img-fluid" src="{$value.image_thumb}" alt="{$value.title}">
+                                    </a>
+                                    <a href="/evento/{$value.slug}">
+                                        <h3 class="text-center">{function="resume($value.title,40)"}</h3>
+                                    </a>
+                                </div>
+                            </div>
+                            {/loop}
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center mt-4">
+                        <a href="/eventos?page=1" class="btn--default bg--default">MAIS EVENTOS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMPORTANTE -->
+<section id="noticias">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <!-- PRIMEIRA PARTE -->
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <div class="title--section--left">
+                            <h2>ÚTIMAS NOTÍCIAS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6 wrap--news--main">
+                        <a href="/noticia/{$articles_first.slug}"><img class="img-fluid"
+                                src="{$articles_first.image_thumb}" alt="{$articles_first.title}"></a>
+                        <h5 class="mt-3">{function="resume($articles_first.title,60)"}</h5>
+                        <span class="text-muted small">{$articles_first.author} em <i class="fa fa-calendar-alt"></i>
+                            {function="toDatePtBr($articles_first.created_at)"}</span>
+                        <br />
+                        <a href="/noticia/{$articles_first.slug}"
+                            class="text-dark">{function="resume($articles_first.description,120)"}</a>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="wrap--news--right">
+
+                            {loop="$articles_one_less"}
+
+                            <li class="mb-4">
+                                <div>
+                                    <a href="/noticia/{$value.slug}"><img class="img-articles"
+                                            src="{$value.image_thumb}" alt="{$value.title}"></a>
+                                    <a href="/noticia/{$value.slug}" class="text-dark">
+                                        <p>{function="resume($value.description,60)"}
+                                            <br /><strong><i class="fa fa-calendar-alt"></i>
+                                                {function="toDatePtBr($value.created_at)"}</strong>
+                                        </p>
+                                    </a>
+                                </div>
+                            </li>
+
+                            {/loop}
+
+                        </ul>
+                        <div class="row mt-5">
+                            <div class="col-md-12 text-center"><a href="/noticias?page=1"
+                                    class="btn--default bg--default">MAIS NOTÍCIAS</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEGUNDA PARTE -->
+            <div class="col-md-4">
+                <div class="row mt-3">
+                    <div class="col-md-12 ">
+                        <div class="title--section--left">
+                            <h2>FIQUE POR DENTRO</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="card--ensinos">
+                            <p>ENSINO FUNDAMENTAL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <div class="title--section--left">
+                            <h2>INFORMATIVO</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="list--informative">
+                            <li><i class="far fa-file"></i> <a href="#">1º SEMESTRE</a></li>
+                            <li><i class="far fa-file"></i> <a href="#">2º SEMESTRE</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>PERGUNTAS FREQUENTES</h2>
+                    <hr>
+                </div>
+
+                <div class="row justify-content-md-center">
+                    <div class="col-md-12">
+
+                        <div id="accordion">
+
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <a class="btn-link collapsed btn--faq text-left" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <div>Qual as documentações necessárias para matricular o meu filho?</div>
+                                            <div class="btn--plus">+</div>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse content--faq" data-parent="#accordion">
+                                    <div class="card-body">
+
+                                        <h4>DOCUMENTOS EXIGIDOS PARA MATRÍCULA DE ALUNOS DA ESCOLA</h4>
+                                        <ul>
+                                            <li>Comprovante de residência do titular atualizado – FATURA REFERENTE.
+                                            </li>
+                                        </ul>
+
+                                        <h4>AO MÊS DA MATRÍCULA (xerox)</h4>
+                                        <ul>
+                                            <li>Será garantida rematrícula condicional de 30 dias caso haja pendência de
+                                                documentação na pasta do aluno.</li>
+                                        </ul>
+
+                                        <h4>DOCUMENTOS EXIGIDOS PARA MATRÍCULA DE NOVOS ALUNOS</h4>
+                                        <ul>
+                                            <li>Certidão de Nascimento (xerox);</li>
+                                            <li>RG do aluno (xerox);</li>
+                                            <li>CPF do aluno (xerox);</li>
+                                            <li>CPF do aluno;</li>
+                                            <li>CPF do aluno ;</li>
+                                            <li>Histórico Escolar do Ensino Fundamental (original);</li>
+                                            <li>Certificado de Conclusão do Ensino Fundamental, para os alunos que forem
+                                                se matricular no Ensino Médio. (xerox);</li>
+                                            <li>Histórico Escolar do Ensino Médio (original);</li>
+                                            <li>Comprovante de residência do titular atualizado – FATURA REFERENTE AO
+                                                MÊS DA MATRÍCULA (xerox);</li>
+                                            <li>RG do Pai e da Mãe do aluno (xerox);</li>
+                                            <li>RG e CPF do responsável Financeiro (xerox);</li>
+                                            <li>Comprovante de Quitação da Escola anterior.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <a class="btn-link collapsed btn--faq text-left" data-toggle="collapse"
+                                            data-target="#collapseTree" aria-expanded="true"
+                                            aria-controls="collapseTree">
+                                            <div>Qual o Sistema de Ensino utilizado pela Escola?</div>
+                                            <div class="btn--plus">+</div>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseTree" class="collapse content--faq" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>A Escola utiliza o Sistema Positivo de Ensino, em todos os níveis: Ensino
+                                            Fundamental e Médio. Este é um sistema de ensino que prepara seus alunos
+                                            para os desafios do futuro, oferecendo o melhor conjunto de serviços do
+                                            mercado educacional. </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <a class="btn-link collapsed btn--faq text-left" data-toggle="collapse"
+                                            data-target="#collapseFour" aria-expanded="true"
+                                            aria-controls="collapseFour">
+                                            <div>Como funcionam as aulas on-line?</div>
+                                            <div class="btn--plus">+</div>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse content--faq" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>A pandemia do Novo Coronavírus fez com que as escolas adequassem o ensino
+                                            tradicional às novas necessidades. Com isso, o Sistema de Ensino Amazônia
+                                            está oferecendo aos alunos aulas presenciais e remotas.</p>
+                                        <p>No caso das aulas on-line, são transmitidas em tempo real aos alunos por meio
+                                            da plataforma Google Meet. Os vídeos ficam gravados e podem ser solicitados
+                                            por meio de protocolo em até 72h, na secretaria ou no site da escola</p>
+                                        <p>Fica a critério do responsável escolher, por meio do termo de
+                                            responsabilidade, qual modalidade (presencial ou on-line) o aluno irá cursar
+                                            (sendo está podendo ser alterada a qualquer momento pelo responsável). </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--End - accordion-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contato" style="padding: 0">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-7 mt-5 details-contact">
+                <h4>Contato-nos</h4>
+                <p class="mt-4 mb-4"><i class="text-muted">
+                        Contate-nos por e-mail ou telefone de acordo com o departamento correspondente à sua solicitação
+                        ou dúvida.</i></p>
+                <h5>Secretaria Escolar</h5>
+                <p><i class="fa fa-phone fa-sm"></i> (91) 91 3081-5246/ 98880-0630</br>
+                    <i class="fa fa-envelope fa-sm"></i> secretaria@ensinoamazonia.com.br
+                </p>
+
+                <h5>Financeiro</h5>
+                <p><i class="fa fa-phone fa-sm"></i> (91) 98893-0630 </br>
+                    <i class="fa fa-envelope fa-sm"></i> marketing@ensinoamazonia.com.br
+                </p>
+
+                <h5>Recursos Humanos </h5>
+                <p><i class="fa fa-phone fa-sm"></i> (91) 3081-5246</br>
+                    <i class="fa fa-envelope fa-sm"></i> rh@ensinoamazonia.com.br
+                </p>
+
+            </div>
+            <div class="col-md-5 bg--default">
+                <div class="wrap-form">
+                    <!-- FOCO -->
+                    <form method="POST" name="form-contato" id="form-contato">
+                        <h5>Envie sua mensagem</h5>
+                        <p>Nosso setor de atendimento está sempre pronto para ouvir você. Contudo pedimos que envie sua
+                            mensagem e aguarde!</p>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Digite seu nome">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        placeholder="Digite seu telefone">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Digite seu e-mail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Digite sua mensagem" class="form-control" name="message" id="message"
+                                cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn--default btn-lg bg--orange" type="submit"> Enviar <i
+                                            class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form> <!-- End form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAPA -->
+<iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.689191901372!2d-48.3870412!3d-1.3733082!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x991a61f6b9c71641!2sSistema%20de%20Ensino%20Amaz%C3%B4nia!5e0!3m2!1spt-BR!2sbr!4v1609803343347!5m2!1spt-BR!2sbr"
+    width="100%" height="350" frameborder="0" style="border:0;margin-bottom: -6px;" allowfullscreen=""
+    aria-hidden="false" tabindex="0">
+</iframe>

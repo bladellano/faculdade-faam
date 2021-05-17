@@ -1,0 +1,30 @@
+<div class="header-page"></div>
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <p></p>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Galeria de Fotos</li>
+        </ol>
+    </nav>
+
+    <hr>
+
+    <div class="row mb-5">
+
+        <div class="col-md-12">
+            <ul class="list-photos">
+                {loop="$albums"}
+                <li>
+                    <a href="/album/{$value.id}"> 
+                        <span>{$value.album}</span> 
+                        <img src="{$value.cover}" alt="{$value.album}"></a>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+
+    </div>
+
+</div><!-- container -->

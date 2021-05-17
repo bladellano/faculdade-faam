@@ -1,0 +1,65 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Página
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/paginas">Página</a></li>
+            <li class="active"><a href="/admin/paginas/create">Cadastrar</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-success">
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Nova Página</h3>
+                    </div>
+                    <form role="form" action="/admin/paginas/store" method="post">                     
+                          <div class="box-body">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="title">Título</label>
+                                    <input value="{$_SESSION['recoversPost']['title']}" type="text" class="form-control" id="title" name="title" placeholder="Digite o título da página">
+                                </div>                                
+                                <div class="form-group col-md-6">
+                                    <label for="title">Slug</label>
+                                    <input value="{$_SESSION['recoversPost']['slug']}" type="text" class="form-control" id="slug" name="slug" placeholder="Url amigável">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description"><b>Descrição/Conteúdo:</b></label>
+                                <textarea class="form-control" name="description" id="description" cols="30" rows="5">{$_SESSION['recoversPost']['description']}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Autor</label>
+                                <input type="hidden" id="idperson" name="idperson" value="{$_SESSION['User']['iduser']}">
+                                <input value="{$_SESSION['User']['desperson']}" type="text" class="form-control" id="author" name="author" placeholder="Nome do autor da página">
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                            <button type="reset" class="btn btn-success">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
