@@ -12,7 +12,7 @@ class Article extends Model
     public static function listAll()
     {
         $sql = new Sql();
-        return $sql->select("SELECT * FROM articles ORDER BY id DESC");
+        return $sql->select("SELECT * FROM articles ORDER BY id DESC LIMIT 3");
     }
 
     public function getWithSlug($slug)
@@ -42,27 +42,13 @@ class Article extends Model
     {
         $sql = new Sql();
 
-        $results = $sql->select(
-            "CALL sp_articles_save(:id,:title,:description,:slug,:image,:image_thumb,:keywords,:author,:resume,:qtd_access,:spotlight,:id_articles_categories,:show_author,:idperson)",
-            [
-            ":id" => $this->getid(),
-            ":title" => $this->gettitle(),            
-            ":description" => $this->getdescription(),            
-            ":slug" => $this->getslug(),            
-            ":image" => $this->getimage(),            
-            ":image_thumb" => $this->getimage_thumb(),            
-            ":keywords" => $this->getkeywords(),            
-            ":author" => $this->getauthor(),            
-            ":resume" => $this->getresume(),            
-            ":qtd_access" => $this->getqtd_access(),            
-            ":spotlight" => $this->getspotlight(),            
-            ":id_articles_categories" => $this->getid_articles_categories(),            
-            ":show_author" => $this->getshow_author(),           
-            ":idperson" => $this->getidperson()           
-            ]
-        );
+        $action = empty($this->getid()) ? "insert" : "update";
 
-        $this->setData($results[0]);
+        $result = $sql->{$action}("articles", $this->getValues());
+
+        if ($result && !$this->getid()) $this->setid($result);
+
+        return $this->setData($this->getValues());
     }
 
 

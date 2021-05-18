@@ -185,9 +185,15 @@
 <!-- CAROUSEL / BANNER -->
 <div id="owl-banners" class="owl-carousel owl-theme">
 
-    <div class="item"><img src="views/site/assets/images/banner-site-scaled.jpg" alt="The Last of us"></div>
-    <div class="item"><img src="views/site/assets/images/banner_b.jpg" alt="GTA V"></div>
-    <div class="item"><img src="views/site/assets/images/banner_c.jpg" alt="Mirror Edge"></div>
+    {loop="$banners"}
+    
+            {if="$value.bool_banner_clicked != 1"}
+            <div class="item"><img src="{$value.image}" alt="{$value.title}"></div>
+            {else}
+            <div class="item"><a href="/banners/{$value.slug}"><img src="{$value.image}" alt="{$value.title}"></a></div>
+            {/if}
+
+     {/loop}
 
 </div>
 
@@ -553,59 +559,26 @@
                 <h2>NOTÍCIAS <i class="fa fa-file-text-o"></i>
                 </h2>
                 <ul class="list--events">
+
+                    {loop="$articles"}
+
                     <li>
                         <div class="box--events">
                             <div class="data">
                                 <div class="mes">
-                                    <span>21 Mar</span>
+                                    <span>{$value.dia} {$value.mes}</span>
                                 </div>
                             </div>
 
-                            <h4><a href="#">Embrapa Lança Aplicativo Para Gerenciamento De Fazendas Leiteiras</a>
+                            <h4><a href="noticia/{$value.slug}">{$value.title}</a>
                             </h4>
-                            <h5>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy text ever since the 1500s... <span> <a
-                                        href="#"> LER MAIS » </a></span>
-                            </h5>
+                            <h5> {$value.resume}... <span> <a href="noticia/{$value.slug}"> LER MAIS » </a></span> </h5>
                         </div>
                     </li>
-                    <li>
 
-                        <div class="box--events">
-                            <div class="data">
-                                <div class="mes">
-                                    <span>14 Abri</span>
-                                </div>
-                            </div>
+                    {/loop}
 
-                            <h4><a href="#">Cerimônia do Jaleco</a></h4>
-                            <h5>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy text ever since the 1500s... <span> <a
-                                        href="#"> LER MAIS » </a></span>
-                            </h5>
-                        </div>
 
-                    </li>
-                    <li>
-
-                        <div class="box--events">
-                            <div class="data">
-                                <div class="mes">
-                                    <span>04 Mar</span>
-                                </div>
-                            </div>
-
-                            <h4><a href="#">Embrapa Lança Aplicativo Para Gerenciamento</a></h4>
-                            <h5>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum has been the industry's standard dummy text ever since the 1500s... <span> <a
-                                        href="#"> LER MAIS » </a></span>
-                            </h5>
-                        </div>
-
-                    </li>
                 </ul>
 
                 <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>

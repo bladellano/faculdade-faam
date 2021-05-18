@@ -36,7 +36,8 @@ class ArticlesController extends Controller
 			'msgError' => Article::getError(),
 			'categories' => $categories,
 			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
-		]);exit;
+		]);
+		exit;
 	}
 
 	public function store(Request $request, Response $response, array $args)
@@ -56,7 +57,7 @@ class ArticlesController extends Controller
 
 			$images = parent::uploadImage($_FILES,self::$path,self::$folder);
 
-			if(!count($images)){
+			if(is_array($images) && !count($images)){
 				Article::setError(self::$msgError);
 				header("Location: /admin/artigos/create");
 				exit;
@@ -103,7 +104,7 @@ class ArticlesController extends Controller
 			"article" => $article->getValues(),
 			'msgError' => Article::getError(),
 			'categories' => $categories,
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/public/assets/admin/js/form.js']
+			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
 		]);exit;
 	}
 

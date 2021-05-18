@@ -15,14 +15,15 @@ class BannersController extends Controller
 	public static $folder = "banners";
 
 	public function index()
-	{		
-		$pg = $this->pagination('Banner','/admin/banners');
+	{
+		$pg = $this->pagination('Banner', '/admin/banners');
 		$page = new PageAdmin();
 		$page->setTpl("banners", array(
 			"banners" => $pg['data'],
 			"search" => $pg['search'],
-			"pages"=> $pg['pages']
-		));exit;		
+			"pages" => $pg['pages']
+		));
+		exit;
 	}
 
 	public function create()
@@ -30,8 +31,9 @@ class BannersController extends Controller
 		$page = new PageAdmin();
 		$page->setTpl("banners-create", [
 			'msgError' => Banner::getError(),
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
-		]);exit;
+			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+		]);
+		exit;
 	}
 
 	public function store(Request $request, Response $response, array $args)
@@ -51,11 +53,11 @@ class BannersController extends Controller
 		}
 
 		/* Valida se $_FILES existem com imagem */
-		if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0){
+		if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
 
-			$images = parent::uploadImage($_FILES,self::$path,self::$folder);
+			$images = parent::uploadImage($_FILES, self::$path, self::$folder);
 
-			if(!count($images)){
+			if (is_array($images) && !count($images)) {
 				Banner::setError(self::$msgError);
 				header("Location: /admin/banners/create");
 				exit;
@@ -63,10 +65,9 @@ class BannersController extends Controller
 
 			$data['image'] = $images['image'];
 			$data['image_thumb'] = $images['image_thumb'];
-
 		} /* End */
 
-		$banner = new Banner(); 
+		$banner = new Banner();
 		$banner->setData($data);
 		$banner->save();
 		unset($_SESSION['recoversPost']);
@@ -97,8 +98,9 @@ class BannersController extends Controller
 		$page->setTpl("banners-update", [
 			"banner" => $banner->getValues(),
 			'msgError' => Banner::getError(),
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/public/assets/admin/js/form.js']
-		]);exit;
+			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+		]);
+		exit;
 	}
 
 	public function update(Request $request, Response $response, array $args)
@@ -107,7 +109,7 @@ class BannersController extends Controller
 		$banner = new Banner();
 		$banner->get((int) $args['id']);
 		unset($_POST['_METHOD']);
-		
+
 		$_POST['bool_cor_text'] = !empty($_POST['bool_cor_text']) ? 1 : 0;
 		$_POST['bool_banner_clicked'] = !empty($_POST['bool_banner_clicked']) ? 1 : 0;
 
@@ -120,11 +122,11 @@ class BannersController extends Controller
 				unlink($banner->getimage_thumb());
 			}
 
-			$images = parent::uploadImage($_FILES,self::$path,self::$folder);
+			$images = parent::uploadImage($_FILES, self::$path, self::$folder);
 
-			if(!count($images)){
+			if (is_array($images) && !count($images)) {
 				Banner::setError(self::$msgError);
-				header("Location: /admin/banners/".$args['id']);
+				header("Location: /admin/banners/" . $args['id']);
 				exit;
 			}
 
@@ -135,8 +137,7 @@ class BannersController extends Controller
 		$banner->setData($_POST);
 		$banner->save();
 
-		header("Location:/admin/banners/".$args['id']);
+		header("Location:/admin/banners/" . $args['id']);
 		exit;
 	}
-
 }//End Class

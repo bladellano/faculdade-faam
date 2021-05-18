@@ -25,7 +25,7 @@ abstract class Controller
 	 * @param  integer $res_thumb [resolução do thumb de imagem]
 	 * @return [type]             [Array com resultado de duas imagens maior e menor]
 	 */
-	public static function uploadImage($files, string $path, string $folder, $res_image = 1440, $res_thumb = 600)
+	public static function uploadImage($files, string $path, string $folder, $res_image = 2660, $res_thumb = 600)
 	{
 
 		$upload = new Image($path, $folder);

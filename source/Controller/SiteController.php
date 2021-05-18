@@ -63,14 +63,20 @@ class SiteController extends Controller
         // $eventos = (new Evento())->listAll();
         // $articles_one_less = (new Article())->listAllOneLess();
         // $articles_first = (new Article())->firstArticle();
-        // $banners = (new Banner())->listAll();
-        // echo '<pre>$banners <br />'; var_dump( $banners ); echo '</pre>';die;
-
+        $articles = (new Article())->listAll();
+        $banners = (new Banner())->listAll();
+        
+        foreach ($articles as &$article) {
+            $date = new \DateTime('2021-05-17 20:47:01');
+            $article['mes'] = $date->format('M');
+            $article['dia'] = $date->format('d');
+        }
+        
         $this->page->setTpl("home", [
             // 'eventos' => $eventos,
             // 'articles_first' => $articles_first,
-            // 'articles_one_less' => $articles_one_less,
-            // 'banners' => $banners
+            'articles' => $articles,
+            'banners' => $banners
         ]);
         exit;
     }

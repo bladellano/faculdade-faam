@@ -60,7 +60,7 @@ class ArticleCategory extends Model
         $sql->query('DELETE FROM articles_categories WHERE id = :id', [":id" => $this->getid()]);
     }
 
-    public static function getPage($page = 1, $itensPerPage = 8)
+    public static function getPage($page = 1, $itensPerPage = 16)
     {
         $start = ($page - 1) * $itensPerPage;
 

@@ -23,7 +23,8 @@ class EventosController extends Controller
             "eventos" => $pg['data'],
             "search" => $pg['search'],
             "pages" => $pg['pages']
-        ));exit;
+        ));
+        exit;
     }
 
     public function changeStatus(Request $request, Response $response, array $args)
@@ -32,7 +33,7 @@ class EventosController extends Controller
         $evento->get((int) $request->getParsedBody()['id']);
         $data = $evento->getValues();
 
-        $data['status'] = ($data['status']==1) ? 0: 1;
+        $data['status'] = ($data['status'] == 1) ? 0 : 1;
 
         $evento->setData($data);
         $evento->save($data);
@@ -98,7 +99,7 @@ class EventosController extends Controller
 
         $evento = new Evento();
         $evento->setData($data);
-        
+
         $evento->save();
         unset($_SESSION['recoversPost']);
         header("Location:/admin/eventos");
@@ -133,8 +134,9 @@ class EventosController extends Controller
             "evento" => $data,
             'msgError' => Evento::getError(),
             'msgSuccess' => Evento::getSuccess(),
-            'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/public/assets/admin/js/form.js']
-        ]);exit;
+            'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+        ]);
+        exit;
     }
 
     /**
