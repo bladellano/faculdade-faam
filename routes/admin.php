@@ -4,6 +4,7 @@ use Source\Controller\AdminController;
 use Source\Controller\PagesController;
 use Source\Controller\UsersController;
 use Source\Controller\AlbumsController;
+use Source\Controller\CursosController;
 use Source\Controller\BannersController;
 use Source\Controller\EventosController;
 use Source\Controller\ArticlesController;
@@ -25,6 +26,23 @@ $app->group('/admin', function () use ($app) {
     $app->post('/login', AdminController::class . ':logging');
     $app->get('/logout', AdminController::class . ':logout');
 });
+
+
+/**
+ * ADMIN CURSOS
+ */
+$app->group('/admin/cursos', function () use ($app) {
+
+    $app->get('', CursosController::class . ':index');
+    // $app->post('/change-order', CursosController::class . ':changeOrder');
+    // $app->post('/change-status', CursosController::class . ':changeStatus');
+    $app->get('/create', CursosController::class . ':create');
+    $app->post('/store', CursosController::class . ':store');
+    $app->get('/{id}', CursosController::class . ':edit');
+    $app->put('/{id}', CursosController::class . ':update');
+    $app->get('/{id}/delete', CursosController::class . ':destroy');
+}); 
+
 
 /**
  * ADMIN EVENTOS

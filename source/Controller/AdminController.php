@@ -8,7 +8,6 @@ use Source\Model\Article;
 
 class AdminController
 {
-	// TESTE
 	public function deleteImage()
 	{
 		$sql = new \Source\DB\Sql();
@@ -76,7 +75,7 @@ class AdminController
 	{
 		User::verifyLogin();
 		$articles  = count(Article::listAll());
-
+		
 		$page = new PageAdmin();
 		$page->setTpl("index", [
 			"qtdArticles" => $articles,
@@ -89,7 +88,7 @@ class AdminController
 		try {
 			User::login($_POST["login"], $_POST["password"]);
 		} catch (\Exception $e) {
-
+			
 			User::setError($e->getMessage());
 			header("Location: /admin/login");
 			exit;

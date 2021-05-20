@@ -156,6 +156,9 @@ $(function () {
         text: 'Carregar',
         btnClass: 'btn-primary',
         htmlIcon: '<span class="glyphicon glyphicon-file"></span> ',
+        'onChange': function (files) {
+            console.log(files)
+         }
     });
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -220,7 +223,7 @@ function previewFile(e) {
     if (file) {
         var reader = new FileReader();
         reader.onload = function () {
-            $('#previewImg').attr('src', reader.result).fadeIn();
+            $(e).siblings().attr('src', reader.result).fadeIn();
         }
         reader.readAsDataURL(file);
     }

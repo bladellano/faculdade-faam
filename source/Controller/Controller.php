@@ -25,18 +25,19 @@ abstract class Controller
 	 * @param  integer $res_thumb [resolução do thumb de imagem]
 	 * @return [type]             [Array com resultado de duas imagens maior e menor]
 	 */
-	public static function uploadImage($files, string $path, string $folder, $res_image = 2660, $res_thumb = 600)
+	public static function uploadImage(array $files, string $path, string $folder, $res_image = 2660, $res_thumb = 600)
 	{
-
+		
 		$upload = new Image($path, $folder);
-		$file = $files["image"];
-
-		if (!empty($file["image"]) || !in_array($file["type"], $upload::isAllowed()))
+		
+		if (!in_array($files["type"], $upload::isAllowed()))
 			return [];
 
 		return [
-			'image_thumb' => $upload->upload($file, pathinfo($file["name"], PATHINFO_FILENAME), $res_thumb),
-			'image' => $upload->upload($file, pathinfo($file["name"], PATHINFO_FILENAME), $res_image)
+			// 'image_thumb' => $upload->upload($files, pathinfo($files["name"], PATHINFO_FILENAME), $res_thumb),
+			'image_thumb' => $upload->upload($files, substr(hash('md5',time().rand()),0,10), $res_thumb),
+			// 'image' => $upload->upload($files, pathinfo($files["name"], PATHINFO_FILENAME), $res_image)
+			'image' => $upload->upload($files, substr(hash('md5',time().rand()),0,10), $res_image)
 		];
 	}
 

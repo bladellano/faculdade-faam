@@ -5,82 +5,81 @@ namespace Source\Model;
 use \Source\DB\Sql;
 use \Source\Model;
 
-class Article extends Model
+class Curso extends Model
 {
-    const ERROR = 'ArticleError';
+    const ERROR = 'CursoError';
+    const SUCCESS = 'CursoSuccess';
 
     public static function listAll($limit = "LIMIT 9")
     {
         $sql = new Sql();
-        return $sql->select("SELECT * FROM articles ORDER BY id DESC {$limit}");
+        return $sql->select("SELECT * FROM cursos WHERE status = '1' ORDER BY id DESC {$limit}");
     }
 
     public function getWithSlug($slug)
     {
         $sql = new Sql();
-        $results = $sql->select("SELECT * FROM articles WHERE slug = :slug", ['slug' => $slug]);
+        $results = $sql->select("SELECT * FROM cursos WHERE slug = :slug", ['slug' => $slug]);
         $this->setData($results[0]);
     }
 
-    public static function listAllOneLess()
-    {
-        $sql = new Sql();
-        return $sql->select("SELECT * FROM articles ORDER BY id DESC LIMIT 1,3");
-    }
-    public static function firstArticle()
-    {
-        $sql = new Sql();
-        $result = $sql->select("SELECT * FROM articles ORDER BY id DESC LIMIT 1");
-        return  $result[0];
-    }
-
-    /**
-     * Insere o artigo na base de dados.
-     * @return void
-     */
     public function save()
     {
         $sql = new Sql();
 
         $action = empty($this->getid()) ? "insert" : "update";
 
-        $result = $sql->{$action}("articles", $this->getValues());
+        $result = $sql->{$action}("cursos", $this->getValues());
 
         if ($result && !$this->getid()) $this->setid($result);
 
-        return $this->setData($this->getValues());
+        $this->setData($this->getValues());
     }
 
+    public static function setSuccess($msg)
+    {
+        $_SESSION[Evento::SUCCESS] = $msg;
+    }
+    public static function getSuccess()
+    {
+        $msg = (isset($_SESSION[Evento::SUCCESS]) && $_SESSION[Evento::SUCCESS]) ? $_SESSION[Evento::SUCCESS] : '';
+        Evento::clearSuccess();
+        return $msg;
+    }
 
     public static function setError($msg)
     {
-        $_SESSION[Article::ERROR] = $msg;
+        $_SESSION[Evento::ERROR] = $msg;
     }
     public static function getError()
     {
-        $msg = (isset($_SESSION[Article::ERROR]) && $_SESSION[Article::ERROR]) ? $_SESSION[Article::ERROR] : '';
-        Article::clearError();
+        $msg = (isset($_SESSION[Evento::ERROR]) && $_SESSION[Evento::ERROR]) ? $_SESSION[Evento::ERROR] : '';
+        Evento::clearError();
         return $msg;
+    }
+    public static function clearSuccess()
+    {
+        $_SESSION[Evento::SUCCESS] = NULL;
     }
     public static function clearError()
     {
-        $_SESSION[Article::ERROR] = NULL;
+        $_SESSION[Evento::ERROR] = NULL;
     }
 
-    public function get($id)
+    public function get($id): void
     {
         $sql = new Sql();
-        $results = $sql->select("SELECT * FROM articles WHERE id = :id", [":id" => $id]);
+        $results = $sql->select("SELECT * FROM cursos WHERE id = :id", [":id" => $id]);
         $this->setData($results[0]);
     }
 
     public function delete()
     {
         $sql = new Sql();
-        $sql->query('DELETE FROM articles WHERE id = :id', [":id" => $this->getid()]);
+        $sql->query('DELETE FROM cursos WHERE id = :id', [":id" => $this->getid()]);
     }
 
-    public static function getPage($page = 1, $itensPerPage = 8)
+    public static function getPage($page = 1, $itensPerPage = 12)
     {
         $start = ($page - 1) * $itensPerPage;
 
@@ -88,9 +87,9 @@ class Article extends Model
 
         $results = $sql->select(
             "SELECT SQL_CALC_FOUND_ROWS *
-            FROM articles 
+            FROM cursos 
             ORDER BY id DESC
-            LIMIT $start, $itensPerPage;
+            LIMIT $start, $itensPerPage ;
         "
         );
 
@@ -111,11 +110,10 @@ class Article extends Model
 
         $results = $sql->select(
             "SELECT SQL_CALC_FOUND_ROWS *
-            FROM articles 
-            WHERE title LIKE :search 
-            ORDER BY title
-            LIMIT $start, $itensPerPage;
-        ",
+            FROM cursos 
+            WHERE nome LIKE :search 
+            ORDER BY id DESC
+            LIMIT $start, $itensPerPage;",
             [
                 ':search' => '%' . $search . '%'
             ]
@@ -129,4 +127,4 @@ class Article extends Model
             'pages' => ceil($resultTotal[0]['nrtotal'] / $itensPerPage),
         ];
     }
-}//Fim Classe
+}//End Classe

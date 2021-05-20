@@ -63,7 +63,7 @@ class SiteController extends Controller
         // $eventos = (new Evento())->listAll();
         // $articles_one_less = (new Article())->listAllOneLess();
         // $articles_first = (new Article())->firstArticle();
-        $articles = (new Article())->listAll();
+        $articles = (new Article())->listAll(3);
         $banners = (new Banner())->listAll();
         
         foreach ($articles as &$article) {

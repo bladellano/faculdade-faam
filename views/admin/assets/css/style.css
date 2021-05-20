@@ -70,7 +70,7 @@ ul.list-itens-main li div {
   color: #fff;
 }
 
-.wrap-photo-edit .btn-delete-image{
+.wrap-photo-edit .btn-delete-image {
   position: absolute;
   width: 30px;
   right: 0px;
@@ -78,7 +78,7 @@ ul.list-itens-main li div {
   background-color: #fff;
   bottom: 0;
 }
-.wrap-photo-edit .btn-copy-image{
+.wrap-photo-edit .btn-copy-image {
   position: absolute;
   width: 30px;
   right: 30px;
@@ -101,7 +101,7 @@ ul.list-itens-main li div {
 
 .list-photos li {
   flex: 1 1 200px;
-  margin:4px 4px;
+  margin: 4px 4px;
   text-align: center;
 }
 
@@ -114,7 +114,6 @@ ul.list-itens-main li div {
 /* Default load */
 
 .ajax_load {
-
   display: none;
   position: fixed;
   left: 0;
@@ -148,6 +147,23 @@ ul.list-itens-main li div {
 .ajax_load_box_title {
   margin-top: 15px;
   font-weight: bold;
+}
+
+.previewImg {
+  display: none;
+  object-fit: cover;
+  width: 100%;
+  height: 148px;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #e1d6d6;
+  margin-top: 5px;
+}
+
+.btnFixedCursos {
+  position: fixed;
+  bottom: 0;
+  right: 50%;
 }
 
 @-webkit-keyframes spin {

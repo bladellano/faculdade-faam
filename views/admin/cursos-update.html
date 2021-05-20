@@ -1,0 +1,248 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Edição do Curso
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-success">
+
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Editando o curso <b>{$curso.nome}</b></h3>
+                    </div>
+
+                <div style="width:98% ;margin:0 auto;margin-top:8px">
+
+                    <form action="/admin/cursos/update" method="post" enctype="multipart/form-data">
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item active">
+                          <a class="nav-link active" id="basicos-tab" data-toggle="tab" href="#basicos" role="tab" aria-controls="basicos" aria-selected="true">Informações Principais</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="perfil-tab" data-toggle="tab" href="#perfil" role="tab" aria-controls="profile" aria-selected="false">Mais Detalhes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pdfs-tab" data-toggle="tab" href="#pdfs" role="tab" aria-controls="pdfs" aria-selected="false">Home do Curso (PDF's)</a>
+                          </li>
+                     
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+
+                        <!--PRIMEIRA-->
+                        <div class="tab-pane fade active in" id="basicos" role="tabpanel" aria-labelledby="basicos-tab">
+                            
+                            <div class="box-body">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Nome do Curso</label>
+                                            <input value="{$curso.nome}" type="text" class="form-control" id="nome" name="nome">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Logo do Curso</label> <!--FOCO-->
+                                            
+                                            <input type="file" name="logo" class="form-control" onchange="previewFile(this)">
+                                            <img class="previewImg" style="display:flex" alt="SEM IMAGEM" src="/{$curso.logo}"/>
+                               
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Capa</label>
+                                            <input type="file" name="cover" class="form-control" onchange="previewFile(this)">
+                                            <img class="previewImg" style="display:flex" alt="SEM IMAGEM" src="/{$curso.cover}"/>
+                               
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label><b>Objetivo Geral:</b></label>
+                                        <textarea class="textareaCkeditor form-control" name="objetivo_geral" id="objetivo_geral" >{$curso.objetivo_geral}</textarea>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><b>Objetivos Específicos:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="objetivos_especificos" id="objetivos_especificos" >{$curso.objetivos_especificos}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label><b>Habilidades e Competências:</b></label>
+                                        <textarea class="textareaCkeditor form-control" name="habilidades_competencias" id="habilidades_competencias" >{$curso.habilidades_competencias}</textarea>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><b>Competências Profissionalizantes:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="competencias_profissionalizantes" id="competencias_profissionalizantes" >{$curso.competencias_profissionalizantes}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                    <div class="form-group">
+                                        <label><b>Área de Atuação:</b></label>
+                                        <textarea class="textareaCkeditor form-control" name="area_atuacao" id="area_atuacao" >{$curso.area_atuacao}</textarea>
+                                    </div>
+
+                                    </div>
+                               
+                                </div>                              
+                                
+                            </div>                           
+
+                        </div>
+
+                        <!--SEGUNDA-->
+                        <div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Carga Horária</label>
+                                            <input value="{$curso.carga_horaria}" type="text" class="form-control" id="carga_horaria" name="carga_horaria">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Duração</label>
+                                            <input value="{$curso.duracao}" type="text" class="form-control" id="duracao" name="duracao">
+                               
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Turno</label>
+                                            <select name="turno" id="turno" class="form-control">
+                                                <option value="">--</option>
+                                                {loop="$turnos"}
+                                                <option value="{$value}" {if="$curso.turno==$value"} selected {/if}>{$value}</option>
+                                                {/loop}
+                                            </select>
+                               
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label><b>Perfil Profissional:</b></label>
+                                        <textarea class="textareaCkeditor form-control" name="perfil_profissional" id="perfil_profissional" >{$curso.perfil_profissional}</textarea>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><b>Investimento:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="investimento" id="investimento" >{$curso.investimento}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label><b>Coordenação:</b></label>
+                                        <textarea class="textareaCkeditor form-control" name="coordenacao" id="coordenacao" >{$curso.coordenacao}</textarea>
+                                    </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><b>Diferenciais:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="diferenciais" id="diferenciais" >{$curso.diferenciais}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        
+                        <!--TERCEIRA-->
+                        <div class="tab-pane fade" id="pdfs" role="tabpanel" aria-labelledby="pdfs-tab">
+                            
+                            <div class="box-body">
+                              
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label>Matriz Curricular</label>
+                                            <input accept="application/pdf" type="file" name="matriz_curricular" class="form-control">
+
+                                            <label>Portaria</label>
+                                            <input accept="application/pdf" type="file" name="portaria" class="form-control" disabled>
+
+                                            <label>Biblioteca</label>
+                                            <input accept="application/pdf" type="file" name="biblioteca" class="form-control">
+
+                                            <label>Manual Docente</label>
+                                            <input accept="application/pdf" type="file" name="manual_docente" class="form-control">
+
+                                            <label>Manual Discente</label>
+                                            <input accept="application/pdf" type="file" name="manual_discente" class="form-control">
+                               
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                      </div>
+
+                      <!--BTN SALVAR-->
+                      <div class="row text-center mb-4">
+                          <div class="form-group btnFixedCursos">
+                              <button class="btn btn-success">Salvar</button>
+                          </div>
+                      </div>
+
+                    </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
