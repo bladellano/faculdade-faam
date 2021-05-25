@@ -9,10 +9,19 @@ class Article extends Model
 {
     const ERROR = 'ArticleError';
 
+    /**
+     * listAll retorna uma consulta geral com LIMIT.
+     * @param string $limit LIMIT de retorno de linhas.
+     * @return void
+     */
     public static function listAll($limit = "LIMIT 9")
     {
         $sql = new Sql();
-        return $sql->select("SELECT * FROM articles ORDER BY id DESC {$limit}");
+        try {
+            return $sql->select("SELECT * FROM articles ORDER BY id DESC {$limit}");
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     public function getWithSlug($slug)

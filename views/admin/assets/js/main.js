@@ -1,7 +1,25 @@
 $(function () {
 
+    /* Verifica se existe documento e exibe no modificar do curso */
+    $('[accept="application/pdf"]').each((i, e) => {
+
+        let documento = $(e).data('documento');
+        
+        if (documento.length) {
+
+            $(e).filestyle({
+                text: 'Carregar',
+                btnClass: 'btn-primary',
+                htmlIcon: '<span class="glyphicon glyphicon-file"></span> ',
+                disabled: true,
+                placeholder: documento
+
+            });
+        }
+    });
+
     /* Deleta a imagem */
-    $('#loading_all_images').delegate(".btn-delete-image a","click",function(e){
+    $('#loading_all_images').delegate(".btn-delete-image a", "click", function (e) {
         e.preventDefault();
 
         const id = $(this).data('id');
@@ -10,10 +28,10 @@ $(function () {
         $.ajax({
             type: "get",
             url: "/admin/delete-image",
-            data: {id,path},
+            data: { id, path },
             dataType: "json",
             success: function (r) {
-                if (r.success==true) {
+                if (r.success == true) {
                     $('#file_send_image').val('');
                     alertify.success(r.msg);
                     showContentAllImages();
@@ -27,7 +45,7 @@ $(function () {
 
     /* Copia o caminho da imagem */
     $("#loading_all_images").delegate(".btn-copy-image a", "click", function (e) {
-        
+
         e.preventDefault();
 
         var textarea = document.createElement('textarea');
@@ -67,7 +85,7 @@ $(function () {
                 load('open');
             },
             success: function (r) {
-                if (r.success==true) {
+                if (r.success == true) {
                     $('#file_send_image').val('');
                     alertify.message(r.msg);
                 } else {
@@ -158,7 +176,7 @@ $(function () {
         htmlIcon: '<span class="glyphicon glyphicon-file"></span> ',
         'onChange': function (files) {
             console.log(files)
-         }
+        }
     });
 
     $('[data-toggle="tooltip"]').tooltip();

@@ -204,20 +204,16 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
 
-                                            <label>Matriz Curricular</label>
-                                            <input accept="application/pdf" type="file" name="matriz_curricular" class="form-control">
+                                            {loop="$tipo_docs"}
+                                                            
+                                                <label>{function="strtoupper($value)"}</label>
+                                                <input accept="application/pdf" 
+                                                data-documento="" 
+                                                type="file" 
+                                                name="{$value}" 
+                                                class="form-control">
 
-                                            <label>Portaria</label>
-                                            <input accept="application/pdf" type="file" name="portaria" class="form-control" disabled>
-
-                                            <label>Biblioteca</label>
-                                            <input accept="application/pdf" type="file" name="biblioteca" class="form-control">
-
-                                            <label>Manual Docente</label>
-                                            <input accept="application/pdf" type="file" name="manual_docente" class="form-control">
-
-                                            <label>Manual Discente</label>
-                                            <input accept="application/pdf" type="file" name="manual_discente" class="form-control">
+                                            {/loop}
                                
                                         </div>
                                     </div>

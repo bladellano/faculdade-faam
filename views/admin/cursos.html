@@ -61,7 +61,7 @@
                   {loop="$cursos"}
                   <tr>
                     <td>{$value.id}</td>
-                    <td>{$value.nome}</td>
+                    <td> <a href="/admin/cursos/{$value.id}">{$value.nome}</a></td>
                     <td>{$value.carga_horaria}</td>
                     <td>{$value.duracao}</td>
                     <td>{$value.turno}</td>

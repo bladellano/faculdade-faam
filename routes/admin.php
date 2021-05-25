@@ -10,9 +10,9 @@ use Source\Controller\EventosController;
 use Source\Controller\ArticlesController;
 use Source\Controller\ArticlesCategoriesController;
 
-// error_reporting(0);
-
-// TESTE
+/**
+ * IMAGES/PDF AVULSOS
+ */
 $app->get('/admin/delete-image',AdminController::class . ':deleteImage');
 $app->post('/admin/send-image',AdminController::class . ':sendImage');
 $app->get('/admin/list-images',AdminController::class . ':listImages');
@@ -39,7 +39,7 @@ $app->group('/admin/cursos', function () use ($app) {
     $app->get('/create', CursosController::class . ':create');
     $app->post('/store', CursosController::class . ':store');
     $app->get('/{id}', CursosController::class . ':edit');
-    $app->put('/{id}', CursosController::class . ':update');
+    $app->put('/{id}/update', CursosController::class . ':update');
     $app->get('/{id}/delete', CursosController::class . ':destroy');
 }); 
 

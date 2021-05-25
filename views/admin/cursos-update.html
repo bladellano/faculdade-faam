@@ -21,13 +21,22 @@
                         <p>{$msgError}</p>
                     </div>
                     {/if}
+
+                    {if="$msgSuccess != ''"}
+                    <div class="alert alert-success alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgSuccess} em {$curso.updated_at}</p>
+                    </div>
+                    {/if}
                     <div class="box-header with-border">
                         <h3 class="box-title">Editando o curso <b>{$curso.nome}</b></h3>
                     </div>
 
                 <div style="width:98% ;margin:0 auto;margin-top:8px">
 
-                    <form action="/admin/cursos/update" method="post" enctype="multipart/form-data">
+                    <form action="/admin/cursos/{$curso.id}/update" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" name="_METHOD" value="PUT"/>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item active">
@@ -194,7 +203,7 @@
                             </div>
                         </div>    
                         
-                        <!--TERCEIRA-->
+                        <!--TERCEIRA FOCO -->
                         <div class="tab-pane fade" id="pdfs" role="tabpanel" aria-labelledby="pdfs-tab">
                             
                             <div class="box-body">
@@ -203,20 +212,16 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
 
-                                            <label>Matriz Curricular</label>
-                                            <input accept="application/pdf" type="file" name="matriz_curricular" class="form-control">
+                                            {loop="$anexos"}
+                                                            
+                                                <label>{function="strtoupper($key)"}</label>
+                                                <input accept="application/pdf" 
+                                                data-documento="{$value.documento}" 
+                                                type="file" 
+                                                name="{$key}" 
+                                                class="form-control">
 
-                                            <label>Portaria</label>
-                                            <input accept="application/pdf" type="file" name="portaria" class="form-control" disabled>
-
-                                            <label>Biblioteca</label>
-                                            <input accept="application/pdf" type="file" name="biblioteca" class="form-control">
-
-                                            <label>Manual Docente</label>
-                                            <input accept="application/pdf" type="file" name="manual_docente" class="form-control">
-
-                                            <label>Manual Discente</label>
-                                            <input accept="application/pdf" type="file" name="manual_discente" class="form-control">
+                                            {/loop}
                                
                                         </div>
                                     </div>
