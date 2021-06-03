@@ -16,15 +16,13 @@ class Page
 
     public function __construct($opts = [], $tpl_dir = "/views/")
     {
-        echo '<pre> $_SERVER<br />'; print_r( $_SERVER); echo '</pre>';die;
-        echo $_SERVER["DOCUMENT_ROOT"];die;
-
         $this->options = array_merge($this->defaults, $opts);
+
         $config = array(
-            "tpl_dir" => $_SERVER["DOCUMENT_ROOT"] . $tpl_dir,
-            "cache_dir" => $_SERVER["DOCUMENT_ROOT"] . "/views-cache/",
+            "tpl_dir" => substr(chop($_SERVER["SCRIPT_FILENAME"], "index.php"), 0, -1) . $tpl_dir,
+            "cache_dir" => substr(chop($_SERVER["SCRIPT_FILENAME"], "index.php"), 0, -1) . "/views-cache/",
             "debug" => false,
-            "auto_escape"=>false   
+            "auto_escape" => false
         );
 
         Tpl::configure($config);
@@ -32,7 +30,7 @@ class Page
 
         $this->setData($this->options["data"]);
 
-       /*$head = (new Seo())->render(
+        /*$head = (new Seo())->render(
             SITE,
             DESCRIPTION,
             URL_SITE,
