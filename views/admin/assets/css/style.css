@@ -166,6 +166,17 @@ ul.list-itens-main li div {
   right: 50%;
 }
 
+.wrap--input{
+  display: flex;
+  justify-content: space-between;
+}
+.wrap--input div:nth-child(1){
+  width: 95%;
+}
+.wrap--input div:nth-child(2){
+  margin-top: 28px;
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

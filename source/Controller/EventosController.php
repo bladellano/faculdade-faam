@@ -181,9 +181,9 @@ class EventosController extends Controller
                 unlink($evento->getimage_thumb());
             }
 
-            $images = parent::uploadImage($_FILES, self::$path, self::$folder);
+            $images = parent::uploadImage($_FILES['image'], self::$path, self::$folder);
 
-            if (!count($images)) {
+            if (is_array($images) && !count($images)) {
                 Evento::setError(self::$msgError);
                 header("Location: /admin/eventos/" . $args['id']);
                 exit;

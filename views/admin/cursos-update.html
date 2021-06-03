@@ -61,7 +61,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Nome do Curso</label>
-                                            <input value="{$curso.nome}" type="text" class="form-control" id="nome" name="nome">
+                                            <input value="{$curso.nome}" type="text" class="form-control input-lg" id="nome" name="nome">
                                         </div>
                                     </div>
 
@@ -213,13 +213,22 @@
                                         <div class="form-group">
 
                                             {loop="$anexos"}
-                                                            
-                                                <label>{function="strtoupper($key)"}</label>
-                                                <input accept="application/pdf" 
-                                                data-documento="{$value.documento}" 
-                                                type="file" 
-                                                name="{$key}" 
-                                                class="form-control">
+                                            <div class="wrap--input">
+
+                                                <div>
+                                                    
+                                                    <label>{function="strtoupper($key)"}</label>
+                                                    <input accept="application/pdf" 
+                                                    data-documento="{$value.documento}" 
+                                                    data-id="{$value.id}" 
+                                                    type="file" 
+                                                    name="{$key}" 
+                                                    class="form-control"> 
+                                                </div>      
+                                                <div>
+                                                    <a data-id="{$value.id}" href="#" class="btnDestroyDoc"><span class="glyphicon glyphicon-trash"></span></a>
+                                                </div>
+                                            </div>
 
                                             {/loop}
                                

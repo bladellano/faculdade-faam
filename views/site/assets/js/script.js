@@ -3,6 +3,13 @@
 
     'use strict';
 
+    window.sr = ScrollReveal({reset: true});
+
+    sr.reveal('#sobre-colegios', {
+        delay: 400,
+        scale: 0
+    });
+
     /* Form - tentativa de contato */
 
     $('#form-contato').validate({

@@ -29,6 +29,14 @@ class AnexoCurso extends Model
         $this->setData($results);
     }
 
+    public function getById($id): void
+    {
+        $sql = new Sql();
+        $results = $sql->select("SELECT * FROM anexos_cursos WHERE id = :id", [":id" => $id]);
+        $this->setData(array_shift($results));
+        
+    }
+
     public function delete()
     {
         $sql = new Sql();

@@ -1,18 +1,37 @@
 $(function () {
 
+    /* Exclui documento pdf do curso */
+    $('.btnDestroyDoc').click(function () {
+
+        var doc = $(this);
+
+        $.ajax({
+            type: "post",
+            url: "/admin/cursos/delete-doc",
+            data: { id: doc.data('id') },
+            dataType: "json",
+            success: function (r) {
+                if (r.success) {
+                    $('[data-id="' + doc.data('id') + '"]').filestyle('disabled', false);
+                    $('[data-id="' + doc.data('id') + '"]').filestyle('placeholder', '');
+                }
+            }
+        });
+    });
+
     /* Verifica se existe documento e exibe no modificar do curso */
     $('[accept="application/pdf"]').each((i, e) => {
 
-        let documento = $(e).data('documento');
-        
-        if (documento.length) {
+        let doc = $(e).data('documento');
+
+        if (doc.length) {
 
             $(e).filestyle({
                 text: 'Carregar',
                 btnClass: 'btn-primary',
                 htmlIcon: '<span class="glyphicon glyphicon-file"></span> ',
                 disabled: true,
-                placeholder: documento
+                placeholder: doc
 
             });
         }
@@ -157,7 +176,6 @@ $(function () {
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' // optional
     });
-
 
     /* Garante a quantidade de arquivos. */
     $('#images').change(function () {

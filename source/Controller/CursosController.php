@@ -137,6 +137,21 @@ class CursosController extends Controller
         exit;
     }
 
+    public function deleteDoc(Request $request, Response $response, array $args)
+    {
+        $data = $request->getParsedBody();
+        $oAnexo = (new AnexoCurso());
+        $oAnexo->getById($data['id']);
+        $oAnexo->delete();
+
+        if (file_exists($oAnexo->getValues()['arquivo'])) {
+            @unlink($oAnexo->getValues()['arquivo']);
+            die(json_encode(["success" => true]));
+        } else {
+            die(json_encode(["success" => false]));
+        }
+    }
+
     public function edit(Request $request, Response $response, array $args)
     {
 

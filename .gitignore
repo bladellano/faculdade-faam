@@ -1,5 +1,5 @@
-.vscode/
 views-cache/
+.vscode/
 /vendor/
 /cgi-bin
 /source/Config.php

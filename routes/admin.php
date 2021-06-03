@@ -13,16 +13,16 @@ use Source\Controller\ArticlesCategoriesController;
 /**
  * IMAGES/PDF AVULSOS
  */
-$app->get('/admin/delete-image',AdminController::class . ':deleteImage');
-$app->post('/admin/send-image',AdminController::class . ':sendImage');
-$app->get('/admin/list-images',AdminController::class . ':listImages');
+$app->get('/admin/delete-image', AdminController::class . ':deleteImage');
+$app->post('/admin/send-image', AdminController::class . ':sendImage');
+$app->get('/admin/list-images', AdminController::class . ':listImages');
 
 /**
  * LOGIN
  */
 $app->group('/admin', function () use ($app) {
     $app->get('', AdminController::class . ':index');
-    $app->get('/login', AdminController::class . ':screen');//Layout
+    $app->get('/login', AdminController::class . ':screen'); //Layout
     $app->post('/login', AdminController::class . ':logging');
     $app->get('/logout', AdminController::class . ':logout');
 });
@@ -34,14 +34,13 @@ $app->group('/admin', function () use ($app) {
 $app->group('/admin/cursos', function () use ($app) {
 
     $app->get('', CursosController::class . ':index');
-    // $app->post('/change-order', CursosController::class . ':changeOrder');
-    // $app->post('/change-status', CursosController::class . ':changeStatus');
+    $app->post('/delete-doc', CursosController::class . ':deleteDoc');
     $app->get('/create', CursosController::class . ':create');
     $app->post('/store', CursosController::class . ':store');
     $app->get('/{id}', CursosController::class . ':edit');
     $app->put('/{id}/update', CursosController::class . ':update');
     $app->get('/{id}/delete', CursosController::class . ':destroy');
-}); 
+});
 
 
 /**
@@ -56,7 +55,7 @@ $app->group('/admin/eventos', function () use ($app) {
     $app->get('/{id}', EventosController::class . ':edit');
     $app->put('/{id}', EventosController::class . ':update');
     $app->get('/{id}/delete', EventosController::class . ':destroy');
-}); 
+});
 
 /**
  * ADMIN FOTOS
