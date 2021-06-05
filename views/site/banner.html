@@ -1,0 +1,37 @@
+<div class="header-page"></div>
+
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <p></p>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Banner</li>
+    </ol>
+  </nav>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-9">
+      <p> <i class="fa fa-calendar-alt"></i> {function="toDatePtBr($banner.created_at)"}</p>
+      <h3 class="title-articles">{$banner.title}</h3>
+      <img class="img-events" src="{#URL_BASE#}/{$banner.image_thumb}" alt="{$banner.title}">
+      {$banner.description}
+
+    </div>
+    <div class="col-md-3">
+      <h3>Recentes</h3>
+
+      {loop="$banners"}
+      <p><i class="fa fa-calendar-alt text-black-50"></i>
+        <small class="text-muted">{function="toDatePtBr($value.created_at)"}</small>
+        <br>
+        <a href="/noticia/{$value.slug}">{function="resume($value.title,55)"}</a>
+      </p>
+      <hr>
+      {/loop}
+    </div>
+  </div>
+
+</div><!-- container -->

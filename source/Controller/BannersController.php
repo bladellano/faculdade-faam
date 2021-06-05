@@ -55,7 +55,7 @@ class BannersController extends Controller
 		/* Valida se $_FILES existem com imagem */
 		if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
 
-			$images = parent::uploadImage($_FILES, self::$path, self::$folder);
+			$images = parent::uploadImage($_FILES['image'], self::$path, self::$folder);
 
 			if (is_array($images) && !count($images)) {
 				Banner::setError(self::$msgError);

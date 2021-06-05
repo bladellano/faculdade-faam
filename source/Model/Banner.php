@@ -15,6 +15,14 @@ class Banner extends Model
         return $sql->select("SELECT * FROM banners ORDER BY id DESC");
     }
 
+
+    public function getWithSlug($slug)
+    {
+        $sql = new Sql();
+        $results = $sql->select("SELECT * FROM banners WHERE slug = :slug", ['slug' => $slug]);
+        $this->setData($results[0]);
+    }
+
     /**
      * Insere o banner na base de dados.
      * @return void

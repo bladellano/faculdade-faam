@@ -20,6 +20,7 @@ class SiteController extends Controller
 
     private $page = NULL;
     private $evento = NULL;
+    private $banner = NULL;
     private $article = NULL;
     private $album = NULL;
     private $photo = NULL;
@@ -29,6 +30,7 @@ class SiteController extends Controller
 
         $this->page = new Page([], self::VIEW_SITE);
         $this->evento = new Evento();
+        $this->banner = new Banner();
         $this->article = new Article();
         $this->album = new PhotoAlbum();
         $this->photo = new Photo();
@@ -148,6 +150,19 @@ class SiteController extends Controller
         $this->page->setTpl("evento", [
             "evento" => $data,
             "eventos" => $all_eventos
+        ]);
+        exit;
+    }
+    public function showBanner(Request $request, Response $response, array $args)
+    {
+
+        $allBanners = $this->banner->listAll();
+        $this->banner->getWithSlug($args["slug"]);
+        $data =  $this->banner->getValues();
+
+        $this->page->setTpl("banner", [
+            "banner" => $data,
+            "banners" => $allBanners
         ]);
         exit;
     }
