@@ -1,0 +1,109 @@
+<div class="header-page"></div>
+
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <p></p>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item" ><a href="/">Cursos</a></li></li>
+            <li class="breadcrumb-item active" aria-current="page">{$curso.nome}</li>
+        </ol>
+    </nav>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-9">
+            <section class="header--cover">
+                <img class="cover" src="/{$curso.cover}" alt="FAAM (91) 91 3255-2236 / 98420-8044 ">
+                <img class="logotipo" src="/{$curso.logo}" alt="FAAM (91) 91 3255-2236 / 98420-8044 ">
+            </section>
+            <section class="body--curso">
+                <h3>{$curso.nome}</h3>
+
+                {if="strlen($curso.objetivo_geral) != 0"}
+                <h4>Objetivo Geral</h4>
+                {$curso.objetivo_geral}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.objetivos_especificos) != 0"}
+                <h4>Objetivos Específicos</h4>
+                {$curso.objetivos_especificos}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.habilidades_competencias) != 0"}
+                <h4>Habilidades e Competências</h4>
+                {$curso.habilidades_competencias}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.competencias_profissionalizantes) != 0"}
+                <h4>Competencias Profissionalizantes</h4>
+                {$curso.competencias_profissionalizantes}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.area_atuacao) != 0"}
+                <h4>Área de Atuação</h4>
+                {$curso.area_atuacao}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.perfil_profissional) != 0"}
+                <h4>Perfil Profissional</h4>
+                {$curso.perfil_profissional}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.carga_horaria) != 0"}
+                <h4>Carga Horária</h4>
+                {$curso.carga_horaria}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.duracao) != 0"}
+                <h4>Duração</h4>
+                {$curso.duracao}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.turno) != 0"}
+                <h4>Turno</h4>
+                {$curso.turno}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.investimento) != 0"}
+                <h4>Investimento</h4>
+                {$curso.investimento}
+                <hr>
+                {/if}
+                
+                {if="strlen($curso.coordenacao) != 0"}
+                <h4>Coordenação</h4>
+                {$curso.coordenacao}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.diferenciais) != 0"}
+                <h4>Diferenciais</h4>
+                {$curso.diferenciais}
+                {/if}
+
+            </section>
+
+        </div>
+        <div class="col-md-3">
+            <h3>Menu</h3>
+            <ul class="list-group list--anexos">
+                {loop="$anexos"}
+                <li class="list-group-item"> <a href="/{$value.arquivo}"><i class="fa fa-file-text-o"></i> {$value.tipo_doc}</a></li>
+                {/loop}
+              </ul>
+        </div>
+    </div>
+
+</div><!-- Container -->

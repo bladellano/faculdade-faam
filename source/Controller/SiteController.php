@@ -12,10 +12,10 @@ use Source\Model\PageSite;
 use Source\Model\PhotoAlbum;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
+use Source\Model\Curso;
 
 class SiteController extends Controller
 {
-
     private const VIEW_SITE = "/views/site/";
 
     private $page = NULL;
@@ -24,6 +24,7 @@ class SiteController extends Controller
     private $article = NULL;
     private $album = NULL;
     private $photo = NULL;
+    private $curso = NULL;
 
     public function __construct()
     {
@@ -34,7 +35,23 @@ class SiteController extends Controller
         $this->article = new Article();
         $this->album = new PhotoAlbum();
         $this->photo = new Photo();
+        $this->curso = new Curso();
         /* Faz com que não seja verificado usuário com sessão */
+    }
+
+    public function showCurso(Request $request, Response $response, array $args)
+    {
+        $curso = $this->curso->get($args["id"]);
+        $curso = $this->curso->getValues();
+
+        #Obtêm todos os anexos
+        $anexos = $this->curso->getAnexosCurso($args["id"]);
+
+        $this->page->setTpl("curso", [
+            'curso' => $curso,
+            'anexos' => $anexos
+        ]);
+        exit;
     }
 
     public function showPhotos(Request $request, Response $response, array $args)
@@ -60,24 +77,37 @@ class SiteController extends Controller
         exit;
     }
 
+    /**
+     * Gera a string do menu dos cursos dinamicamente
+     * @return void
+     */
+    private function createUpdateMenu()
+    {
+        $cursos = $this->curso->listAllNamesCursos();
+        $html = "";
+
+        foreach ($cursos as $curso)
+            $html .= '<a class="dropdown-item" href="/curso/' . $curso["id"] . '">' . $curso["nome"] . '</a>';
+        $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "menu.html";
+
+        file_put_contents($arquivo, $html);
+    }
+
     public function index()
     {
-        
-        // $eventos = (new Evento())->listAll();
-        // $articles_one_less = (new Article())->listAllOneLess();
-        // $articles_first = (new Article())->firstArticle();
+        #Atualiza no menu os cursos existentes
+        $this->createUpdateMenu();
+
         $articles = (new Article())->listAll("Limit 3");
         $banners = (new Banner())->listAll();
-        
-        foreach ($articles as &$article) {
+
+        foreach ((array) $articles as &$article) {
             $date = new \DateTime('2021-05-17 20:47:01');
             $article['mes'] = $date->format('M');
             $article['dia'] = $date->format('d');
         }
-        
+
         $this->page->setTpl("home", [
-            // 'eventos' => $eventos,
-            // 'articles_first' => $articles_first,
             'articles' => $articles,
             'banners' => $banners
         ]);

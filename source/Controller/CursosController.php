@@ -20,7 +20,7 @@ class CursosController extends Controller
     private static $path_files = "storage/cursos-pdfs/";
     private static $folder = "cursos";
     private static $aTypeImages = ['cover', 'logo'];
-    private static $turnos = ['MANHÃ', 'TARDE', 'NOITE'];
+    private static $turnos = ['MANHÃ', 'TARDE', 'NOITE', 'TARDE/NOITE'];
 
     public function index()
     {
@@ -65,7 +65,7 @@ class CursosController extends Controller
         $data = filter_var_array($request->getParsedBody(), FILTER_SANITIZE_STRIPPED);
         $files = $request->getUploadedFiles();
 
-        if (in_array("", $data)) {
+        if (empty($data["nome"])) {
             Curso::setError('Preencha os campos obrigatórios (*)');
             header("Location: /admin/cursos/create");
             exit;
@@ -267,7 +267,7 @@ class CursosController extends Controller
             }
         }
 
-        if (in_array("", $data)) {
+        if (empty($data["nome"])) {
             Curso::setError('Preencha os campos obrigatórios (*)');
             header("Location: /admin/cursos/" . $args['id']);
             exit;

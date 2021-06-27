@@ -10,6 +10,12 @@ class Curso extends Model
     const ERROR = 'CursoError';
     const SUCCESS = 'CursoSuccess';
 
+    public static function listAllNamesCursos()
+    {
+        $sql = new Sql();
+        return $sql->select("SELECT id,nome FROM cursos ORDER BY nome ASC");
+    }
+
     public static function listAll($limit = "LIMIT 9")
     {
         $sql = new Sql();
@@ -21,6 +27,18 @@ class Curso extends Model
         $sql = new Sql();
         $results = $sql->select("SELECT * FROM cursos WHERE slug = :slug", ['slug' => $slug]);
         $this->setData($results[0]);
+    }
+
+    /**
+     * Obtêm todos os anexos de um determinado curso
+     * @param [type] $id
+     * @return void
+     */
+    public function getAnexosCurso($id)
+    {
+        $sql = new Sql();
+        $results = $sql->select("SELECT * FROM anexos_cursos WHERE curso_id = :id", ['id' => $id]);
+        return $results;
     }
 
     public function save()

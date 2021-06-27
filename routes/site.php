@@ -7,6 +7,7 @@ use Source\Controller\MailerController;
 $app->post('/send-form-contact', MailerController::class . ':sendFormContact');
 
 $app->get('/', SiteController::class . ':index');
+$app->get('/curso/{id}', SiteController::class . ':showCurso');
 
 $app->get('/sampler', SiteController::class . ':sampler');
 $app->get('/albuns', SiteController::class . ':albums');
