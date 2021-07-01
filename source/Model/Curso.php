@@ -13,7 +13,13 @@ class Curso extends Model
     public static function listAllNamesCursos()
     {
         $sql = new Sql();
-        return $sql->select("SELECT id,nome FROM cursos ORDER BY nome ASC");
+        return $sql->select("SELECT id,nome FROM cursos WHERE ensino = 'GRADUAÇÃO' ORDER BY nome ASC");
+    }
+
+    public static function listAllNamesCursosPosGraduacao()
+    {
+        $sql = new Sql();
+        return $sql->select("SELECT id,nome FROM cursos WHERE ensino = 'PÓS-GRADUAÇÃO' ORDER BY nome ASC");
     }
 
     public static function listAll($limit = "LIMIT 9")
@@ -99,6 +105,12 @@ class Curso extends Model
 
     public static function getPage($page = 1, $itensPerPage = 12)
     {
+
+        $args = func_get_args();
+        $ensino = $args[2] ?? "";/* Modalidade de curso */
+
+        $where = (!empty($ensino)) ? " WHERE ensino = '{$ensino}'" : "";
+
         $start = ($page - 1) * $itensPerPage;
 
         $sql = new Sql();
@@ -106,6 +118,7 @@ class Curso extends Model
         $results = $sql->select(
             "SELECT SQL_CALC_FOUND_ROWS *
             FROM cursos 
+            {$where} 
             ORDER BY id DESC
             LIMIT $start, $itensPerPage ;
         "

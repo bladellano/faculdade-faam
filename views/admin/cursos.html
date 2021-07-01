@@ -43,6 +43,7 @@
                   <th>Nome do Curso</th>
                   <th>Carga Horária</th>
                   <th>Duração</th>
+                  <th>Ensino</th>
                   <th>Turno</th>
                   <th>Status</th>
                   <th>Criado</th>
@@ -64,6 +65,7 @@
                     <td> <a href="/admin/cursos/{$value.id}">{$value.nome}</a></td>
                     <td>{$value.carga_horaria}</td>
                     <td>{$value.duracao}</td>
+                    <td><span class="badge btn-warning">{$value.ensino}</span></td>
                     <td>{$value.turno}</td>
                     <td>{if="$value.status==1"} <span class="badge btn-success">Ativado</span> {else} <span class="btn btn-danger">Desativado</span>  {/if} </td>
                     <td>{function="formatDate($value.created_at)"}</td>

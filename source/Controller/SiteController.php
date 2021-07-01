@@ -93,10 +93,23 @@ class SiteController extends Controller
         file_put_contents($arquivo, $html);
     }
 
+    private function createUpdateMenuPosGraduacao()
+    {
+        $cursos = $this->curso->listAllNamesCursosPosGraduacao();
+        $html = "";
+
+        foreach ($cursos as $curso)
+            $html .= '<a class="dropdown-item" href="/curso/' . $curso["id"] . '">' . $curso["nome"] . '</a>';
+        $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "menu-pos-graduacao.html";
+
+        file_put_contents($arquivo, $html);
+    }
+
     public function index()
     {
         #Atualiza no menu os cursos existentes
         $this->createUpdateMenu();
+        $this->createUpdateMenuPosGraduacao();
 
         $articles = (new Article())->listAll("Limit 3");
         $banners = (new Banner())->listAll();

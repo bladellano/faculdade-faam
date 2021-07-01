@@ -13,7 +13,7 @@ abstract class Controller
 
 	public function __construct()
 	{
-			User::verifyLogin();
+		User::verifyLogin();
 	}
 
 	/**
@@ -27,17 +27,15 @@ abstract class Controller
 	 */
 	public static function uploadImage(array $files, string $path, string $folder, $res_image = 2660, $res_thumb = 600)
 	{
-		
+
 		$upload = new Image($path, $folder);
-		
+
 		if (!in_array($files["type"], $upload::isAllowed()))
 			return [];
 
 		return [
-			// 'image_thumb' => $upload->upload($files, pathinfo($files["name"], PATHINFO_FILENAME), $res_thumb),
-			'image_thumb' => $upload->upload($files, substr(hash('md5',time().rand()),0,10), $res_thumb),
-			// 'image' => $upload->upload($files, pathinfo($files["name"], PATHINFO_FILENAME), $res_image)
-			'image' => $upload->upload($files, substr(hash('md5',time().rand()),0,10), $res_image)
+			'image_thumb' => $upload->upload($files, substr(hash('md5', time() . rand()), 0, 10), $res_thumb),
+			'image' => $upload->upload($files, substr(hash('md5', time() . rand()), 0, 10), $res_image)
 		];
 	}
 
@@ -50,13 +48,17 @@ abstract class Controller
 	 */
 	public function pagination($model, $uri)
 	{
+
+		$args = func_get_args();/* Para capturar modalidades de cursos */
+		$args[2] = $args[2] ?? "";
+
 		$search = (isset($_GET['search'])) ? $_GET['search'] : "";
 		$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
 
 		if ($search != '') {
 			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPageSearch'], [trim($search), $page]);
 		} else {
-			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page]);
+			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page, 12, $args[2]]);
 		}
 
 		$pages = [];

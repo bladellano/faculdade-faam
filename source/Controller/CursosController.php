@@ -21,10 +21,23 @@ class CursosController extends Controller
     private static $folder = "cursos";
     private static $aTypeImages = ['cover', 'logo'];
     private static $turnos = ['MANHÃ', 'TARDE', 'NOITE', 'TARDE/NOITE'];
+    private static $ensinos = ['GRAUDAÇÃO', 'PÓS-GRADUAÇÃO'];
 
     public function index()
     {
-        $pg = $this->pagination('Curso', '/admin/cursos');
+        $pg = $this->pagination('Curso', '/admin/cursos','GRADUACAO');
+        $page = new PageAdmin();
+        $page->setTpl("cursos", array(
+            "cursos" => $pg['data'],
+            "search" => $pg['search'],
+            "pages" => $pg['pages']
+        ));
+        exit;
+    }
+
+    public function showListPosGraduacao()
+    {
+        $pg = $this->pagination('Curso', '/admin/cursos', 'PÓS-GRADUACAO');
         $page = new PageAdmin();
         $page->setTpl("cursos", array(
             "cursos" => $pg['data'],
@@ -38,12 +51,14 @@ class CursosController extends Controller
     {
         $page = new PageAdmin();
         $turnos = self::$turnos;
+        $ensinos = self::$ensinos;
         $tipoDocs = $this->getTypeDocuments();
 
         $page->setTpl("cursos-create", [
             'msgError' => Curso::getError(),
             'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js'],
             'turnos' => $turnos,
+            'ensinos' => $ensinos,
             'tipo_docs' => $tipoDocs
         ]);
         exit;
@@ -65,7 +80,7 @@ class CursosController extends Controller
         $data = filter_var_array($request->getParsedBody(), FILTER_SANITIZE_STRIPPED);
         $files = $request->getUploadedFiles();
 
-        if (empty($data["nome"])) {
+        if (empty($data["nome"]) || empty($data["ensino"])) {
             Curso::setError('Preencha os campos obrigatórios (*)');
             header("Location: /admin/cursos/create");
             exit;
@@ -267,7 +282,7 @@ class CursosController extends Controller
             }
         }
 
-        if (empty($data["nome"])) {
+        if (empty($data["nome"]) || empty($data["ensino"])) {
             Curso::setError('Preencha os campos obrigatórios (*)');
             header("Location: /admin/cursos/" . $args['id']);
             exit;

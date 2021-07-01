@@ -31,6 +31,9 @@ $app->group('/admin', function () use ($app) {
 /**
  * ADMIN CURSOS
  */
+
+$app->get('/admin/pos-graduacao', CursosController::class . ':showListPosGraduacao');
+
 $app->group('/admin/cursos', function () use ($app) {
 
     $app->get('', CursosController::class . ':index');

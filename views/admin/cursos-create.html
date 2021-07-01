@@ -49,7 +49,18 @@
                             <div class="box-body">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Ensino</label>
+                                            <select name="ensino" id="ensino" class="form-control">
+                                                <option value="">--</option>
+                                                {loop="$ensinos"}
+                                                <option value="{$value}" {if="$_SESSION['recoversPost']['ensino']==$value"} selected {/if}>{$value}</option>
+                                                {/loop}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Nome do Curso</label>
                                             <input value="{$_SESSION['recoversPost']['nome']}" type="text" class="form-control" id="nome" name="nome">
