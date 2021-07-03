@@ -82,7 +82,7 @@ class EventosController extends Controller
         /* Valida se $_FILES existem com imagem */
         if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
 
-            $images = parent::uploadImage($_FILES, self::$path, self::$folder);
+            $images = parent::uploadImage($_FILES["image"], self::$path, self::$folder);
 
             if (!count($images)) {
                 Evento::setError(self::$msgError);
