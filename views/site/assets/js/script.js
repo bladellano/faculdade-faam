@@ -3,7 +3,7 @@
 
     'use strict';
 
-    window.sr = ScrollReveal({reset: true});
+    window.sr = ScrollReveal({ reset: true });
 
     sr.reveal('#sobre-colegios', {
         delay: 400,
@@ -179,7 +179,8 @@
         paginationSpeed: 400,
         singleItem: true,
         navigation: false,
-        autoPlay: true
+        autoPlay: true,
+        pagination: false
     });
 
     /* FIXA O NAVBAR */
