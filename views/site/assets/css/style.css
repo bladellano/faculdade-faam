@@ -2,7 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,300;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
 :root {
   --cor-primary: #006f23;
@@ -99,14 +99,14 @@ body {
   display: flex;
 }
 .topo--header > div:first-child {
-  width: 30%;
+  width: 25%;
 }
 .topo--header > div:nth-child(2) {
   width: 63%;
   padding-top: 18px;
 }
 .topo--header > div:nth-child(3) {
-  width: 7%;
+  width: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -302,7 +302,7 @@ body {
   letter-spacing: -1px;
 }
 .box--events .data .mes .dia {
-  font-family: "Dancing Script";
+  font-family: "Anton";
   font-size: 26px;
 }
 

@@ -116,14 +116,14 @@ class SiteController extends Controller
         $eventos = (new Evento())->listAll("LIMIT 4");
 
         foreach ($eventos as &$evento) {
-            $date = new \DateTime($evento["event_day"]); 
-            $evento['mes'] = $date->format('M');
+            $date = new \DateTime($evento["event_day"]);
+            $evento['mes'] =  strtoupper($date->format('M'));
             $evento['dia'] = $date->format('d');
         }
 
         foreach ($articles as &$article) {
-            $date = new \DateTime($article["created_at"]); 
-            $article['mes'] = $date->format('M');
+            $date = new \DateTime($article["created_at"]);
+            $article['mes'] =  strtoupper($date->format('M'));
             $article['dia'] = $date->format('d');
         }
 
