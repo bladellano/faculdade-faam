@@ -2,6 +2,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,300;1,700;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
 :root {
   --cor-primary: #006f23;
   --cor-second: #ff9100;
@@ -298,9 +300,14 @@ body {
   color: #75af2c;
   letter-spacing: -1px;
 }
+.box--events .data .mes .dia {
+  font-family: "Dancing Script";
+  font-size: 26px;
+}
 
 .agenda .box--events .data {
   background-color: var(--cor-second);
+  color: #003300;
 }
 
 /* End - Events */

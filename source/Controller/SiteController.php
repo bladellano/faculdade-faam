@@ -111,18 +111,26 @@ class SiteController extends Controller
         $this->createUpdateMenu();
         $this->createUpdateMenuPosGraduacao();
 
-        $articles = (new Article())->listAll("Limit 3");
-        $banners = (new Banner())->listAll();
+        $articles = (new Article())->listAll("LIMIT 4");
+        $banners = (new Banner())->listAll("LIMIT 4");
+        $eventos = (new Evento())->listAll("LIMIT 4");
 
-        foreach ((array) $articles as &$article) {
-            $date = new \DateTime('2021-05-17 20:47:01');
+        foreach ($eventos as &$evento) {
+            $date = new \DateTime($evento["event_day"]); 
+            $evento['mes'] = $date->format('M');
+            $evento['dia'] = $date->format('d');
+        }
+
+        foreach ($articles as &$article) {
+            $date = new \DateTime($article["created_at"]); 
             $article['mes'] = $date->format('M');
             $article['dia'] = $date->format('d');
         }
 
         $this->page->setTpl("home", [
             'articles' => $articles,
-            'banners' => $banners
+            'banners' => $banners,
+            'eventos' => $eventos,
         ]);
         exit;
     }

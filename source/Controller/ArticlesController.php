@@ -16,16 +16,16 @@ class ArticlesController extends Controller
 	public static $folder = "articles";
 
 	public function index()
-	{		
+	{
 		/* Chama paginação do Controller */
-		$pg = $this->pagination('Article','/admin/artigos');
+		$pg = $this->pagination('Article', '/admin/artigos');
 		$page = new PageAdmin();
 		$page->setTpl("articles", array(
 			"articles" => $pg['data'],
 			"search" => $pg['search'],
-			"pages"=> $pg['pages']
-		));	
-		exit;	
+			"pages" => $pg['pages']
+		));
+		exit;
 	}
 
 	public function create()
@@ -35,17 +35,17 @@ class ArticlesController extends Controller
 		$page->setTpl("articles-create", [
 			'msgError' => Article::getError(),
 			'categories' => $categories,
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
+			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}
 
 	public function store(Request $request, Response $response, array $args)
 	{
-		$data = filter_var_array($request->getParsedBody(), FILTER_SANITIZE_STRING); 
+		$data = filter_var_array($request->getParsedBody(), FILTER_SANITIZE_STRING);
 
 		$_SESSION['recoversPost'] = $request->getParsedBody();
-		
+
 		if (in_array("", $data)) {
 			Article::setError('Preencha todos os campos.');
 			header("Location: /admin/artigos/create");
@@ -53,11 +53,11 @@ class ArticlesController extends Controller
 		}
 
 		/* Valida se $_FILES existem com imagem */
-		if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0){
+		if (!empty($_FILES['image']) && $_FILES['image']['error'] == 0) {
 
-			$images = parent::uploadImage($_FILES,self::$path,self::$folder);
+			$images = parent::uploadImage($_FILES["image"], self::$path, self::$folder);
 
-			if(is_array($images) && !count($images)){
+			if (is_array($images) && !count($images)) {
 				Article::setError(self::$msgError);
 				header("Location: /admin/artigos/create");
 				exit;
@@ -65,7 +65,6 @@ class ArticlesController extends Controller
 
 			$data['image'] = $images['image'];
 			$data['image_thumb'] = $images['image_thumb'];
-
 		} /* End */
 
 		$article = new Article();
@@ -104,14 +103,17 @@ class ArticlesController extends Controller
 			"article" => $article->getValues(),
 			'msgError' => Article::getError(),
 			'categories' => $categories,
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
-		]);exit;
+			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+		]);
+		exit;
 	}
 
 	public function update(Request $request, Response $response, array $args)
 	{
 
 		$article = new Article();
+
+		unset($_POST['_METHOD']);
 
 		$article->get((int) $args['id']);
 
@@ -123,18 +125,17 @@ class ArticlesController extends Controller
 				unlink($article->getimage());
 				unlink($article->getimage_thumb());
 			}
-	
-			$images = parent::uploadImage($_FILES,self::$path,self::$folder);
 
-			if(!count($images)){
+			$images = parent::uploadImage($_FILES["image"], self::$path, self::$folder);
+
+			if (!count((array) $images)) {
 				Article::setError(self::$msgError);
-				header("Location: /admin/artigos/".$args['id']);
+				header("Location: /admin/artigos/" . $args['id']);
 				exit;
 			}
 
 			$_POST['image'] = $images['image'];
 			$_POST['image_thumb'] = $images['image_thumb'];
-
 		}
 
 		if (!isset($_POST['spotlight']) || !isset($_POST['show_author'])) {
@@ -145,8 +146,7 @@ class ArticlesController extends Controller
 		$article->setData($_POST);
 		$article->save();
 
-		header("Location:/admin/artigos/".$args['id']);
+		header("Location:/admin/artigos/" . $args['id']);
 		exit;
 	}
-
 }//End Class

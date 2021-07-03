@@ -21,11 +21,11 @@ class CursosController extends Controller
     private static $folder = "cursos";
     private static $aTypeImages = ['cover', 'logo'];
     private static $turnos = ['MANHÃ', 'TARDE', 'NOITE', 'TARDE/NOITE'];
-    private static $ensinos = ['GRAUDAÇÃO', 'PÓS-GRADUAÇÃO'];
+    private static $ensinos = ['GRADUAÇÃO', 'PÓS-GRADUAÇÃO'];
 
     public function index()
     {
-        $pg = $this->pagination('Curso', '/admin/cursos','GRADUACAO');
+        $pg = $this->pagination('Curso', '/admin/cursos','GRADUAÇÃO');
         $page = new PageAdmin();
         $page->setTpl("cursos", array(
             "cursos" => $pg['data'],
