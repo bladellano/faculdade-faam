@@ -307,7 +307,13 @@ body {
 
 .agenda .box--events .data {
   background-color: var(--cor-second);
-  color: #003300;
+  color: #004c00;
+}
+
+.img-events {
+  width: 180px;
+  float: left;
+  margin-right: 14px;
 }
 
 /* End - Events */
