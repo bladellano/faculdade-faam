@@ -67,113 +67,35 @@
         <div class="text-center">
             <h2>Educação do Século XXI</h2>
             <hr>
+            <br>
             <div class="container">
-                <h3>Inovamos o modelo de ensino vigente, proporcionando aos alunos a vivência prática dos conteúdos,
+                <h3 class="p-0">Inovamos o modelo de ensino vigente, proporcionando aos alunos a vivência prática dos conteúdos,
                     levando a escola ao universo dos nativos digitais, promovendo a motivação, a autonomia e o
                     desenvolvimento da criança nas competências e exigências deste século.
                 </h3>
             </div>
         </div>
 
-        <div class="row mt-5 bg-success">
+        <div class="row mt-5" style="border-bottom:1px solid #CCC;border-top:1px solid #CCC">
             <div class="container">
-                <ul class="list--main--courses">
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                               <a href="/curso/14"> <img src="/views/site/assets/images/management.svg"> </a>
-                                <p>ADMINISTRAÇÃO</p>
-                            </div>
-                        </div>
 
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/6"><img src="/views/site/assets/images/accounting.svg"> </a>
-                                <p>CIÊNCIAS CONTÁBEIS</p>
-                            </div>
-                        </div>
+                <ul class="box--cursos">
 
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/13"> <img src="/views/site/assets/images/justice.svg"> </a>
-                                <p>DIREITO</p>
-                            </div>
-                        </div>
+                    {loop="$cursos"}
 
-                    </li>
-                    <li>
-                        <div class="box--course" >
+                        <li>
                             <div>
-                                <a href="/curso/10"> <img src="/views/site/assets/images/nurse.svg"> </a>
-                                <p>ENFERMAGEM</p>
+                               <a href="/curso/{$value.id}"> <img src="{$value.logo}" alt="{$value.nome}" > </a>
                             </div>
-                        </div>
+                        </li>
 
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/12"> <img src="/views/site/assets/images/running.svg"> </a>
-                                <p>EDUCAÇÃO FÍSICA</p>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/2"> <img src="/views/site/assets/images/technology.svg"> </a>
-                                <p>ENG. DE PRODUÇÃO</p>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/8"> <img src="/views/site/assets/images/chinese-food.svg"> </a>
-                                <p>GASTRONOMIA</p>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/9"> <img src="/views/site/assets/images/nutrition.svg"> </a>
-                                <p>NUTRIÇÃO</p>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/7"> <img src="/views/site/assets/images/teacher.svg"> </a>
-                                <p>PEDAGOGIA</p>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="box--course" >
-                            <div>
-                                <a href="/curso/4">   <img src="/views/site/assets/images/brain.svg"> </a>
-                                <p>PSICOLOGIA</p>
-                            </div>
-                        </div>
-
-                    </li>
+                    {/loop}
+                    
                 </ul>
 
             </div>
         </div>
     </div>
-
 
 </section>
 
@@ -190,12 +112,9 @@
         <div class="row mt-3 justify-content-md-center">
             <div class="col-md-10">
                 <p class="text-justify">
-                    <img style="width: 320px; margin-right:4px" src="/views/site/assets/images/faculdade.jpg" alt="FAAM"
-                        class="float-left img-fluid"> A Faculdade da Amazônia (FAAM), foi credenciada por meio da Portaria Ministerial nº 2.241 de 29/07/2004 e está localizada na BR 316, Km 07, n. 590, no coração de Ananindeua-Pará. Há 16 anos, a Faculdade da Amazônia tem como missão oferecer educação de excelência, enfatizando a importância da qualidade, para formar profissionais capacitados, éticos e conscientes do seu compromisso para com o desenvolvimento do Estado do Pará e da Região Amazônica.
 
-                        A FAAM desde a data de seu surgimento, vem se expandindo aceleradamente, estabelecendo seu referencial na excelência da qualidade do ensino superior na Amazônia.
-                        
-                        Atualmente, oferece 11 cursos de graduação: Administração, Ciências Contábeis, Engenharia da Produção, Serviço Social, Enfermagem, Psicologia, Nutrição, Direito, Gastronomia, Educação Física, e Pedagogia.
+                    {include="sobre-faam-frente"}
+                  
                     <a href="/quem-somos" class="btn btn-primary btn-sm">Saiba Mais</a>
                 </p>
 
@@ -296,12 +215,8 @@
     </div>
     <div class="container">
         <div class="slick_parceiros">
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/hype.jpg" /></div>
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/ib_uppsveitir.gif" /></div>
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/smari_fc.gif" /></div>
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/ats_logo_wd.png" /></div>
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/air_djibouti_0.png" /></div>
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/rb_keflavik.gif" /></div>
+            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/logo-cm-marituba.png" /></div>
+            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/logo_pref_marituba.png" /></div>
         </div>
     </div>
 </section>

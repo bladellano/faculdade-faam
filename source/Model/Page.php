@@ -74,7 +74,7 @@ class Page extends Model
         $results = $sql->select(
             "SELECT SQL_CALC_FOUND_ROWS *
             FROM pages 
-            ORDER BY id
+            ORDER BY id DESC
             LIMIT $start, $itensPerPage;
         "
         );
@@ -98,7 +98,7 @@ class Page extends Model
             "SELECT SQL_CALC_FOUND_ROWS *
             FROM pages 
             WHERE title LIKE :search 
-            ORDER BY title
+            ORDER BY id DES
             LIMIT $start, $itensPerPage;
         ",
             [

@@ -3,7 +3,6 @@
 namespace Source\Controller;
 
 use Source\Page;
-use Faker\Factory;
 use Source\Model\Photo;
 use Source\Model\Banner;
 use Source\Model\Evento;
@@ -13,6 +12,7 @@ use Source\Model\PhotoAlbum;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use Source\Model\Curso;
+use Source\Model\Page as ModelPage;
 
 class SiteController extends Controller
 {
@@ -104,16 +104,28 @@ class SiteController extends Controller
 
         file_put_contents($arquivo, $html);
     }
+    private function createUpdateSobreFaamFrente()
+    {
+        $page = new \Source\Model\PageSite();
+        $page->getWithSlug("sobre-faam-frente-site");
+        $return = $page->getValues();
+
+        $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "sobre-faam-frente.html";
+
+        file_put_contents($arquivo, $return["description"]);
+    }
 
     public function index()
     {
         #Atualiza no menu os cursos existentes
         $this->createUpdateMenu();
         $this->createUpdateMenuPosGraduacao();
+        $this->createUpdateSobreFaamFrente();
 
         $articles = (new Article())->listAll("LIMIT 4");
         $banners = (new Banner())->listAll("LIMIT 4");
         $eventos = (new Evento())->listAll("LIMIT 4");
+        $cursos = (new Curso())->listAll("LIMIT 10");
 
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
@@ -131,6 +143,7 @@ class SiteController extends Controller
             'articles' => $articles,
             'banners' => $banners,
             'eventos' => $eventos,
+            'cursos' => $cursos,
         ]);
         exit;
     }

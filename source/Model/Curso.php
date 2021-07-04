@@ -22,10 +22,10 @@ class Curso extends Model
         return $sql->select("SELECT id,nome FROM cursos WHERE ensino = 'PÓS-GRADUAÇÃO' ORDER BY nome ASC");
     }
 
-    public static function listAll($limit = "LIMIT 9")
+    public static function listAll($limit = "LIMIT 9", $ensino = "GRADUAÇÃO")
     {
         $sql = new Sql();
-        return $sql->select("SELECT * FROM cursos WHERE status = '1' ORDER BY id DESC {$limit}");
+        return $sql->select("SELECT * FROM cursos WHERE ensino = '{$ensino}' AND status = '1' ORDER BY id DESC {$limit}");
     }
 
     public function getWithSlug($slug)
