@@ -107,7 +107,7 @@ class SiteController extends Controller
     private function createUpdateSobreFaamFrente()
     {
         $page = new \Source\Model\PageSite();
-        $page->getWithSlug("sobre-faam-frente-site");
+        $page->getWithSlug("quem-somos");
         $return = $page->getValues();
 
         $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "sobre-faam-frente.html";

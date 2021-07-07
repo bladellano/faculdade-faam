@@ -186,13 +186,11 @@ body {
   text-transform: uppercase;
 }
 .page--section h3 {
-  /* font-style: italic; */
   font-size: 1.2em;
   font-weight: 300;
   padding: 34px 0;
   padding-top: 10px;
-  /* font-family: "Playfair Display", serif; */
-  color: #6c757d;
+  color: #333;
 }
 .page--section hr {
   border: 2px solid var(--cor-primary);
@@ -220,7 +218,6 @@ body {
   transition: ease 0.3s;
 }
 .box--course > div {
-  /* background-color: rgba(40, 167, 69, 0.8); */
   background-color: #28a745;
   height: 100%;
   transition: ease 0.3s;
@@ -238,11 +235,9 @@ body {
   top: 50%;
   transform: translateY(-50%);
   line-height: 24px;
-  /* color: #fff; */
   font-weight: 300;
 }
 .box--course > div p {
-  /* color: #fff; */
   transition: ease 0.3s;
 }
 .box--course {
@@ -324,9 +319,7 @@ body {
 
 #noticias_agenda {
   position: relative;
-
   background-image: url("../images/71352.jpg");
-  /* background-image: url("../images/pattern.jpg"); */
   background-repeat: none;
   background-position: center center;
   background-size: cover;
@@ -349,7 +342,6 @@ body {
 
 /* Background Parceiros */
 .bg--gray {
-  /* border-bottom: 1px solid #ccc; */
   padding: 38px 0;
 }
 
@@ -574,8 +566,17 @@ p.text-justify.mt-3 {
   flex: 1 1 var(--width--box);
   height: 170px;
 }
+
+.bg--fundo--cursos {
+  background-image: url("../images/71352.jpg");
+  background-repeat: none;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
 .box--cursos li div {
-  /* background-color: #28a745; */
   width: 100%;
   text-align: center;
   height: 100%;
@@ -583,12 +584,12 @@ p.text-justify.mt-3 {
   justify-content: center;
   align-items: center;
   transition: all 0.3s;
-  border: 1px solid #e4e4e4;
-  background-color: #e4e4e4;
+  border: .5px solid #116e25;
+  background-color: rgba(37, 255, 8, 0.3);
 }
 .box--cursos li div:hover {
-  background-color: #FFF;
-  cursor:pointer;
+  background-color: #fff;
+  cursor: pointer;
   transform: scale(1.1);
   border: 1px solid #e4e4e4;
   box-shadow: 4px 4px 4px #0002;
