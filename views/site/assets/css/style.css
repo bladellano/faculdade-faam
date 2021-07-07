@@ -92,8 +92,7 @@ body {
 #owl-banners .item img {
   display: block;
   width: 100%;
-  height: 770px;
-  /* height: 100vh; */
+  height: 100vh;
   object-fit: cover;
 }
 /* Topo */
