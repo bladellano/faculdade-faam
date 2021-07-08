@@ -25,7 +25,7 @@ class CursosController extends Controller
 
     public function index()
     {
-        $pg = $this->pagination('Curso', '/admin/cursos','GRADUAÇÃO');
+        $pg = $this->pagination('Curso', '/admin/cursos', 'GRADUAÇÃO');
         $page = new PageAdmin();
         $page->setTpl("cursos", array(
             "cursos" => $pg['data'],
@@ -206,12 +206,15 @@ class CursosController extends Controller
             endif;
         }
 
+        $ensinos = self::$ensinos;
+
         $page->setTpl("cursos-update", [
             "curso" => $data,
             'msgError' => Curso::getError(),
             'msgSuccess' => Curso::getSuccess(),
             'anexos' => $anexosFront,
             'turnos' => $turnos,
+            'ensinos' =>  $ensinos,
             'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
         ]);
         exit;

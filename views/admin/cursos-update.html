@@ -58,7 +58,19 @@
                             <div class="box-body">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Ensino</label>
+                                            <select name="ensino" id="ensino" class="form-control">
+                                                <option value="">--</option>
+                                                {loop="$ensinos"}
+                                                <option value="{$value}" {if="$curso.ensino==$value"} selected {/if}>{$value}</option>
+                                                {/loop}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Nome do Curso</label>
                                             <input value="{$curso.nome}" type="text" class="form-control input-lg" id="nome" name="nome">
