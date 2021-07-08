@@ -26,7 +26,7 @@ class PagesController extends Controller
 		$page = new PageAdmin();
 		$page->setTpl("pages-create", [
 			'msgError' => Page::getError(),
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
+			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js','/views/admin/assets/js/form.js']
 		]);exit;
 	}
 
@@ -65,14 +65,14 @@ class PagesController extends Controller
 		$page->setTpl("pages-update", [
 			"p" => $p->getValues(),
 			'msgError' => Page::getError(),
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js','/views/admin/assets/js/form.js']
+			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js','/views/admin/assets/js/form.js']
 		]);exit;
 
 	}
 
 	public function update(Request $request, Response $response, array $args)
 	{
-
+		
 		$p = new Page();
 		$p->get((int) $args['id']);
 		$p->setData($_POST);

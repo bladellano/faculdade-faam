@@ -89,7 +89,6 @@ class Page extends Model
     }
     public static function getPageSearch($search, $page = 1, $itensPerPage = 3)
     {
-
         $start = ($page - 1) * $itensPerPage;
 
         $sql = new Sql();
@@ -98,7 +97,7 @@ class Page extends Model
             "SELECT SQL_CALC_FOUND_ROWS *
             FROM pages 
             WHERE title LIKE :search 
-            ORDER BY id DES
+            ORDER BY id DESC
             LIMIT $start, $itensPerPage;
         ",
             [

@@ -31,7 +31,7 @@ class BannersController extends Controller
 		$page = new PageAdmin();
 		$page->setTpl("banners-create", [
 			'msgError' => Banner::getError(),
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}
@@ -98,7 +98,7 @@ class BannersController extends Controller
 		$page->setTpl("banners-update", [
 			"banner" => $banner->getValues(),
 			'msgError' => Banner::getError(),
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}

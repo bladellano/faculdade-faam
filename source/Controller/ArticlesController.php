@@ -35,7 +35,7 @@ class ArticlesController extends Controller
 		$page->setTpl("articles-create", [
 			'msgError' => Article::getError(),
 			'categories' => $categories,
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}
@@ -103,7 +103,7 @@ class ArticlesController extends Controller
 			"article" => $article->getValues(),
 			'msgError' => Article::getError(),
 			'categories' => $categories,
-			'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}

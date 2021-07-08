@@ -56,7 +56,7 @@ class CursosController extends Controller
 
         $page->setTpl("cursos-create", [
             'msgError' => Curso::getError(),
-            'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js'],
+            'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js'],
             'turnos' => $turnos,
             'ensinos' => $ensinos,
             'tipo_docs' => $tipoDocs
@@ -212,7 +212,7 @@ class CursosController extends Controller
             'msgSuccess' => Curso::getSuccess(),
             'anexos' => $anexosFront,
             'turnos' => $turnos,
-            'scripts' => ['https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js', '/views/admin/assets/js/form.js']
+            'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
         ]);
         exit;
     }
