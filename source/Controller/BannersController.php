@@ -31,7 +31,7 @@ class BannersController extends Controller
 		$page = new PageAdmin();
 		$page->setTpl("banners-create", [
 			'msgError' => Banner::getError(),
-			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
+			'scripts' => ['https://cdn.tiny.cloud/1/m01am2k1lnhc2p0m05kqb6l4a172n4yhae2hk29tszl381zp/tinymce/5/tinymce.min.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}
@@ -98,7 +98,7 @@ class BannersController extends Controller
 		$page->setTpl("banners-update", [
 			"banner" => $banner->getValues(),
 			'msgError' => Banner::getError(),
-			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
+			'scripts' => ['https://cdn.tiny.cloud/1/m01am2k1lnhc2p0m05kqb6l4a172n4yhae2hk29tszl381zp/tinymce/5/tinymce.min.js', '/views/admin/assets/js/form.js']
 		]);
 		exit;
 	}

@@ -56,7 +56,7 @@ class CursosController extends Controller
 
         $page->setTpl("cursos-create", [
             'msgError' => Curso::getError(),
-            'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js'],
+            'scripts' => ['https://cdn.tiny.cloud/1/m01am2k1lnhc2p0m05kqb6l4a172n4yhae2hk29tszl381zp/tinymce/5/tinymce.min.js', '/views/admin/assets/js/form.js'],
             'turnos' => $turnos,
             'ensinos' => $ensinos,
             'tipo_docs' => $tipoDocs
@@ -215,7 +215,7 @@ class CursosController extends Controller
             'anexos' => $anexosFront,
             'turnos' => $turnos,
             'ensinos' =>  $ensinos,
-            'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js', '/views/admin/assets/js/form.js']
+            'scripts' => ['https://cdn.tiny.cloud/1/m01am2k1lnhc2p0m05kqb6l4a172n4yhae2hk29tszl381zp/tinymce/5/tinymce.min.js', '/views/admin/assets/js/form.js']
         ]);
         exit;
     }

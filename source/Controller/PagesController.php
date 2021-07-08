@@ -26,7 +26,7 @@ class PagesController extends Controller
 		$page = new PageAdmin();
 		$page->setTpl("pages-create", [
 			'msgError' => Page::getError(),
-			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js','/views/admin/assets/js/form.js']
+			'scripts' => ['https://cdn.tiny.cloud/1/m01am2k1lnhc2p0m05kqb6l4a172n4yhae2hk29tszl381zp/tinymce/5/tinymce.min.js','/views/admin/assets/js/form.js']
 		]);exit;
 	}
 
@@ -65,7 +65,7 @@ class PagesController extends Controller
 		$page->setTpl("pages-update", [
 			"p" => $p->getValues(),
 			'msgError' => Page::getError(),
-			'scripts' => ['https://cloud.tinymce.com/stable/tinymce.min.js','/views/admin/assets/js/form.js']
+			'scripts' => ['https://cdn.tiny.cloud/1/m01am2k1lnhc2p0m05kqb6l4a172n4yhae2hk29tszl381zp/tinymce/5/tinymce.min.js','/views/admin/assets/js/form.js']
 		]);exit;
 
 	}
