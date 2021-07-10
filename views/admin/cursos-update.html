@@ -60,7 +60,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label>Ensino</label>
+                                            <label class="badge alert-primary">ENSINO:</label>
                                             <select name="ensino" id="ensino" class="form-control">
                                                 <option value="">--</option>
                                                 {loop="$ensinos"}
@@ -72,14 +72,14 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label>Nome do Curso</label>
+                                            <label class="badge alert-primary">NOME DO CURSO:</label>
                                             <input value="{$curso.nome}" type="text" class="form-control" id="nome" name="nome">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label>Logo do Curso</label> <!--FOCO-->
+                                            <label class="badge alert-primary">LOGO DO CURSO:</label>
                                             
                                             <input type="file" name="logo" class="form-control" onchange="previewFile(this)">
                                             <img class="previewImg" style="display:flex" alt="SEM IMAGEM" src="/{$curso.logo}"/>
@@ -89,7 +89,7 @@
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label>Capa</label>
+                                            <label class="badge alert-primary">CAPA:</label>
                                             <input type="file" name="cover" class="form-control" onchange="previewFile(this)">
                                             <img class="previewImg" style="display:flex" alt="SEM IMAGEM" src="/{$curso.cover}"/>
                                
@@ -102,41 +102,63 @@
                                     <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label><b>Objetivo Geral:</b></label>
+                                        <label class="badge alert-primary"><b>OBJETIVO GERAL:</b></label>
                                         <textarea class="textareaCkeditor form-control" name="objetivo_geral" id="objetivo_geral" >{$curso.objetivo_geral}</textarea>
+                                    </div>
+
+                                       <!-- POS-GRADUACAO -->
+
+                                    <div class="form-group show--pos--graduacao">
+                                        <label class="badge alert-primary"><b>SOBRE O CURSO:</b></label>
+                                        <textarea class="textareaCkeditor form-control" name="sobre_o_curso" id="sobre_o_curso" >{$curso.sobre_o_curso}</textarea>
                                     </div>
 
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><b>Objetivos Específicos:</b></label>
+                                        <div class="form-group show--graduacao">
+                                            <label class="badge alert-primary"><b>OBJETIVOS ESPECÍFICOS:</b></label>
                                             <textarea class="textareaCkeditor form-control" name="objetivos_especificos" id="objetivos_especificos" >{$curso.objetivos_especificos}</textarea>
                                         </div>
+
+                                           <!-- POS-GRADUACAO -->
+                                           <div class="form-group show--pos--graduacao">
+                                            <label class="badge alert-primary"><b>MATRIZ:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="matriz" id="matriz" >{$curso.matriz}</textarea>
+                                        </div>
+
+                                           <!-- POS-GRADUACAO -->
+
+                                        <div class="form-group show--pos--graduacao">
+                                            <label class="badge alert-primary"><b>PÚBLICO ALVO:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="publico_alvo" id="publico_alvo" >{$curso.publico_alvo}</textarea>
+                                        </div>
+
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
-
-                                    <div class="form-group">
-                                        <label><b>Habilidades e Competências:</b></label>
+                                
+                                        <div class="form-group show--graduacao">
+                                            <label class="badge alert-primary"><b>HABILIDADES E COMPETÊNCIAS:</b></label>
                                         <textarea class="textareaCkeditor form-control" name="habilidades_competencias" id="habilidades_competencias" >{$curso.habilidades_competencias}</textarea>
                                     </div>
 
+                                     
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><b>Competências Profissionalizantes:</b></label>
+                                        <div class="form-group show--graduacao">
+                                            <label class="badge alert-primary"><b>COMPETÊNCIAS PROFISSIONALIZANTES:</b></label>
                                             <textarea class="textareaCkeditor form-control" name="competencias_profissionalizantes" id="competencias_profissionalizantes" >{$curso.competencias_profissionalizantes}</textarea>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 show--graduacao">
 
-                                    <div class="form-group">
-                                        <label><b>Área de Atuação:</b></label>
+                                        <div class="form-group">
+                                            <label class="badge alert-primary"><b>ÁREA DE ATUAÇÃO:</b></label>
                                         <textarea class="textareaCkeditor form-control" name="area_atuacao" id="area_atuacao" >{$curso.area_atuacao}</textarea>
                                     </div>
 
@@ -152,23 +174,23 @@
                         <div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="box-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Carga Horária</label>
+                                            <label class="badge alert-primary">CARGA HORÁRIA:</label>
                                             <input value="{$curso.carga_horaria}" type="text" class="form-control" id="carga_horaria" name="carga_horaria">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Duração</label>
+                                            <label class="badge alert-primary">DURAÇÃO:</label>
                                             <input value="{$curso.duracao}" type="text" class="form-control" id="duracao" name="duracao">
                                
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Turno</label>
+                                    <div class="col-md-12">
+                                        <div class="form-group show--graduacao">
+                                             <label class="badge alert-primary">TURNO:</label>
                                             <select name="turno" id="turno" class="form-control">
                                                 <option value="">--</option>
                                                 {loop="$turnos"}
@@ -181,33 +203,36 @@
                                    
                                 </div>
                                 <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="badge alert-primary"><b>INVESTIMENTO:</b></label>
+                                            <textarea class="textareaCkeditor form-control" name="investimento" id="investimento" >{$curso.investimento}</textarea>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-6">
 
-                                    <div class="form-group">
-                                        <label><b>Perfil Profissional:</b></label>
+                                    <div class="form-group show--graduacao">
+                                        <label class="badge alert-primary"><b>PERFIL PROFISSIONAL:</b></label>
                                         <textarea class="textareaCkeditor form-control" name="perfil_profissional" id="perfil_profissional" >{$curso.perfil_profissional}</textarea>
                                     </div>
 
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><b>Investimento:</b></label>
-                                            <textarea class="textareaCkeditor form-control" name="investimento" id="investimento" >{$curso.investimento}</textarea>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
 
-                                    <div class="form-group">
-                                        <label><b>Coordenação:</b></label>
+                                    <div class="form-group show--graduacao">
+                                        <label class="badge alert-primary"><b>COORDENAÇÃO:</b></label>
                                         <textarea class="textareaCkeditor form-control" name="coordenacao" id="coordenacao" >{$curso.coordenacao}</textarea>
                                     </div>
 
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><b>Diferenciais:</b></label>
+                                        <div class="form-group show--graduacao">
+                                            <label class="badge alert-primary"><b>DIFERENCIAIS:</b></label>
                                             <textarea class="textareaCkeditor form-control" name="diferenciais" id="diferenciais" >{$curso.diferenciais}</textarea>
                                         </div>
                                     </div>

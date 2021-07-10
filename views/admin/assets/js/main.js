@@ -1,5 +1,13 @@
 $(function () {
 
+
+    /* Controla exibição dos campos de ensinos para os cursos */
+
+    changeInputsFormCurso($('select[name="ensino"]'));
+    $('select[name="ensino"]').change(function (e) {
+        changeInputsFormCurso($(this));
+    });
+
     /* Exclui documento pdf do curso */
     $('.btnDestroyDoc').click(function () {
 
@@ -249,6 +257,20 @@ $(function () {
 /*===============================*/
 /*=======ALL FUNCTIONS===========*/
 /*===============================*/
+
+function changeInputsFormCurso(elem) {
+
+    let ensino = $(elem).val();
+
+    if (ensino == "PÓS-GRADUAÇÃO") {
+        $('.show--graduacao').hide();
+        $('.show--pos--graduacao').show();
+    } else {
+
+        $('.show--graduacao').show();
+        $('.show--pos--graduacao').hide();
+    }
+}
 
 function showContentAllImages() {
     $('#loading_all_images').load('/admin/list-images').fadeIn('slow');
