@@ -16,8 +16,12 @@
     <div class="row">
         <div class="col-md-9">
             <section class="header--cover">
+                {if="strlen($curso.cover) != 0"}
                 <img class="cover" src="/{$curso.cover}" alt="FAAM (91) 91 3255-2236 / 98420-8044 ">
+                {/if}
+                {if="strlen($curso.logo) != 0"}
                 <img class="logotipo" src="/{$curso.logo}" alt="FAAM (91) 91 3255-2236 / 98420-8044 ">
+                {/if}
             </section>
             <section class="body--curso">
                 <h3>{$curso.nome}</h3>
@@ -25,6 +29,24 @@
                 {if="strlen($curso.objetivo_geral) != 0"}
                 <h4>Objetivo Geral</h4>
                 {$curso.objetivo_geral}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.sobre_o_curso) != 0"}
+                <h4>Sobre o Curso</h4>
+                {$curso.sobre_o_curso}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.matriz) != 0"}
+                <h4>Matriz Curricular</h4>
+                {$curso.matriz}
+                <hr>
+                {/if}
+
+                {if="strlen($curso.publico_alvo) != 0"}
+                <h4>Público Alvo</h4>
+                {$curso.publico_alvo}
                 <hr>
                 {/if}
 
@@ -100,7 +122,7 @@
             <h3>Menu</h3>
             <ul class="list-group list--anexos">
                 {loop="$anexos"}
-                <li class="list-group-item"> <a href="/{$value.arquivo}"><i class="fa fa-file-text-o"></i> {$value.tipo_doc}</a></li>
+                <li class="list-group-item"> <a href="../view-pdf/{function="base64_encode($value.arquivo)"}" target="_blank"><i class="fa fa-file-text-o"></i> {$value.tipo_doc}</a></li>
                 {/loop}
               </ul>
         </div>

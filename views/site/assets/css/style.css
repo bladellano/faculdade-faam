@@ -59,15 +59,16 @@ body {
   object-fit: contain;
   width: 150px;
   height: 150px;
+  filter: drop-shadow(4px 8px 14px #f2f2f2);
 }
 .header--cover .cover {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  opacity: 0.6;
-  filter: sepia(69%) hue-rotate(84deg) saturate(245%);
-  -webkit-filter: sepia(69%) hue-rotate(84deg) saturate(245%);
-  -moz-filter: sepia(69%) hue-rotate(84deg) saturate(245%);
+  /* opacity: 0.6; */
+  /* filter: sepia(69%) hue-rotate(84deg) saturate(245%); */
+  /* -webkit-filter: sepia(69%) hue-rotate(84deg) saturate(245%); */
+  /* -moz-filter: sepia(69%) hue-rotate(84deg) saturate(245%); */
 }
 .body--curso {
   margin-top: 50px;

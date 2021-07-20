@@ -39,6 +39,13 @@ class SiteController extends Controller
         /* Faz com que não seja verificado usuário com sessão */
     }
 
+    public function viewPdf(Request $request, Response $response, array $args)
+    {
+        $file = $args["hash"];
+        $file = base64_decode($file);
+        print("<embed src='../".$file."' width=\"98%\" height=\"900\" type='application/pdf'>");
+        die;
+    }
     public function showCurso(Request $request, Response $response, array $args)
     {
         $curso = $this->curso->get($args["id"]);

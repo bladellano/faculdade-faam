@@ -43,7 +43,7 @@ class Curso extends Model
     public function getAnexosCurso($id)
     {
         $sql = new Sql();
-        $results = $sql->select("SELECT * FROM anexos_cursos WHERE curso_id = :id", ['id' => $id]);
+        $results = $sql->select("SELECT * FROM anexos_cursos WHERE curso_id = :id GROUP BY documento", ['id' => $id]);
         return $results;
     }
 
