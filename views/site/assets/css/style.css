@@ -490,8 +490,6 @@ body {
   text-transform: uppercase;
 }
 
-
-
 /* Form */
 
 #form-contato label.error {
@@ -506,7 +504,8 @@ body {
   border: 1px solid salmon;
 }
 .bg--default {
-  background-color: #363a3d !important;
+  border: 1px solid #8bf5a4;
+  background-color: #cee7c8;
 }
 
 .details-contact h4 {
@@ -529,20 +528,27 @@ body {
 .wrap-form {
   padding: 16px 0px;
 }
-.wrap-form p {
-  font-style: italic;
+.wrap-form input,.wrap-form textarea{
+  background-color:#28a745;
   color: #fff;
 }
+.wrap-form input::placeholder,.wrap-form textarea::placeholder{
+  color: #fff
+}
+.wrap-form p {
+  font-style: italic;
+  color: #004c00;
+}
 .wrap-form h5 {
-  color: #fff;
+  color: #004c00;
   font-size: 22px;
   font-weight: bold;
 }
 
 .bg--send {
-  background-color: #fff;
+  background-color: #116e25;
   outline: 0;
-  color: #333;
+  color: #fff;
   border: none;
 }
 button.bg--send:hover {

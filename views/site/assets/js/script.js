@@ -26,7 +26,7 @@
             },
             phone: {
                 required: true,
-                minlength: 15,
+                minlength: 11,
             },
             message: {
                 required: true,

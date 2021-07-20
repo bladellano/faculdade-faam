@@ -18,7 +18,7 @@ class MailerController extends Controller
         $mailer = new Mailer(
             $_POST["email"],
             $_POST["name"],
-            "Formulário de Contato do Site", //Assunto
+            "::FALE CONOSCO:: Portal FAAM", //Assunto
             "email-sent", //Template
             $_POST
         );
