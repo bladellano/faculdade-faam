@@ -12,7 +12,7 @@ $app->get('/view-pdf/{hash}', SiteController::class . ':viewPdf');
 
 $app->get('/curso/{id}', SiteController::class . ':showCurso');
 
-// $app->get('/sampler', SiteController::class . ':sampler');
+#$app->get('/sampler', SiteController::class . ':sampler');
 $app->get('/albuns', SiteController::class . ':albums');
 $app->get('/album/{id}', SiteController::class . ':showPhotos');
 

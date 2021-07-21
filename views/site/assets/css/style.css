@@ -1,10 +1,7 @@
 @charset "UTF-8";
 
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,500&display=swap');
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,500&display=swap");
 
 :root {
   --cor-primary: #006f23;
@@ -35,7 +32,7 @@ html {
 body,
 html {
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 body {
@@ -43,6 +40,48 @@ body {
   line-height: 2.2em;
   color: #212529;
   background-color: #fff;
+}
+
+/* Customizando menu lateral "Estrutura Organizacional" */
+
+.menu--estrutura h4 {
+  margin: 12px 0;
+  padding: 0 40px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.menu--estrutura h4 + hr {
+  width: 55px;
+  border-width: 3px;
+  margin: 0 auto;
+  padding: 8px 0;
+  margin: 8px 40px;
+  border-color: #006f23;
+}
+.menu--estrutura ul {
+  list-style: none;
+}
+
+.menu--estrutura ul li {
+  border: 1px solid #e4e4e4;
+  padding: 0 14px;
+  height: 65px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.menu--estrutura ul li:nth-child(1) {
+  border-radius: 8px 8px 0 0;
+}
+.menu--estrutura ul li:last-child {
+  border-radius: 0 0 8px 8px;
+}
+.menu--estrutura ul li a {
+  color: #3338;
+}
+.menu--estrutura ul li a:hover {
+  color: #333;
+  text-decoration: none;
 }
 
 /* Customizando pagina dos cursos */
@@ -180,7 +219,7 @@ body {
 /* Section */
 .page--section {
   padding: 3rem 0;
-  border-top:1px solid #006f23;
+  border-top: 1px solid #006f23;
 }
 
 .page--section h2 {
@@ -528,12 +567,14 @@ body {
 .wrap-form {
   padding: 16px 0px;
 }
-.wrap-form input,.wrap-form textarea{
-  background-color:#28a745;
+.wrap-form input,
+.wrap-form textarea {
+  background-color: #28a745;
   color: #fff;
 }
-.wrap-form input::placeholder,.wrap-form textarea::placeholder{
-  color: #fff
+.wrap-form input::placeholder,
+.wrap-form textarea::placeholder {
+  color: #fff;
 }
 .wrap-form p {
   font-style: italic;
@@ -564,7 +605,7 @@ p.text-justify.mt-3 {
   padding: 6px;
   border-radius: 4px;
   background-color: #eee;
-  border:1px solid #28a745;
+  border: 1px solid #28a745;
 }
 
 .box--cursos {
@@ -598,7 +639,7 @@ p.text-justify.mt-3 {
   justify-content: center;
   align-items: center;
   transition: all 0.3s;
-  border: .5px solid #116e25;
+  border: 0.5px solid #116e25;
   background-color: rgba(37, 255, 8, 0.3);
 }
 .box--cursos li div:hover {
