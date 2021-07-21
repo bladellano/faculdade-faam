@@ -42,6 +42,12 @@ body {
   background-color: #fff;
 }
 
+.bg--alegoria{
+  background-image: url("../images/bg-home-faam.jpg");
+  background-repeat: none;
+  background-position: bottom center;
+  background-size: cover;
+}
 /* Customizando menu lateral "Estrutura Organizacional" */
 
 .menu--estrutura h4 {
