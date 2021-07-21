@@ -17,12 +17,12 @@
 
 <a href="/promocao-pos-graduacao"> <img src="/views/site/assets/images/banner_promocao.jpg" alt="PROMOÇÃO" style="width: 100%;"> </a>
 
-<section class="page--section">
+<section class="page--section" >
     <div class="container">
         <div class="text-center">
             <h2>MOTIVOS PARA ESTUDAR NA FAAM</h2>
             <hr>
-            <h3>Revolucione a sua carreira.</h3>
+            <h3 class="p-0">Revolucione a sua carreira.</h3>
         </div>
 
         <div class="row mt-5">
@@ -61,17 +61,88 @@
 
 </section>
 
+
+<!-- NOTICIAS E EVENTOS -->
+<section class="page--section bg-success" id="noticias_agenda">
+
+    <!-- <div class="square"></div> -->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <h2>NOTÍCIAS <i class="fa fa-file-text-o"></i>
+                </h2>
+                <ul class="list--events">
+
+                    {loop="$articles"}
+
+                    <li>
+                        <div class="box--events">
+                            <div class="data">
+                                <div class="mes">
+                                    <span class="dia">{$value.dia}</span><span> {$value.mes}</span>
+                                </div>
+                            </div>
+
+                            <h4><a href="noticia/{$value.slug}">{$value.title}</a>
+                            </h4>
+                            <h5> {$value.resume}... <span> <a href="noticia/{$value.slug}"> Saiba mais » </a></span> </h5>
+                        </div>
+                    </li>
+
+                    {/loop}
+
+                </ul>
+
+                <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="col-md-6 mt-4">
+                <h2>AGENDA <i class="fa fa-calendar-o"></i>
+                </h2>
+                <ul class="list--events agenda">
+
+                    {loop="$eventos"}
+
+                    <li>
+                        <div class="box--events">
+                            <div class="data">
+                                <div class="mes">
+                                    <span class="dia">{$value.dia}</span><span> {$value.mes}</span>
+                                </div>
+                            </div>
+
+                            <h4><a href="evento/{$value.slug}">{$value.title}</a>
+                            </h4>
+                            <h5> <span> <a href="evento/{$value.slug}"> Saiba mais » </a></span> </h5>
+                        </div>
+                    </li>
+
+                    {/loop}
+
+                </ul>
+                <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
 <!-- CAROUSEL DE CURSOS-->
 <section class="page--section" style="padding:0;margin-bottom:-2px">
     <div class="container-fluid">
         <div class="text-center">
-            <h2>Educação do Século XXI</h2>
+            <h2>NOSSOS CURSOS DE GRADUÇÃO</h2>
             <hr>
             <br>
             <div class="container">
                 <h3 class="p-0">Inovamos o modelo de ensino vigente, proporcionando aos alunos a vivência prática dos conteúdos,
-                    levando a escola ao universo dos nativos digitais, promovendo a motivação, a autonomia e o
-                    desenvolvimento da criança nas competências e exigências deste século.
+                    levando a faculdade ao universo dos nativos digitais, promovendo a motivação, a autonomia e o
+                    desenvolvimento dos alunos nas competências e exigências deste momento atual.
                 </h3>
             </div>
         </div>
@@ -246,75 +317,6 @@
     </div>
 </section>
 
-<!-- NOTICIAS E EVENTOS -->
-<section class="page--section bg-success" id="noticias_agenda">
-
-    <div class="square"></div>
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-md-6 mt-4">
-                <h2>NOTÍCIAS <i class="fa fa-file-text-o"></i>
-                </h2>
-                <ul class="list--events">
-
-                    {loop="$articles"}
-
-                    <li>
-                        <div class="box--events">
-                            <div class="data">
-                                <div class="mes">
-                                    <span class="dia">{$value.dia}</span><span> {$value.mes}</span>
-                                </div>
-                            </div>
-
-                            <h4><a href="noticia/{$value.slug}">{$value.title}</a>
-                            </h4>
-                            <h5> {$value.resume}... <span> <a href="noticia/{$value.slug}"> Saiba mais » </a></span> </h5>
-                        </div>
-                    </li>
-
-                    {/loop}
-
-                </ul>
-
-                <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>
-                </button>
-            </div>
-
-            <div class="col-md-6 mt-4">
-                <h2>AGENDA <i class="fa fa-calendar-o"></i>
-                </h2>
-                <ul class="list--events agenda">
-
-                    {loop="$eventos"}
-
-                    <li>
-                        <div class="box--events">
-                            <div class="data">
-                                <div class="mes">
-                                    <span class="dia">{$value.dia}</span><span> {$value.mes}</span>
-                                </div>
-                            </div>
-
-                            <h4><a href="evento/{$value.slug}">{$value.title}</a>
-                            </h4>
-                            <h5> <span> <a href="evento/{$value.slug}"> Saiba mais » </a></span> </h5>
-                        </div>
-                    </li>
-
-                    {/loop}
-
-                </ul>
-                <button class="btn btn-primary btn-sm">Veja Mais <i class="fa fa-arrow-right"></i>
-                </button>
-
-            </div>
-        </div>
-    </div>
-
-</section>
 
 <!-- CONTATO-->
 
