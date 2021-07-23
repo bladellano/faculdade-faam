@@ -232,8 +232,8 @@ body {
   font-weight: 600;
   letter-spacing: -1px;
   text-transform: uppercase;
-  color: #000;
   margin: 20px 0;
+  font-size: 26px;
 }
 .page--section h3 {
   font-size: 16px;
@@ -368,15 +368,15 @@ body {
 /* End - Events */
 
 #noticias_agenda {
-  position: relative;
-  background-image: url("../images/71352.jpg");
-  background-repeat: none;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
+  /* position: relative; */
+  /* background-image: url("../images/71352.jpg"); */
+  /* background-repeat: none; */
+  /* background-position: center center; */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
 }
 #noticias_agenda h2 {
-  color: #fff;
+  color: #004c00;
 }
 
 .square {
@@ -647,7 +647,7 @@ p.text-justify.mt-3 {
   align-items: center;
   transition: all 0.3s;
   border: 0.5px solid #116e25;
-  background-color: rgba(37, 255, 8, 0.3);
+  background-color: rgba(11, 51, 6, 0.81);
 }
 .box--cursos li div:hover {
   background-color: #fff;
