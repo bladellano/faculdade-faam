@@ -324,7 +324,7 @@ body {
   background: var(--cor-primary);
   color: #fff;
   line-height: 15px;
-  padding: 10px 15px;
+  padding: 10px 8px;
   border-radius: 0.25rem;
   float: left;
   margin-right: 13px;
@@ -332,6 +332,7 @@ body {
   width: 51px;
   font-weight: 700;
   text-align: center;
+  font-size: 12px;
 }
 
 .box--events h4 a {
@@ -350,13 +351,13 @@ body {
   letter-spacing: -1px;
 }
 .box--events .data .mes .dia {
-  font-family: "Anton";
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .agenda .box--events .data {
   background-color: var(--cor-second);
   color: #004c00;
+  font-size: 12px;
 }
 
 .img-events {
@@ -430,6 +431,7 @@ body {
   border-bottom: 1px dashed rgba(253, 189, 0, 0.3);
   line-height: 34px;
   font-weight: 700;
+  font-size: 14px;
   text-transform: uppercase;
 }
 
@@ -616,39 +618,44 @@ p.text-justify.mt-3 {
 }
 
 .box--cursos {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	box-shadow: 0px 0px 19px #0003;
 }
 
 .box--cursos li {
   max-width: var(--width--box);
-  flex: 1 1 var(--width--box);
+  /* flex: 1 1 var(--width--box); */
+  flex: 1 1 170px;
   height: 170px;
 }
 
 .bg--fundo--cursos {
-  background-image: url("../images/71352.jpg");
+  /* background-image: url("../images/71352.jpg"); */
   background-repeat: none;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
+  background-color: #02581d;
 }
+
 .box--cursos li div {
-  width: 100%;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s;
-  border: 0.5px solid #116e25;
-  background-color: rgba(11, 51, 6, 0.81);
+	width: 100%;
+	text-align: center;
+	height: 115%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.3s;
+	background-color: rgb(0, 111, 35);
+	margin: -12px 0;
 }
+
 .box--cursos li div:hover {
   background-color: #fff;
   cursor: pointer;
@@ -658,7 +665,7 @@ p.text-justify.mt-3 {
 }
 .box--cursos li div img {
   width: 130px;
-  filter: grayscale(50%);
+  /* filter: grayscale(50%); */
 }
 
 /* Default load */

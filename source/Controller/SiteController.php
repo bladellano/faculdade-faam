@@ -132,7 +132,7 @@ class SiteController extends Controller
         $articles = (new Article())->listAll("LIMIT 4");
         $banners = (new Banner())->listAll("LIMIT 4");
         $eventos = (new Evento())->listAll("LIMIT 4");
-        $cursos = (new Curso())->listAll("LIMIT 10");
+        $cursos = (new Curso())->listAll("LIMIT 12");
 
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
