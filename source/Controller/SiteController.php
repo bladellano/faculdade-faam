@@ -12,7 +12,6 @@ use Source\Model\PhotoAlbum;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use Source\Model\Curso;
-use Source\Model\Page as ModelPage;
 
 class SiteController extends Controller
 {
@@ -136,13 +135,13 @@ class SiteController extends Controller
 
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
-            $evento['mes'] =  strtoupper($date->format('M'));
+            $evento['mes'] = mb_strtoupper( strftime('%b', strtotime($evento["event_day"])));
             $evento['dia'] = $date->format('d');
         }
 
         foreach ($articles as &$article) {
             $date = new \DateTime($article["created_at"]);
-            $article['mes'] =  strtoupper($date->format('M'));
+            $article['mes'] = mb_strtoupper( strftime('%b', strtotime($article["created_at"])));
             $article['dia'] = $date->format('d');
         }
 
