@@ -14,7 +14,9 @@
     "rain/raintpl": "3.0.0",
     "coffeecode/uploader": "1.0.*",
     "fakerphp/faker": "1.13.0",
-    "coffeecode/optimizer": "2.0.*"
+    "coffeecode/optimizer": "2.0.*",
+    "ausi/slug-generator": "^1.1",
+    "nesbot/carbon": "^2.54"
   },
   "autoload": {
     "psr-4": {

@@ -1,0 +1,50 @@
+<div class="header-page"></div>
+
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <p></p>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/vestibulares">Vestibulares</a></li>
+      <li class="breadcrumb-item active">{$vestibular.nome}</li>
+    </ol>
+  </nav>
+
+  <hr>
+
+  <div class="row">
+
+    <div class="col-md-9">
+
+      <small class="text-muted"><i class="fa fa-calendar" aria-hidden="true"></i> Publicado {$vestibular.tempo} em {function="toDatePtBr($vestibular.created_at)"}</small>
+      <h3 class="title-articles">{$vestibular.nome} {$vestibular.periodo}</h3>
+      <a href="{#URL_BASE#}/{$vestibular.image_thumb}" target="_blank"> 
+        <img class="img-events" src="{#URL_BASE#}/{$vestibular.image_thumb}" alt="{$value.nome}"> </a> {$vestibular.resumo}
+
+    <hr>
+
+<p style="clear:both;margin-top:50px;">
+  <a href="{$vestibular.faca_sua_inscricao}" target="_blank" class="btn btn-secondary btn-block">Faça sua inscrição</a>
+  <a href="{$vestibular.edital}" target="_blank" class="btn btn-secondary btn-block">Edital</a>
+  <a href="{$vestibular.forma_de_ingresso}" target="_blank" class="btn btn-secondary btn-block">Forma de ingresso</a>
+</p>
+
+    </div>
+
+
+    <div class="col-md-3">
+      <h3>Recentes</h3>
+
+      {loop="$vestibulares"}
+      <p>
+        <small class="text-muted"><i class="fa fa-calendar" aria-hidden="true"></i> Publicado {$value.tempo} em {function="toDatePtBr($value.created_at)"}</small>
+        <br>
+        <a href="/vestibulares/{$value.slug}">{function="resume($value.nome,55)"}</a>
+      </p>
+      <hr>
+      {/loop}
+    </div>
+  </div>
+
+</div><!-- container -->

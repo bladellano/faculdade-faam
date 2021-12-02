@@ -1,0 +1,135 @@
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Vestibular
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+         <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Editando <b>{$vestibular.nome}</b> 
+                    {if="$vestibular.ativo == 1"}
+                    <span class="label label-success">VESTIBULAR ATIVADO</span> 
+                    {else}
+                    <span class="label label-default">VESTIBULAR DESATIVADO</span> 
+                    {/if}
+                </h3>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <form role="form" action="/admin/vestibulares/{$vestibular.id}" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="_METHOD" value="PUT"/>
+
+                {if="$msgError != ''"}
+                <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <p>{$msgError}</p>
+                </div>
+                {/if}
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input value="{$vestibular.nome}" type="text" class="form-control"
+                            id="nome" name="nome"" placeholder="Nome do vestibular" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resumo">Resumo</b></label>
+                        <textarea class="form-control" name="resumo" id="resumo" cols="30"
+                            rows="3">{$vestibular.resumo}</textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tipo">Tipo</label> 
+                              
+                                <select name="tipo" id="tipo" class="form-control">
+                                    <option value="">-- Selecione --</option>
+                                    <option {if="$vestibular.tipo == 'processo_seletivo'"} selected {/if} value="processo_seletivo">PROCESSO SELETIVO</option>
+                                    <option {if="$vestibular.tipo == 'agendado'"} selected {/if} value="agendado">AGENDADO</option>
+                                    <option {if="$vestibular.tipo == 'outros'"} selected {/if} value="outros">OUTROS</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="periodo">Período</label>
+                                <input value="{$vestibular.periodo}" type="text"
+                                    class="form-control" id="periodo" name="periodo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LINKS -->
+
+                    <div class="form-group">
+                        <label for="edital">Edital <i class="fa fa-link" aria-hidden="true"></i>
+                        </label>
+                        <input value="{$vestibular.edital}" type="text" class="form-control"
+                            id="edital" name="edital" placeholder="LINK">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="faca_sua_inscricao">Faça sua inscrição <i class="fa fa-link"
+                                aria-hidden="true"></i>
+                        </label>
+                        <input value="{$vestibular.faca_sua_inscricao}" type="text"
+                            class="form-control" id="faca_sua_inscricao" name="faca_sua_inscricao"
+                            placeholder="LINK">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="forma_de_ingresso">Forma de ingresso <i class="fa fa-link"
+                                aria-hidden="true"></i>
+                        </label>
+                        <input value="{$vestibular.forma_de_ingresso}" type="text"
+                            class="form-control" id="forma_de_ingresso" name="forma_de_ingresso"
+                            placeholder="LINK">
+                    </div>
+
+                    <div class="row">   
+                        <div class="form-group col-md-6">
+                            <label for="image">Capa</label>
+                            <input type="file" id="image" name="image">
+                        </div>
+                        {if="$vestibular.image_thumb != ''"}
+                        <div class="form-group col-md-6">
+                            <img src="../../{$vestibular.image_thumb}" class="img-rounded img-object-fit">
+                        </div>
+                        {else}
+                        <div class="col-md-6 text-center">
+                            <p></p>
+                            <small class="alert alert-warning">
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Nenhuma capa relacionada para este vestibular
+                            </small>
+                        </div>
+                        {/if}
+                    </div>     
+
+                </div> <!-- /.box-body -->
+
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

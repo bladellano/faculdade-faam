@@ -1,0 +1,34 @@
+<div class="header-page"></div>
+
+<div class="container height-page">
+
+    <nav aria-label="breadcrumb">
+        <p></p>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Vestibulares</li>
+        </ol>
+    </nav>
+
+    <hr>
+
+    <div class="row">
+        {loop="$vestibulares"}
+        <div class="col-md-12 col-sm-6 mb-3"> 
+            {if="$value.image_thumb != ''"}
+            <a href="vestibulares/{$value.slug}"><img class="img-events rounded" src="{$value.image_thumb}" alt="{$value.nome}"></a>
+            {else}
+            <span style="display:flex" class="alert alert-warning">Campanha sem imagem.</span>
+            {/if}
+            <a href="vestibulares/{$value.slug}"><h5>{$value.nome} {$value.periodo}</h5></a>
+           <small> {function="resume($value.resumo,300)"}</small>
+        </div>
+        <hr style="border:1px dashed #ccc; width: 100%;">
+        {/loop}
+    </div>
+
+    <!-- Pagination -->
+    {include="pagination"}
+    <!-- End - Pagination -->
+
+</div><!-- container -->

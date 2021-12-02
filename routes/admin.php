@@ -8,6 +8,7 @@ use Source\Controller\CursosController;
 use Source\Controller\BannersController;
 use Source\Controller\EventosController;
 use Source\Controller\ArticlesController;
+use Source\Controller\VestibularesController;
 use Source\Controller\ArticlesCategoriesController;
 
 /**
@@ -129,6 +130,20 @@ $app->group('/admin/artigos', function () use ($app) {
     $app->get('/{id}', ArticlesController::class . ':edit');
     $app->put('/{id}', ArticlesController::class . ':update');
     $app->get('/{id}/delete', ArticlesController::class . ':destroy');
+});
+
+/**
+ * ADMIN VESTIBULARES
+ */
+//FOCO
+$app->group('/admin/vestibulares', function () use ($app) {
+    $app->get('', VestibularesController::class . ':index');
+    $app->get('/create', VestibularesController::class . ':create');
+    $app->post('/store', VestibularesController::class . ':store');
+    $app->post('/update-active-vestibular', VestibularesController::class . ':updateActiveVestibular');
+    $app->get('/{id}', VestibularesController::class . ':edit');
+    $app->put('/{id}', VestibularesController::class . ':update');
+    $app->get('/{id}/delete', VestibularesController::class . ':destroy');
 });
 
 /**

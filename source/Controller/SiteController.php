@@ -2,6 +2,7 @@
 
 namespace Source\Controller;
 
+use Carbon\Carbon;
 use Source\Page;
 use Source\Model\Photo;
 use Source\Model\Banner;
@@ -12,6 +13,7 @@ use Source\Model\PhotoAlbum;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use Source\Model\Curso;
+use Source\Model\Vestibular;
 
 class SiteController extends Controller
 {
@@ -24,6 +26,7 @@ class SiteController extends Controller
     private $album = NULL;
     private $photo = NULL;
     private $curso = NULL;
+    private $vestibular = NULL;
 
     public function __construct()
     {
@@ -35,6 +38,7 @@ class SiteController extends Controller
         $this->album = new PhotoAlbum();
         $this->photo = new Photo();
         $this->curso = new Curso();
+        $this->vestibular = new Vestibular();
         /* Faz com que não seja verificado usuário com sessão */
     }
 
@@ -42,7 +46,7 @@ class SiteController extends Controller
     {
         $file = $args["hash"];
         $file = base64_decode($file);
-        print("<embed src='../".$file."' width=\"98%\" height=\"900\" type='application/pdf'>");
+        print("<embed src='../" . $file . "' width=\"98%\" height=\"900\" type='application/pdf'>");
         die;
     }
     public function showCurso(Request $request, Response $response, array $args)
@@ -99,6 +103,76 @@ class SiteController extends Controller
         file_put_contents($arquivo, $html);
     }
 
+    public function showVestibular(Request $request, Response $response, array $args)
+    {
+
+        $allVestibulares = $this->vestibular->listAll();
+
+        foreach ($allVestibulares as &$vestibular) {
+
+            $vestibular['tempo'] = Carbon::createFromFormat('Y-m-d', date('Y-m-d', strtotime($vestibular['created_at'])))->locale('pt_BR')->diffForHumans();
+        }
+
+        $this->vestibular->getWithSlug($args["slug"]);
+        $data =  $this->vestibular->getValues();
+        $data['tempo'] =  Carbon::createFromFormat('Y-m-d', date('Y-m-d', strtotime($data['created_at'])))->locale('pt_BR')->diffForHumans();
+        $this->page->setTpl("vestibular", [
+            "vestibular" => $data,
+            "vestibulares" => $allVestibulares
+        ]);
+        exit;
+    }
+
+    public function vestibulares()
+    {
+
+        $pg = $this->pagination('Vestibular', '/vestibulares', 3);
+
+        $this->page->setTpl("vestibulares", array(
+            "vestibulares" => $pg['data'],
+            "search" => $pg['search'],
+            "pages" => $pg['pages']
+        ));
+        exit;
+    }
+
+    //FOCO
+    private function createUpdateMenuVestibular()
+    {
+        $vestibulares = $this->vestibular->listAll(['ativo' => 1], 'id, nome, slug, periodo, edital, faca_sua_inscricao, forma_de_ingresso, tipo');
+        $vestibulares = current((array) $vestibulares);
+
+        $html = "";
+
+        $slug = "";
+        $nome = "";
+        $periodo = "";
+
+        foreach ((array) $vestibulares as $key => $value) {
+
+            if ($key == 'slug') $slug = $value;
+            if ($key == 'nome') $nome = $value;
+            if ($key == 'periodo') $periodo = $value;
+
+            if ($key == 'faca_sua_inscricao')
+                $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Faça sua inscrição</a>';
+
+            if ($key == 'edital')
+                $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Edital</a>';
+
+            if ($key == 'forma_de_ingresso')
+                $html .= '<a class="dropdown-item" href="' . $value . '">Forma de ingresso</a>';
+        }
+
+        $html .= "<a class='dropdown-item' href='/vestibulares/{$slug}'>Vestibular {$nome} {$periodo}</a>";
+
+        $html .= '<a class="dropdown-item" href="/vestibulares">Vestibulares anteriores</a>';
+
+        $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "menu-vestibular.html";
+
+        file_put_contents($arquivo, $html);
+    }
+
     private function createUpdateMenuPosGraduacao()
     {
         $cursos = $this->curso->listAllNamesCursosPosGraduacao();
@@ -127,6 +201,7 @@ class SiteController extends Controller
         $this->createUpdateMenu();
         $this->createUpdateMenuPosGraduacao();
         $this->createUpdateSobreFaamFrente();
+        $this->createUpdateMenuVestibular();
 
         $articles = (new Article())->listAll("LIMIT 4");
         $banners = (new Banner())->listAll("LIMIT 4");
@@ -135,13 +210,13 @@ class SiteController extends Controller
 
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
-            $evento['mes'] = mb_strtoupper( strftime('%b', strtotime($evento["event_day"])));
+            $evento['mes'] = mb_strtoupper(strftime('%b', strtotime($evento["event_day"])));
             $evento['dia'] = $date->format('d');
         }
 
         foreach ($articles as &$article) {
             $date = new \DateTime($article["created_at"]);
-            $article['mes'] = mb_strtoupper( strftime('%b', strtotime($article["created_at"])));
+            $article['mes'] = mb_strtoupper(strftime('%b', strtotime($article["created_at"])));
             $article['dia'] = $date->format('d');
         }
 

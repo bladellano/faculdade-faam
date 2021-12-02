@@ -3,11 +3,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de Artigos
+      Lista de Vestibulares
     </h1>
     <ol class="breadcrumb">
       <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active"><a href="/admin/artigos">Artigo</a></li>
+      <li class="active"><a href="/admin/vestibulares">Vestibulares</a></li>
     </ol>
   </section>
 
@@ -19,13 +19,13 @@
         <div class="box box-primary">
 
           <div class="box-header">
-            <a href="/admin/artigos/create" class="btn btn-success">Cadastrar</a>
+            <a href="/admin/vestibulares/create" class="btn btn-success">Cadastrar</a>
             <div class="box-tools">
 
               <!-- FAZ PESQUISA -->
-              <form action="/admin/artigos">
+              <form action="/admin/vestibulares">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="search" class="form-control pull-right" placeholder="Search"
+                  <input type="text" name="search" class="form-control pull-right" placeholder="Buscar"
                     value="{$search}">
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -39,36 +39,38 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th style="width: 10px">#</th>
-                  <th>Título dos Artigos</th>
-                  <th>Capa</th>
-                  <th>Resumo</th>
-                  <th>Autor</th>
+                  <th >#</th>
+                  <th >Nome do Vestibular</th>
+                  <th >Resumo</th>
+                  <th>Tipo</th>
+                  <th>Período</th>
+                  <th style="width: 8%;text-align: center;">Ativo</th>
                   <th>Criado</th>
-                  <th style="width: 160px">&nbsp;</th>
+                  <th style="width: 12%;">&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
 
-                {if="count($articles) < 1"} <tr>
+                {if="count($vestibulares) < 1"} <tr>
                   <td colspan="7" class="text-center">
                     <p class="text-danger">Nenhum registro encontrado.</p>
                   </td>
                   </tr>
-                  {else}
+                {else}
                   
-                  {loop="$articles"}
+                  {loop="$vestibulares"}
                   <tr>
                     <td>{$value.id}</td>
-                    <td>{$value.title}</td>
-                    <td><img class="img-rounded" style="width: 50px;" src="../{$value.image_thumb}" alt=""></td>
-                    <td><small class="text-muted">{$value.resume}</small></td>
-                    <td><small class="text-muted">{$value.author}</small></td>
+                    <td>{$value.nome}</td>
+                    <td>{$value.resumo}</td>
+                    <td><small class="badge">{function="mb_strtoupper($value.tipo)"}</small></td>
+                    <td>{$value.periodo}</td>
+                    <td><input type="checkbox" name="tipo" data-id="{$value.id}" class="toggle-two" data-size="mini" {if="$value.ativo == 1"} checked {/if}> </td>
                     <td>{function="formatDate($value.created_at)"}</td>
                     <td>
-                      <a href="/admin/artigos/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>
+                      <a href="/admin/vestibulares/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>
                         Editar</a>
-                      <a href="/admin/artigos/{$value.id}/delete"
+                      <a href="/admin/vestibulares/{$value.id}/delete"
                         onclick="return confirm('Deseja realmente excluir este registro?')"
                         class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
                     </td>

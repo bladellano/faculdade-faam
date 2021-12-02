@@ -1,5 +1,37 @@
 $(function () {
 
+    /**
+     * Toggle para os botões ativar/desativar vestibular
+     */
+    $('.toggle-two').bootstrapToggle({
+        on: 'Ativo',
+        off: 'Desativado'
+    });
+
+    /**
+     * Ativando vestibular
+     */
+    $('.toggle-two').change(function (e) {
+
+        let ativar = (e.currentTarget.checked) ? 1 : 0;
+        let id = e.currentTarget.dataset.id
+
+        let response = {};
+
+        $.ajaxSetup({ async: false });
+        $.post("/admin/vestibulares/update-active-vestibular", { id, ativar }, function (r) {
+            response = r;
+        }, "JSON");
+
+        if (response.success) location.reload();
+
+    });
+
+    /**
+     * Máscara para o form vestibular
+     */    
+
+    $('#periodo').mask('0000.0', { reverse: true, placeholder: "____._" });
 
     /* Controla exibição dos campos de ensinos para os cursos */
 

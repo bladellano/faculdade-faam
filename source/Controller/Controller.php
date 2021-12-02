@@ -46,7 +46,7 @@ abstract class Controller
 	 * @return [type]        [Retorna links das páginas, 
 	 * Palavra chave e data do resultado]
 	 */
-	public function pagination($model, $uri)
+	public function pagination($model, $uri, $perPage = 12)
 	{
 
 		$args = func_get_args();/* Para capturar modalidades de cursos */
@@ -58,7 +58,7 @@ abstract class Controller
 		if ($search != '') {
 			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPageSearch'], [trim($search), $page]);
 		} else {
-			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page, 12, $args[2]]);
+			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page, $perPage, $args[2]]);
 		}
 
 		$pages = [];

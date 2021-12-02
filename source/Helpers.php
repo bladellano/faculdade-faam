@@ -24,7 +24,7 @@ function asset(string $file, string $path = "/admin", $time = true): string
  * @return void
  */
 
-function resume($string, $chars = 180)
+function resume(string $string, $chars = 180)
 {
     return strip_tags(mb_strimwidth($string, 0, $chars + 3, "..."));
 }

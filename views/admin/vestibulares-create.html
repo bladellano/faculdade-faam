@@ -1,0 +1,118 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Vestibular
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li><a href="/admin/vestibulares">Vestibular</a></li>
+            <li class="active"><a href="/admin/vestibulares/create">Cadastrar</a></li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-success">
+
+                    {if="$msgError != ''"}
+                    <div class="alert alert-danger alert-dismissible" style="margin:10px">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <p>{$msgError}</p>
+                    </div>
+                    {/if}
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Novo Vestibular</h3>
+                    </div>
+
+                    <form role="form" action="/admin/vestibulares/store" method="post" enctype="multipart/form-data">
+
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input value="{$_SESSION['recoversPost']['nome']}" type="text" class="form-control"
+                                    id="nome" name="nome"" placeholder=" Nome do vestibular"">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resumo">Resumo</b></label>
+                                <textarea class="form-control" name="resumo" id="resumo" cols="30"
+                                    rows="3">{$_SESSION['recoversPost']['resumo']}</textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="tipo">Tipo</label>
+                                        <select name="tipo" id="tipo" class="form-control">
+                                            <option value="">-- Selecione --</option>
+                                            <option value="processo_seletivo">PROCESSO SELETIVO</option>
+                                            <option value="agendado">AGENDADO</option>
+                                            <option value="outros">OUTROS</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="periodo">Período</label>
+                                        <input value="{$_SESSION['recoversPost']['periodo']}" type="text"
+                                            class="form-control" id="periodo" name="periodo">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- LINKS -->
+
+                            <div class="form-group">
+                                <label for="edital">Edital <i class="fa fa-link" aria-hidden="true"></i>
+                                </label>
+                                <input value="{$_SESSION['recoversPost']['edital']}" type="text" class="form-control"
+                                    id="edital" name="edital" placeholder="http://">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="faca_sua_inscricao">Faça sua inscrição <i class="fa fa-link"
+                                        aria-hidden="true"></i>
+                                </label>
+                                <input value="{$_SESSION['recoversPost']['faca_sua_inscricao']}" type="text"
+                                    class="form-control" id="faca_sua_inscricao" name="faca_sua_inscricao"
+                                    placeholder="http://">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="forma_de_ingresso">Forma de ingresso <i class="fa fa-link"
+                                        aria-hidden="true"></i>
+                                </label>
+                                <input value="formas-de-ingresso" type="text"
+                                    class="form-control" id="forma_de_ingresso" name="forma_de_ingresso"
+                                    placeholder="Endereço local">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Capa</label>
+                                <input type="file" id="image" name="image">
+                                <p class="help-block">Adicione uma imagem para o VESTIBULAR.</p>
+                            </div>
+
+                        </div> <!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
