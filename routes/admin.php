@@ -9,7 +9,9 @@ use Source\Controller\BannersController;
 use Source\Controller\EventosController;
 use Source\Controller\ArticlesController;
 use Source\Controller\VestibularesController;
+use Source\Controller\FiquePorDentroController;
 use Source\Controller\ArticlesCategoriesController;
+
 
 /**
  * IMAGES/PDF AVULSOS
@@ -144,6 +146,18 @@ $app->group('/admin/vestibulares', function () use ($app) {
     $app->get('/{id}', VestibularesController::class . ':edit');
     $app->put('/{id}', VestibularesController::class . ':update');
     $app->get('/{id}/delete', VestibularesController::class . ':destroy');
+});
+
+//FOCO
+$app->group('/admin/fique-por-dentro', function () use ($app) {
+    $app->get('', FiquePorDentroController::class . ':index');
+
+    // $app->get('/create', FiquePorDentroController::class . ':create');
+    // $app->post('/store', FiquePorDentroController::class . ':store');
+    // $app->post('/update-active-vestibular', FiquePorDentroController::class . ':updateActiveFiquePorDentro');
+    // $app->get('/{id}', FiquePorDentroController::class . ':edit');
+    // $app->put('/{id}', FiquePorDentroController::class . ':update');
+    // $app->get('/{id}/delete', FiquePorDentroController::class . ':destroy');
 });
 
 /**

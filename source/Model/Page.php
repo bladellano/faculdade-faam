@@ -8,17 +8,36 @@ use \Source\Model;
 class Page extends Model
 {
     const ERROR = 'PageError';
+    const SUCCESS = 'PageSuccess';
 
     public static function listAll()
     {
         $sql = new Sql();
         return $sql->select("SELECT * FROM pages ORDER BY id DESC");
     }
+
+    /**
+     * Insere o artigo na base de dados.
+     * @return void
+     */
+    public function save()
+    {
+        $sql = new Sql();
+
+        $action = empty($this->getid()) ? "insert" : "update";
+
+        $result = $sql->{$action}("pages", $this->getValues());
+
+        if ($result && !$this->getid()) $this->setid($result);
+
+        return $this->setData($this->getValues());
+    }
+
     /**
      * Insere página na base de dados.
      * @return void
      */
-    public function save()
+    public function save_()
     {
         $sql = new Sql();
 
@@ -47,9 +66,26 @@ class Page extends Model
         Page::clearError();
         return $msg;
     }
+
+    public static function setSuccess($msg)
+    {
+        $_SESSION[Page::SUCCESS] = $msg;
+    }
+    public static function getSuccess()
+    {
+        $msg = (isset($_SESSION[Page::SUCCESS]) && $_SESSION[Page::SUCCESS]) ? $_SESSION[Page::SUCCESS] : '';
+        Page::clearSuccess();
+        return $msg;
+    }
+
     public static function clearError()
     {
         $_SESSION[Page::ERROR] = NULL;
+    }
+
+    public static function clearSuccess()
+    {
+        $_SESSION[Page::SUCCESS] = NULL;
     }
 
     public function get($id)
