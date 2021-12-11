@@ -36,6 +36,7 @@
             {/if}
             
             <div class="box-body">
+
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="title">Título</label>
@@ -46,6 +47,16 @@
                         <input disabled value="{$p.slug}" type="text" class="form-control" id="slug" name="slug" placeholder="Url amigável">
                     </div>
                 </div>
+
+                <!-- SOMENTE PARA O FIQUE POR DENTRO -->
+                {if="$p.id == 49"} 
+                <div class="form-group">
+                  <label for="description"><b>Link Externo:</b> 
+                    <small class="text-muted">Recomendamos que utilizem encurtadores de link <a href="https://tinyurl.com/app/" target="_blank">Tinyurl</a></small></label>
+                  <input value="{$p.link_externo}" type="text" class="form-control" id="link_externo" name="link_externo" placeholder="Digite um link para o anúncio. Caso não seja preenchido, ficará o link interno para /fique-por-dentro">
+                </div>
+                {/if}
+
                 <div class="form-group">
                     <label for="description"><b>Descrição/Conteúdo:</b></label>
                     <textarea class="form-control textareaCkeditor" name="description" id="description" cols="30" rows="5">
@@ -53,12 +64,31 @@
                     </textarea>
                 </div>
 
+                <!-- SOMENTE PARA O FIQUE POR DENTRO -->
+                {if="$p.id == 49"} 
+
                 <!-- IMAGEM -->
-                <div class="form-group">
-                  <label for="image">Capa</label>
-                  <input type="file" id="image" name="image">
-                  <p class="help-block">Adicione uma imagem para o FIQUE POR DENTRO.</p>
-               </div>
+                
+                <div class="row">   
+                  <div class="form-group col-md-6">
+                      <label for="image">Capa</label>
+                      <input type="file" id="image" name="image">
+                  </div>
+                  {if="$p.image_thumb != ''"}
+                  <div class="form-group col-md-6">
+                      <img src="../../{$p.image_thumb}" class="img-rounded img-object-fit">
+                  </div>
+                  {else}
+                  <div class="col-md-6 text-center">
+                      <p></p>
+                      <small class="alert alert-warning">
+                          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Nenhuma capa relacionada para este FIQUE POR DENTRO
+                      </small>
+                  </div>
+                  {/if}
+                </div>     
+
+                {/if}
 
                 <div class="form-group">
                     <label for="author">Autor</label>

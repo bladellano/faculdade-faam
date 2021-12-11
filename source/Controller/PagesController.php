@@ -104,7 +104,6 @@ class PagesController extends Controller
 		if ($args['id'] != 49)
 			$_POST['slug'] = $generator->generate($_POST['title']);
 
-
 		/* Valida se $_FILES existem com imagem */
 		if ($args['id'] == 49) {
 

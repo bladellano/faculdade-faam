@@ -2,6 +2,7 @@
 
 namespace Source\Controller;
 
+use Source\DB\Sql;
 use Source\PageAdmin;
 use Source\Model\Page;
 
@@ -30,5 +31,11 @@ class FiquePorDentroController extends Controller
 			]
 		]);
 		exit;
+	}
+
+	public static function getFiquePorDentro()
+	{
+		$sql = new Sql();
+		return $sql->select('SELECT * FROM pages WHERE id = 49');
 	}
 }

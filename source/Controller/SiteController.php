@@ -136,7 +136,28 @@ class SiteController extends Controller
         exit;
     }
 
-    //FOCO
+    private function createUpdateFiquePorDentro()
+    {
+        $fiquePorDentro = current(FiquePorDentroController::getFiquePorDentro());
+
+        if (empty($fiquePorDentro['link_externo'])) {
+            $link = '/' . $fiquePorDentro['slug'];
+            $target = "";
+        } else {
+            $link = $fiquePorDentro['link_externo'];
+            $target = "_blank";
+        }
+
+        $html = '<h2>FIQUE POR DENTRO <i class="fa fa-rss" aria-hidden="true"></i> </h2>';
+        $html .=    '<a href="' . $link . '" target="' . $target . '">
+                    <img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">
+                </a>';
+
+        $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "fique-por-dentro.html";
+
+        file_put_contents($arquivo, $html);
+    }
+
     private function createUpdateMenuVestibular()
     {
         $vestibulares = $this->vestibular->listAll(['ativo' => 1], 'id, nome, slug, periodo, edital, faca_sua_inscricao, forma_de_ingresso, tipo');
@@ -202,6 +223,7 @@ class SiteController extends Controller
         $this->createUpdateMenuPosGraduacao();
         $this->createUpdateSobreFaamFrente();
         $this->createUpdateMenuVestibular();
+        $this->createUpdateFiquePorDentro();
 
         $articles = (new Article())->listAll("LIMIT 4");
         $banners = (new Banner())->listAll("LIMIT 4");
