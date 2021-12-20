@@ -1,0 +1,102 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Cadastrar Parceiro
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active"><a href="/admin/parceiros">Parceiros</a></li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+      {if="$msgError != ''"}
+      <div class="alert alert-danger alert-dismissible" style="margin:10px">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <p>{$msgError}</p>
+      </div>
+      {/if}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    <div class="box-body no-padding">
+
+                        <form role="form" action="/admin/parceiros/store" method="post" enctype="multipart/form-data">
+
+                            <div class="box-body">
+
+                                <div class="form-group ">
+                                    <label for="name">Nome</label>
+                                    <input value="{$_SESSION['recoversPost']['name']}" type="text" class="form-control"
+                                        id="name" name="name" placeholder="Digite o nome do parceiro">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description"><b>Descrição:</b></label>
+                                    <textarea class="form-control textareaCkeditor" name="description" id="description"
+                                        cols="30" rows="3">{$_SESSION['recoversPost']['description']}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="image">Capa</label>
+                                    <input type="file" id="image" name="image">
+                                    <small class="form-text text-primary">
+                                        Adicione a logo do PARCEIRO.
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-success">Cadastrar</button>
+                                <button type="reset" class="btn btn-success">Limpar</button>
+                            </div>
+                        </form>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Relação dos Parceiros</h3>
+                <div class="box box-primary">
+
+                    <div class="box-body no-padding">
+                        <br />
+                        <table class="table table-bordered" id="tabela-parceiros" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Logo</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

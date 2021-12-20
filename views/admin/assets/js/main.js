@@ -1,5 +1,54 @@
 $(function () {
 
+    /** Datatables para parceiros */
+    tableParceiros = $('#tabela-parceiros').DataTable({
+        "order": [[0, "desc"]],
+        "lengthChange": false,
+        "pageLength": 5,
+        "info": true,
+        "language": {
+            "search":"Buscar parceiro",
+            "lengthMenu": "Mostrar _MENU_ itens por p&aacute;gina",
+            "zeroRecords": "Nenhum fluxo encontrado, desculpe",
+            "info": "Mostrando de _START_ &aacute; _END_ de _MAX_",
+            "infoEmpty": "Nenhum registro encontrado",
+            "infoFiltered": "(filtrado de _MAX_ registros)",
+            "paginate": {
+                "first": "Primeira",
+                "last": "&Uacute;ltima",
+                "next": "Pr&oacute;xima",
+                "previous": "Anterior"
+            },
+        },
+        "ajax": {
+            "url": "parceiros/inbox",
+            "type": "GET",
+            "data": {}
+        },
+        "columns": [
+            {"title" : "#", "class" : "col-md-1", "data" : "id"},
+            {"title" : "Nome", "class" : "col-md-3", "data" : "name"},
+            {"title" : "Logo", "class" : "col-md-1", "data" : "image_thumb"},
+            {"title" : "Descrição", "class" : "col-md-5", "data" : "description"},
+            {"title" : "Status", "class" : "col-md-1", "data" : "status"},
+            {"title" : "", "class" : "col-md-3", "data" : "id"},
+        ],
+        "columnDefs": [ {
+            "targets": 2,
+            "render": function (image_thumb) {
+              return '<img class="img-logo-parceiros" src="../'+image_thumb+'">';
+            }
+          },
+          {
+            "targets": 5,
+            "render": function (id) {
+              return `<a class="btn btn-danger btn-sm" href="parceiros/${id}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>`;
+            //   <a class="btn btn-warning btn-sm" href="parceiros/${id}"><i class="fa fa-edit" aria-hidden="true"></i></a>`;
+            }
+          }  ]
+    });
+
+
     /**
      * Toggle para os botões ativar/desativar vestibular
      */

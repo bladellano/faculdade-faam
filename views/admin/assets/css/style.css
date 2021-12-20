@@ -1,4 +1,9 @@
 /**/
+.img-logo-parceiros {
+	object-fit: cover;
+	width: 100px;
+	height: 80px;
+}
 
 ul.list-itens-main {
   list-style: none;

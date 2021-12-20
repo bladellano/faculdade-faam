@@ -8,10 +8,10 @@ use Source\Controller\CursosController;
 use Source\Controller\BannersController;
 use Source\Controller\EventosController;
 use Source\Controller\ArticlesController;
+use Source\Controller\ParceirosController;
 use Source\Controller\VestibularesController;
 use Source\Controller\FiquePorDentroController;
 use Source\Controller\ArticlesCategoriesController;
-
 
 /**
  * IMAGES/PDF AVULSOS
@@ -137,7 +137,6 @@ $app->group('/admin/artigos', function () use ($app) {
 /**
  * ADMIN VESTIBULARES
  */
-//FOCO
 $app->group('/admin/vestibulares', function () use ($app) {
     $app->get('', VestibularesController::class . ':index');
     $app->get('/create', VestibularesController::class . ':create');
@@ -148,16 +147,24 @@ $app->group('/admin/vestibulares', function () use ($app) {
     $app->get('/{id}/delete', VestibularesController::class . ':destroy');
 });
 
-//FOCO
+/**
+ * ADMIN PARCEIROS
+ */
+$app->group('/admin/parceiros', function () use ($app) {
+    $app->get('', ParceirosController::class . ':index');
+    
+    $app->get('/inbox', ParceirosController::class . ':inbox');
+
+    $app->get('/create', ParceirosController::class . ':create');
+    $app->post('/store', ParceirosController::class . ':store');
+    // $app->post('/update-active-vestibular', ParceirosController::class . ':updateActiveVestibular');
+    $app->get('/{id}', ParceirosController::class . ':edit');
+    $app->put('/{id}', ParceirosController::class . ':update');
+    $app->get('/{id}/delete', ParceirosController::class . ':destroy');
+});
+
 $app->group('/admin/fique-por-dentro', function () use ($app) {
     $app->get('', FiquePorDentroController::class . ':index');
-
-    // $app->get('/create', FiquePorDentroController::class . ':create');
-    // $app->post('/store', FiquePorDentroController::class . ':store');
-    // $app->post('/update-active-vestibular', FiquePorDentroController::class . ':updateActiveFiquePorDentro');
-    // $app->get('/{id}', FiquePorDentroController::class . ':edit');
-    // $app->put('/{id}', FiquePorDentroController::class . ':update');
-    // $app->get('/{id}/delete', FiquePorDentroController::class . ':destroy');
 });
 
 /**

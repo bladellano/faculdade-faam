@@ -275,19 +275,29 @@
 </section>
 
 <!---PARCEIROS-->
-<section class="page--section bg--gray mb-5" style="display: none;">
+
+{if="count($parceiros) > 0"}
+<section class="page--section bg--gray mb-5">
     <div class="text-center">
         <h2>PARCEIROS</h2>
         <hr>
         <h3>Conheça alguns dos nossos maiores clientes e parceiros da instituição</h3>
     </div>
+
     <div class="container">
+
         <div class="slick_parceiros">
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/logo-cm-marituba.png" /></div>
-            <div> <img class="img-fluid d-block mx-auto" src="/views/site/assets/images/logo_pref_marituba.png" /></div>
+
+            {loop="$parceiros"}
+            
+            <div> <img class="img-fluid d-block mx-auto" src="{$value.image_thumb}" alt="{$value.name}" title="{$value.name} - {$value.description}"/></div>
+
+            {/loop}
+
         </div>
     </div>
 </section>
+{/if}
 
 <!-- VIDEO INSTITUCIONAL -->
 <section class="page--section" id="video_institucional" style="display: none;">
@@ -314,7 +324,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- CONTATO-->
 

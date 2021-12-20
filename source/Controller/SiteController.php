@@ -13,6 +13,7 @@ use Source\Model\PhotoAlbum;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use Source\Model\Curso;
+use Source\Model\Parceiros;
 use Source\Model\Vestibular;
 
 class SiteController extends Controller
@@ -229,7 +230,8 @@ class SiteController extends Controller
         $banners = (new Banner())->listAll("LIMIT 4");
         $eventos = (new Evento())->listAll("LIMIT 4");
         $cursos = (new Curso())->listAll("LIMIT 12");
-
+        $parceiros = (new Parceiros())->listAll();
+        
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
             $evento['mes'] = mb_strtoupper(strftime('%b', strtotime($evento["event_day"])));
@@ -247,6 +249,7 @@ class SiteController extends Controller
             'banners' => $banners,
             'eventos' => $eventos,
             'cursos' => $cursos,
+            'parceiros' => $parceiros,
         ]);
         exit;
     }
