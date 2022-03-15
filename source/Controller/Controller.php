@@ -48,9 +48,8 @@ abstract class Controller
 	 */
 	public function pagination($model, $uri, $perPage = 12)
 	{
-
 		$args = func_get_args();/* Para capturar modalidades de cursos */
-		$args[2] = $args[2] ?? "";
+		$args[3] = $args[3] ?? "";
 
 		$search = (isset($_GET['search'])) ? $_GET['search'] : "";
 		$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
@@ -58,7 +57,7 @@ abstract class Controller
 		if ($search != '') {
 			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPageSearch'], [trim($search), $page]);
 		} else {
-			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page, $perPage, $args[2]]);
+			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page, $perPage, $args[3]]);
 		}
 
 		$pages = [];

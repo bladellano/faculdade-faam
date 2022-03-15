@@ -25,7 +25,8 @@ class CursosController extends Controller
 
     public function index()
     {
-        $pg = $this->pagination('Curso', '/admin/cursos', 'GRADUAÇÃO');
+        $pg = $this->pagination('Curso', '/admin/cursos',12,'GRADUAÇÃO');
+
         $page = new PageAdmin();
         $page->setTpl("cursos", array(
             "cursos" => $pg['data'],
@@ -37,7 +38,8 @@ class CursosController extends Controller
 
     public function showListPosGraduacao()
     {
-        $pg = $this->pagination('Curso', '/admin/cursos', 'PÓS-GRADUACAO');
+        $pg = $this->pagination('Curso', '/admin/cursos',12,'PÓS-GRADUAÇÃO');
+
         $page = new PageAdmin();
         $page->setTpl("cursos", array(
             "cursos" => $pg['data'],
