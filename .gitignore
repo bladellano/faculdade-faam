@@ -4,3 +4,5 @@ views-cache/
 /cgi-bin
 /source/Config.php
 /storage/
+error_log
+moodledataead2021.1.tar.gz
