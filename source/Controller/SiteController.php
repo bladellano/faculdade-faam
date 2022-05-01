@@ -33,7 +33,17 @@ class SiteController extends Controller
     public function __construct()
     {
 
-        $this->page = new Page([], self::VIEW_SITE);
+        // Ouvidoria
+        $ouvTipos = (new Ouvidoria())->listTipos();
+        $ouvUsuarios = \Source\Model\Ouvidoria::listUsuarios();
+        $ouvSetores = \Source\Model\Ouvidoria::listSetores();
+
+        $this->page = new Page([], self::VIEW_SITE,[
+            'ouvTipos'=>$ouvTipos,
+            'ouvUsuarios'=>$ouvUsuarios,
+            'ouvSetores'=>$ouvSetores,
+        ]);
+
         $this->evento = new Evento();
         $this->banner = new Banner();
         $this->article = new Article();
@@ -233,11 +243,6 @@ class SiteController extends Controller
         $cursos = (new Curso())->listAll("LIMIT 12");
         $parceiros = (new Parceiros())->listAll();
 
-        // Ouvidoria
-        $ouvTipos = (new Ouvidoria())->listTipos();
-        $ouvUsuarios = \Source\Model\Ouvidoria::listUsuarios();
-        $ouvSetores = \Source\Model\Ouvidoria::listSetores();
-        
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
             $evento['mes'] = mb_strtoupper(strftime('%b', strtotime($evento["event_day"])));
@@ -256,10 +261,6 @@ class SiteController extends Controller
             'eventos' => $eventos,
             'cursos' => $cursos,
             'parceiros' => $parceiros,
-            // Ouvidoria
-            'ouvTipos' => $ouvTipos,
-            'ouvUsuarios' => $ouvUsuarios,
-            'ouvSetores' => $ouvSetores,
         ]);
         exit;
     }

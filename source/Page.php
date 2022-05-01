@@ -13,9 +13,12 @@ class Page
         "footer" => true,
         "data" => [],
     ];
+    private $data = [];
 
-    public function __construct($opts = [], $tpl_dir = "/views/")
+    public function __construct($opts = [], $tpl_dir = "/views/", $data = [])
     {
+        $this->data = $data;
+
         $this->options = array_merge($this->defaults, $opts);
 
         $config = array(
@@ -56,6 +59,12 @@ class Page
 
     public function __destruct()
     {
-        if ($this->options["header"] === true) $this->tpl->draw("footer");
+        if ($this->options["header"] === true) {
+            if(count($this->data)):
+                $this->tpl->assign("data",$this->data);
+            endif;
+            $this->tpl->draw("footer");
+        }
+            
     }
 }
