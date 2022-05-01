@@ -3,17 +3,17 @@
 
 use Source\Controller\SiteController;
 use Source\Controller\MailerController;
+use Source\Controller\OuvidoriaController;
 
 $app->post('/send-form-contact', MailerController::class . ':sendFormContact');
 
+$app->post('/ouvidoria/store', OuvidoriaController::class . ':store');
 $app->get('/', SiteController::class . ':index');
 
 $app->get('/view-pdf/{hash}', SiteController::class . ':viewPdf');
 
 $app->get('/curso/{id}', SiteController::class . ':showCurso');
 
-#$app->get('/sampler', SiteController::class . ':sampler');
-//FOCO
 $app->get('/vestibulares', SiteController::class . ':vestibulares');
 $app->get('/vestibulares/{slug}', SiteController::class . ':showVestibular');
 

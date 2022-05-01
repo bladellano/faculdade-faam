@@ -8,6 +8,7 @@ use Source\Controller\CursosController;
 use Source\Controller\BannersController;
 use Source\Controller\EventosController;
 use Source\Controller\ArticlesController;
+use Source\Controller\OuvidoriaController;
 use Source\Controller\ParceirosController;
 use Source\Controller\VestibularesController;
 use Source\Controller\FiquePorDentroController;
@@ -48,6 +49,12 @@ $app->group('/admin/cursos', function () use ($app) {
     $app->get('/{id}/delete', CursosController::class . ':destroy');
 });
 
+/**
+ * ADMIN OUVIDORIA
+ */
+$app->group('/admin/ouvidoria', function () use ($app) {
+    $app->get('', OuvidoriaController::class . ':index');
+});
 
 /**
  * ADMIN EVENTOS

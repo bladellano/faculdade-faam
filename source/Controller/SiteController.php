@@ -13,6 +13,7 @@ use Source\Model\PhotoAlbum;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use Source\Model\Curso;
+use Source\Model\Ouvidoria;
 use Source\Model\Parceiros;
 use Source\Model\Vestibular;
 
@@ -231,6 +232,11 @@ class SiteController extends Controller
         $eventos = (new Evento())->listAll("LIMIT 4");
         $cursos = (new Curso())->listAll("LIMIT 12");
         $parceiros = (new Parceiros())->listAll();
+
+        // Ouvidoria
+        $ouvTipos = (new Ouvidoria())->listTipos();
+        $ouvUsuarios = \Source\Model\Ouvidoria::listUsuarios();
+        $ouvSetores = \Source\Model\Ouvidoria::listSetores();
         
         foreach ($eventos as &$evento) {
             $date = new \DateTime($evento["event_day"]);
@@ -250,6 +256,10 @@ class SiteController extends Controller
             'eventos' => $eventos,
             'cursos' => $cursos,
             'parceiros' => $parceiros,
+            // Ouvidoria
+            'ouvTipos' => $ouvTipos,
+            'ouvUsuarios' => $ouvUsuarios,
+            'ouvSetores' => $ouvSetores,
         ]);
         exit;
     }

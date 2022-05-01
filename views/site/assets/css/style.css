@@ -48,6 +48,16 @@ body {
   background-position: bottom center;
   background-size: cover;
 }
+
+#form-ouvidoria .error{
+    color: #ff0062;
+    border: 1px solid #ff0062;
+    border-radius: 6px;
+    padding: 4px;
+    margin: 4px;
+    font-weight: bold;
+    font-size: 0.8em;
+}
 /* Customizando menu lateral "Estrutura Organizacional" */
 
 .title-articles {
@@ -686,7 +696,7 @@ p.text-justify.mt-3 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9;
+  z-index: 10000;
 }
 
 .ajax_load_box {

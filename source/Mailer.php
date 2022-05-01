@@ -14,7 +14,7 @@ class Mailer
 
 	private $mail;
 
-	public function __construct($fromAdress, $fromName, $subject, $tplName, $data = array())
+	public function __construct($fromAdress, $fromName, $subject, $tplName, $data = array(), $addAddress = [])
 	{
 
 		$config = array(
@@ -31,6 +31,8 @@ class Mailer
 			$tpl->assign($key, $value);//Seta as variáveis dentro do template.
 		}
 		
+		// $addAddress[] = "contato@faam.com.br";
+
 		$html = $tpl->draw($tplName, true); //Coloca o conteudo dentro da variavel $html.
 		$this->mail = new PHPMailer();
 		$this->mail->isSMTP();
@@ -50,7 +52,9 @@ class Mailer
 		$this->mail->Username = Mailer::USERNAME;
 		$this->mail->Password = Mailer::PASSWORD;
 		$this->mail->setFrom($fromAdress, $fromName);
-		$this->mail->addAddress("contato@faam.com.br", Mailer::NAME_FROM);
+		foreach($addAddress as $email){
+			$this->mail->addAddress($email, Mailer::NAME_FROM);
+		}
 		$this->mail->Subject = utf8_decode( $subject );
 		$this->mail->msgHTML($html);
 		$this->mail->AltBody = 'This is a plain-text message body';

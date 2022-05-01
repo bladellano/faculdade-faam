@@ -74,6 +74,59 @@
 
     }
 
+     /* Form - Ouvidoria */
+     $('#form-ouvidoria').validate({
+        rules: {
+            usuario: {
+                required: true,
+            },
+            setor: {
+                required: true,
+            },
+            tipo: {
+                required: true,
+            },
+        },
+        submitHandler: function () {
+
+            var data = $('#form-ouvidoria').serializeArray();
+
+            ajaxSubmitFormOuvidoria(data);
+        }
+    });
+
+    const ajaxSubmitFormOuvidoria = (data) => {
+
+        $.ajax({
+            method: "POST",
+            url: "/ouvidoria/store",
+            data: data,
+            dataType: "json",
+            beforeSend: function () {
+                load('open');
+            },
+            success: function (r) {
+                if (r.success) {
+                    Swal.fire(
+                        'Tudo certo!',
+                        r.msg,
+                        'success'
+                    );
+                    $('#form-ouvidoria')[0].reset();
+                } else {
+                    Swal.fire(
+                        'Ooops!',
+                        r.msg,
+                        'error'
+                    );
+                }
+            },
+            complete: () => {
+                load('close');
+            }
+        });
+
+    }
 
     /* Appear - Exibição do botão topo */
     $(window).scroll(function (e) {

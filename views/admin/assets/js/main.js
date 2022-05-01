@@ -1,5 +1,23 @@
 $(function () {
 
+
+    tableOuvidoria = $('.tableOuvidoria').DataTable({
+        "order": [[0, "desc"]],
+        "language": {
+            "search":"Pesquisar: ",
+            "lengthMenu": "Mostrar _MENU_ itens por p&aacute;gina",
+            "zeroRecords": "Nenhum fluxo encontrado, desculpe",
+            "info": "Mostrando de _START_ &aacute; _END_ de _MAX_",
+            "infoEmpty": "Nenhum registro encontrado",
+            "infoFiltered": "(filtrado de _MAX_ registros)",
+            "paginate": {
+                "first": "Primeira",
+                "last": "&Uacute;ltima",
+                "next": "Pr&oacute;xima",
+                "previous": "Anterior"
+            },
+        },
+    });
     /** Datatables para parceiros */
     tableParceiros = $('#tabela-parceiros').DataTable({
         "order": [[0, "desc"]],
@@ -43,7 +61,6 @@ $(function () {
             "targets": 5,
             "render": function (id) {
               return `<a class="btn btn-danger btn-sm" href="parceiros/${id}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>`;
-            //   <a class="btn btn-warning btn-sm" href="parceiros/${id}"><i class="fa fa-edit" aria-hidden="true"></i></a>`;
             }
           }  ]
     });
