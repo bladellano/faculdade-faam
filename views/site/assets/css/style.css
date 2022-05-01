@@ -709,7 +709,7 @@ p.text-justify.mt-3 {
 
 .ajax_load_box_circle {
   border: 16px solid #e3e3e3;
-  border-top: 16px solid #3c8dbc;
+  border-top: 16px solid #006f23;
   border-radius: 50%;
   margin: auto;
   width: 80px;
@@ -722,4 +722,22 @@ p.text-justify.mt-3 {
 .ajax_load_box_title {
   margin-top: 15px;
   font-weight: bold;
+}
+
+@-webkit-keyframes spin {
+  0% {
+      -webkit-transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
 }

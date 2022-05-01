@@ -46,7 +46,15 @@ class Ouvidoria extends Model
                 INNER JOIN ouv_setores st ON st.id = res.setor {$where}";
 
         $sql = new Sql();
-        return $sql->select($query);
+
+        $retorno = $sql->select($query);
+
+        $retorno = array_map(function($item){
+             $item['created_at'] = toDatePtBr($item['created_at'],true);
+             return $item;
+        },$retorno);
+
+        return $retorno;
     }
     
 }

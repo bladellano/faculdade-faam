@@ -2,6 +2,10 @@ $(function () {
 
 
     tableOuvidoria = $('.tableOuvidoria').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         "order": [[0, "desc"]],
         "language": {
             "search":"Pesquisar: ",
