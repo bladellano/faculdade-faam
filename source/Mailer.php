@@ -31,7 +31,8 @@ class Mailer
 			$tpl->assign($key, $value);//Seta as variáveis dentro do template.
 		}
 		
-		// $addAddress[] = "contato@faam.com.br";
+		if(!count($addAddress))
+		 $addAddress[] = "contato@faam.com.br";
 
 		$html = $tpl->draw($tplName, true); //Coloca o conteudo dentro da variavel $html.
 		$this->mail = new PHPMailer();
