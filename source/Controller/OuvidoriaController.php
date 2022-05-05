@@ -26,7 +26,23 @@ class OuvidoriaController extends Controller
 
     public function store(Request $request)
     {
-        $lastId = (new Sql)->insert('ouv_respostas', $request->getParsedBody());
+
+        $data = $request->getParsedBody();
+        $captcha = $data['g-recaptcha-response'];
+
+        // $res = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le1mbcZAAAAAAnWnOCN7kS6xueKw82MQifMXw76&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']));
+
+        if(!$captcha){
+            print(json_encode([
+                'success' => false,
+                'msg' => 'Captcha não preenchido!',
+            ]));
+            exit;
+        }
+
+        unset($data['g-recaptcha-response']);
+
+        $lastId = (new Sql)->insert('ouv_respostas', $data);
 
         if ($lastId) {
             $resposta = \Source\Model\Ouvidoria::getRespostas(["id"=>$lastId]);
