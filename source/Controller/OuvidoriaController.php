@@ -32,7 +32,7 @@ class OuvidoriaController extends Controller
             $resposta = \Source\Model\Ouvidoria::getRespostas(["id"=>$lastId]);
             $resposta = $resposta[0];
 
-            // ENVIAR EMAILS
+            /** E-mails que irão receber os forms respondidos */
             $addAddress = [
                 "bladellano@gmail.com",
                 "direcao@faam.com.br",
@@ -43,7 +43,7 @@ class OuvidoriaController extends Controller
             $mailer = new Mailer(
                 'ouvidoria@faam.com.br',
                 'Ouvidoria Faam',
-                "Questionário Ouvidoria Faam", //Assunto
+                "Mensagens da Ouvidoria", //Assunto
                 "email-resposta-ouvidoria", //Template
                 $resposta,
                 $addAddress
