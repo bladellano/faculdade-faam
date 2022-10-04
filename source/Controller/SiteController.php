@@ -160,10 +160,12 @@ class SiteController extends Controller
             $target = "_blank";
         }
 
-        $html = '<h2>FIQUE POR DENTRO <i class="fa fa-rss" aria-hidden="true"></i> </h2>';
-        $html .=    '<a href="' . $link . '" target="' . $target . '">
-                    <img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">
-                </a>';
+        $html = '<h2>DESTAQUE </h2>';
+        // $html .=    '<a href="' . $link . '" target="' . $target . '">
+        //             <img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">
+        //         </a>';
+
+         $html .=    '<img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">';
 
         $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "fique-por-dentro.html";
 
@@ -187,19 +189,22 @@ class SiteController extends Controller
             if ($key == 'nome') $nome = $value;
             if ($key == 'periodo') $periodo = $value;
 
-            if ($key == 'faca_sua_inscricao')
-                $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Faça sua inscrição</a>';
+            // if ($key == 'faca_sua_inscricao')
+            //     $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Faça sua inscrição</a>';
 
-            if ($key == 'edital')
-                $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Edital</a>';
+            // if ($key == 'edital')
+            //     $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Edital</a>';
 
-            if ($key == 'forma_de_ingresso')
-                $html .= '<a class="dropdown-item" href="' . $value . '">Forma de ingresso</a>';
+            // if ($key == 'forma_de_ingresso')
+            //     $html .= '<a class="dropdown-item" href="' . $value . '">Forma de ingresso</a>';
         }
 
-        $html .= "<a class='dropdown-item' href='/vestibulares/{$slug}'>Vestibular {$nome} {$periodo}</a>";
+        // $html .= "<a class='dropdown-item' href='/vestibulares/{$slug}'>Vestibular {$nome} {$periodo}</a>";
 
-        $html .= '<a class="dropdown-item" href="/vestibulares">Vestibulares anteriores</a>';
+        
+        $html .= '<a class="dropdown-item" href="/vestibulares">Editais</a>';
+        $html .= '<a class="dropdown-item" href="/formas-de-ingresso">Forma de ingresso</a>';
+
 
         $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "menu-vestibular.html";
 
@@ -240,7 +245,7 @@ class SiteController extends Controller
         $articles = (new Article())->listAll("LIMIT 4");
         $banners = (new Banner())->listAll("LIMIT 4");
         $eventos = (new Evento())->listAll("LIMIT 4");
-        $cursos = (new Curso())->listAll("LIMIT 12");
+        $cursos = (new Curso())->listAll("LIMIT 10");
         $parceiros = (new Parceiros())->listAll();
 
         foreach ($eventos as &$evento) {

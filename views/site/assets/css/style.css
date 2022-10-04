@@ -372,7 +372,8 @@ body {
 }
 
 .agenda .box--events .data {
-  background-color: var(--cor-second);
+  /*background-color: var(--cor-second);*/
+  background-color: #f1f1f1;
   color: #004c00;
   font-size: 12px;
 }

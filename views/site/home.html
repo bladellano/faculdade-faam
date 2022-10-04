@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col-md-4" style="border-right: 1px dashed #dbdbdb;">
-                <h2>NOTÍCIAS <i class="fa fa-file-text-o"></i>
+                <h2>NOVIDADES <i class="fa fa-file-text-o"></i>
                 </h2>
                 <ul class="list--events">
 
@@ -37,7 +37,7 @@
 
                             <h4><a href="noticia/{$value.slug}">{$value.title}</a>
                             </h4>
-                            <h5> {$value.resume}... <span> <a href="noticia/{$value.slug}"> Saiba mais » </a></span> </h5>
+                            <h5> {$value.resume}... <span> <a href="noticia/{$value.slug}" style="color: #000"> Leia mais » </a></span> </h5>
                         </div>
                     </li>
 
@@ -50,7 +50,7 @@
             </div>
 
             <div class="col-md-4" style="border-right: 1px dashed #dbdbdb;">
-                <h2>AGENDA <i class="fa fa-calendar-o"></i>
+                <h2>EVENTOS <i class="fa fa-calendar-o"></i>
                 </h2>
                 <ul class="list--events agenda">
 
@@ -66,7 +66,7 @@
 
                             <h4><a href="evento/{$value.slug}">{$value.title}</a>
                             </h4>
-                            <h5> <span> <a href="evento/{$value.slug}"> Saiba mais » </a></span> </h5>
+                            <h5> <span> <a href="evento/{$value.slug}" style="color: #000"> Leia mais » </a></span> </h5>
                         </div>
                     </li>
 
@@ -91,7 +91,7 @@
 <section class="page--section" style="padding:0;margin-bottom:-2px">
     <div class="container-fluid">
         <div class="text-center">
-            <h2>NOSSOS CURSOS DE GRADUAÇÃO</h2>
+            <h2>CURSOS DE GRADUAÇÃO</h2>
             <hr>
             <br>
             <div class="container">
@@ -122,7 +122,7 @@
 </section>
 
 <!-- CURSOS DE GRADUAÇÃO -->
-<section class="page--section bg--alegoria">
+<section class="page--section bg--alegoria" style="display:none;">
 
     <div class="text-center">
         <h2> SOBRE A FAAM</h2>
@@ -280,7 +280,7 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row" style="display: none;">
 
             <div class="col-md-7 mt-5 details-contact">
                 <h4>Contato-nos</h4>
@@ -356,12 +356,14 @@
     </div>
 </section>
 
+
 <!-- MAPA -->
-<iframe
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6741217091403!2d-48.38863768516015!3d-1.3722149989991903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48b04f6ccd7c9%3A0x171a5d942157d41a!2sFAAM%20-%20Faculdade%20da%20Amaz%C3%B4nia!5e0!3m2!1spt-BR!2sbr!4v1663959541583!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0; margin-bottom: -12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!-- <iframe
     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15954.689191901372!2d-48.3870412!3d-1.3733082!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x991a61f6b9c71641!2sSistema%20de%20Ensino%20Amaz%C3%B4nia!5e0!3m2!1spt-BR!2sbr!4v1609803343347!5m2!1spt-BR!2sbr"
     width="100%" height="380" frameborder="0" style="border:0;margin-bottom: -12px;" allowfullscreen=""
     aria-hidden="false" tabindex="0">
-</iframe>
+</iframe> -->
 
 
 <a href="https://api.whatsapp.com/send?phone=5591984208044&text=Bom dia! Atendimento FAAM" target="_blank"
