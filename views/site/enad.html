@@ -1,0 +1,87 @@
+<div class="header-page"></div>
+
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <p></p>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">ENADE</li>
+    </ol>
+  </nav>
+
+  <hr>
+
+  <div class="row mb-4">
+
+    <div class="col-md-6">
+    
+    <p>
+    Esperamos que estejam bem. É com grande entusiasmo que viemos convidá-los a participar do Exame Nacional de Desempenho dos Estudantes (ENADE). Este é um momento crucial para demonstrar o nosso comprometimento com a qualidade do ensino e contribuir para a avaliação nacional da educação superior.
+
+    <p>
+    O ENADE é uma oportunidade valiosa para que possamos mostrar o quanto aprendemos e crescemos ao longo do curso. A sua participação é fundamental para o reconhecimento da excelência da nossa instituição de ensino.</p>
+
+    <p>
+    Para realizar a inscrição basta preencher o formulário ao lado, basta seguir as instruções. Certifique-se de fornecer as informações necessárias de forma precisa e completa.</p>
+
+    <p>
+    Não deixem de participar desta importante iniciativa, pois ela não apenas reflete o nosso compromisso com a qualidade acadêmica, mas também contribui para o aprimoramento contínuo do ensino superior em todo o país.</p>
+
+    <p>
+    Contamos com a colaboração de cada um de vocês para fazermos do ENADE mais uma experiência de sucesso para a nossa instituição.</p>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <form action="/enad" method="post">
+
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefone:</label>
+          <input type="text" class="form-control" id="phone" name="phone" required placeholder="(99) 9999-9999" >
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Assunto:</label>
+          <input type="text" class="form-control" id="subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensagem:</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-success">Enviar</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div><!-- container -->
+
+<script>
+
+  function obterParametrosConsulta(url) {
+    const urlObj = new URL(url);
+    return Object.fromEntries(urlObj.searchParams.entries());
+  }
+
+  const parametrosConsulta = obterParametrosConsulta(window.location.href);
+
+  if (parametrosConsulta.successfully === '1')
+    alert('Mensagem enviada com sucesso!')
+
+</script>

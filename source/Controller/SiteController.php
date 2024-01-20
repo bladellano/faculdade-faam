@@ -61,6 +61,7 @@ class SiteController extends Controller
         print("<embed src='../" . $file . "' width=\"98%\" height=\"900\" type='application/pdf'>");
         die;
     }
+
     public function showCurso(Request $request, Response $response, array $args)
     {
         $curso = $this->curso->get($args["id"]);
@@ -84,6 +85,7 @@ class SiteController extends Controller
         ]);
         exit;
     }
+
     public function albums()
     {
         $albums =  $this->album->listAll();
@@ -120,10 +122,8 @@ class SiteController extends Controller
 
         $allVestibulares = $this->vestibular->listAll();
 
-        foreach ($allVestibulares as &$vestibular) {
-
+        foreach ($allVestibulares as &$vestibular)
             $vestibular['tempo'] = Carbon::createFromFormat('Y-m-d', date('Y-m-d', strtotime($vestibular['created_at'])))->locale('pt_BR')->diffForHumans();
-        }
 
         $this->vestibular->getWithSlug($args["slug"]);
         $data =  $this->vestibular->getValues();
@@ -132,6 +132,18 @@ class SiteController extends Controller
             "vestibular" => $data,
             "vestibulares" => $allVestibulares
         ]);
+        exit;
+    }
+
+    public function egresso()
+    {
+        $this->page->setTpl("egresso", []);
+        exit;
+    }
+
+    public function enad()
+    {
+        $this->page->setTpl("enad", []);
         exit;
     }
 
@@ -161,11 +173,8 @@ class SiteController extends Controller
         }
 
         $html = '<h2>DESTAQUE </h2>';
-        // $html .=    '<a href="' . $link . '" target="' . $target . '">
-        //             <img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">
-        //         </a>';
 
-         $html .=    '<img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">';
+        $html .=    '<img src="../../' . $fiquePorDentro["image_thumb"] . '" class="img-fluid" alt="' . $fiquePorDentro["title"] . '">';
 
         $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "fique-por-dentro.html";
 
@@ -183,28 +192,16 @@ class SiteController extends Controller
         $nome = "";
         $periodo = "";
 
-        foreach ((array) $vestibulares as $key => $value) {
+        foreach ($vestibulares as $key => $value) :
 
             if ($key == 'slug') $slug = $value;
             if ($key == 'nome') $nome = $value;
             if ($key == 'periodo') $periodo = $value;
+           
+        endforeach;
 
-            // if ($key == 'faca_sua_inscricao')
-            //     $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Faça sua inscrição</a>';
-
-            // if ($key == 'edital')
-            //     $html .= '<a class="dropdown-item" target="_blank" href="' . $value . '">Edital</a>';
-
-            // if ($key == 'forma_de_ingresso')
-            //     $html .= '<a class="dropdown-item" href="' . $value . '">Forma de ingresso</a>';
-        }
-
-        // $html .= "<a class='dropdown-item' href='/vestibulares/{$slug}'>Vestibular {$nome} {$periodo}</a>";
-
-        
         $html .= '<a class="dropdown-item" href="/vestibulares">Editais</a>';
         $html .= '<a class="dropdown-item" href="/formas-de-ingresso">Forma de ingresso</a>';
-
 
         $arquivo = getcwd() . DS . "views" . DS . "site" . DS . "menu-vestibular.html";
 
@@ -254,11 +251,11 @@ class SiteController extends Controller
             $evento['dia'] = $date->format('d');
         }
 
-        foreach ($articles as &$article) {
+        foreach ($articles as &$article) :
             $date = new \DateTime($article["created_at"]);
             $article['mes'] = mb_strtoupper(strftime('%b', strtotime($article["created_at"])));
             $article['dia'] = $date->format('d');
-        }
+        endforeach;
 
         $this->page->setTpl("home", [
             'articles' => $articles,

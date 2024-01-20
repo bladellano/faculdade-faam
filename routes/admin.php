@@ -13,6 +13,8 @@ use Source\Controller\ParceirosController;
 use Source\Controller\VestibularesController;
 use Source\Controller\FiquePorDentroController;
 use Source\Controller\ArticlesCategoriesController;
+use Source\Controller\EgressosController;
+use Source\Controller\EnadController;
 
 /**
  * IMAGES/PDF AVULSOS
@@ -186,4 +188,18 @@ $app->group('/admin/users', function () use ($app) {
     $app->get('/{id}/delete', UsersController::class . ':destroy');
     $app->put('/{id}/password', UsersController::class . ':updatePassword');
     $app->get('/{id}/password', UsersController::class . ':changePassword');
+});
+
+/**
+ * ADMIN EGRESSOS
+ */
+$app->group('/admin/egressos', function () use ($app) {
+    $app->get('', EgressosController::class . ':index');
+});
+
+/**
+ * ADMIN EGRESSOS
+ */
+$app->group('/admin/enads', function () use ($app) {
+    $app->get('', EnadController::class . ':index');
 });

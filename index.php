@@ -4,6 +4,9 @@ ob_start();
 
 error_reporting(1);
 
+#ini_set('display_errors', 1);
+#error_reporting(E_ALL);
+
 session_start();
 
 setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');

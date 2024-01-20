@@ -3,6 +3,8 @@
 
 use Source\Controller\SiteController;
 use Source\Controller\MailerController;
+use Source\Controller\EgressosController;
+use Source\Controller\EnadController;
 use Source\Controller\OuvidoriaController;
 
 $app->post('/send-form-contact', MailerController::class . ':sendFormContact');
@@ -28,5 +30,11 @@ $app->get('/evento/{slug}', SiteController::class . ':showEvent');
 
 $app->get('/noticias', SiteController::class . ':articles');
 $app->get('/noticia/{slug}', SiteController::class . ':showArticle');
+
+$app->get('/egresso', SiteController::class . ':egresso');
+$app->post('/egresso', EgressosController::class . ':store');
+
+$app->get('/enade', SiteController::class . ':enad');
+$app->post('/enad', EnadController::class . ':store');
 
 $app->get('/{slug}', SiteController::class . ':showPage');

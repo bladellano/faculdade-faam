@@ -1,0 +1,84 @@
+<div class="header-page"></div>
+
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <p></p>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Egresso</li>
+    </ol>
+  </nav>
+
+  <hr>
+
+  <div class="row mb-4">
+
+    <div class="col-md-6">
+
+      <p>
+      Esperamos que estejam bem e prosperando em suas jornadas profissionais. Na busca contínua pela excelência acadêmica, queremos ouvir a sua opinião sobre a experiência que tiveram durante o período em que estudaram na FAAM.</p>
+
+      <p>
+      Convidamos vocês a participarem da nossa Pesquisa de Satisfação, um formulário rápido e fácil que nos permitirá entender melhor as suas percepções sobre a qualidade do ensino, infraestrutura, suporte acadêmico e outros aspectos importantes da sua experiência universitária.</p>
+
+      <p>
+      Agradecemos antecipadamente pelo seu tempo e pela sua honestidade ao compartilhar suas impressões conosco.</p>
+
+      <p>
+      Sua contribuição é inestimável, e estamos ansiosos para receber feedbacks construtivos que contribuam para o constante aprimoramento da FAAM.</p>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <form action="/egresso" method="post">
+
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefone:</label>
+          <input type="text" class="form-control" id="phone" name="phone" required placeholder="(99) 9999-9999" >
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Assunto:</label>
+          <input type="text" class="form-control" id="subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensagem:</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-success">Enviar</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div><!-- container -->
+
+<script>
+
+  function obterParametrosConsulta(url) {
+    const urlObj = new URL(url);
+    return Object.fromEntries(urlObj.searchParams.entries());
+  }
+
+  const parametrosConsulta = obterParametrosConsulta(window.location.href);
+
+  if (parametrosConsulta.successfully === '1')
+    alert('Mensagem enviada com sucesso!')
+
+</script>

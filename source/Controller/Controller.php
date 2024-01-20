@@ -48,21 +48,20 @@ abstract class Controller
 	 */
 	public function pagination($model, $uri, $perPage = 12)
 	{
-		$args = func_get_args();/* Para capturar modalidades de cursos */
+		$args = func_get_args(); /* Para capturar modalidades de cursos */
 		$args[3] = $args[3] ?? "";
 
 		$search = (isset($_GET['search'])) ? $_GET['search'] : "";
 		$page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
 
-		if ($search != '') {
+		if (!empty($search)) 
 			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPageSearch'], [trim($search), $page]);
-		} else {
+		else 
 			$pagination = call_user_func_array(['Source\Model\\' . $model, 'getPage'], [$page, $perPage, $args[3]]);
-		}
 
 		$pages = [];
 
-		for ($x = 0; $x <  $pagination['pages']; $x++) {
+		for ($x = 0; $x <  $pagination['pages']; $x++) :
 			array_push($pages, [
 				'href' => "$uri?" . http_build_query([
 					'page' => $x + 1,
@@ -70,7 +69,7 @@ abstract class Controller
 				]),
 				'text' => $x + 1
 			]);
-		}
+		endfor;
 
 		return [
 			"pages" => $pages,
