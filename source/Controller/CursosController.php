@@ -175,10 +175,7 @@ class CursosController extends Controller
         $curso = new Curso();
         $curso->get((int) $args['id']);
 
-        $page = new PageAdmin([
-            // "header" => false,
-            // "footer" => false,
-        ]);
+        $page = new PageAdmin();
 
         $data = $curso->getValues();
 
@@ -188,10 +185,10 @@ class CursosController extends Controller
         $aAnexosCursos = $oAnexosCurso->getValues();
 
         /* Modifica por referência o array de anexos */
-        foreach ($aAnexosCursos as $key => &$anexo) {
+        foreach ($aAnexosCursos as $key => &$anexo) :
             $aAnexosCursos[$anexo['tipo_doc']] = $anexo;
             if (is_int($key)) unset($aAnexosCursos[$key]);
-        }
+        endforeach;
 
         $turnos = self::$turnos;
 
@@ -225,14 +222,14 @@ class CursosController extends Controller
     private function getTypeDocuments()
     {
         $tipoDocs = (new TipoDocs)->listAll();
-        foreach ($tipoDocs as &$tipo)
-            $tipoDocs[$tipo] = $tipo['tipo'];
 
-        $tipoDocs = array_map(function ($t) {
-            return $t['tipo'];
-        }, $tipoDocs);
+        $tipos = [];
 
-        return $tipoDocs;
+        foreach($tipoDocs as $tipo):
+            $tipos[$tipo['tipo']] = $tipo['tipo'];
+        endforeach;
+
+        return $tipos;
     }
 
     public function update(Request $request, Response $response, array $args)

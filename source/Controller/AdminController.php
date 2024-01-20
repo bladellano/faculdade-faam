@@ -30,9 +30,9 @@ class AdminController
 
 		foreach ($images as &$file) {
 			$file['type'] = explode(".", $file['path'])[1];
-			$file['name'] = end( explode("/", $file['path']) );
+			$file['name'] = end(explode("/", $file['path']));
 		}
-		
+
 		$page = new PageAdmin([
 			"header" => false,
 			"footer" => false,
@@ -73,27 +73,34 @@ class AdminController
 
 	public function index()
 	{
-		User::verifyLogin();
-		$articles  = count(Article::listAll());
-		
+
+		#User::verifyLogin(); //! Please do not uncomment, this creates a loop in authentication.
+
+		$articles  = count((array) Article::listAll());
+
 		$page = new PageAdmin();
+
 		$page->setTpl("index", [
 			"qtdArticles" => $articles,
 		]);
+
 		exit;
 	}
 
 	public function logging()
 	{
 		try {
+
 			User::login($_POST["login"], $_POST["password"]);
 		} catch (\Exception $e) {
-			
+
 			User::setError($e->getMessage());
 			header("Location: /admin/login");
 			exit;
 		}
+
 		header("Location: /admin");
+
 		exit;
 	}
 
@@ -103,9 +110,11 @@ class AdminController
 			"header" => false,
 			"footer" => false,
 		]);
+
 		$page->setTpl("login", [
 			"msgError" => User::getError()
 		]);
+
 		exit;
 	}
 

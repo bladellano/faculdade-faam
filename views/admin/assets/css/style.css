@@ -185,8 +185,13 @@ ul.list-itens-main li div {
 
 .btnFixedCursos {
   position: fixed;
-  bottom: 0;
-  right: 50%;
+  bottom: -48px;
+  left: 50%;
+  z-index: 99999;
+  Transform: translate(-50%, -50%);
+  background: #6b6b6b99;
+  width: 100%;
+  padding: 14px;
 }
 
 .wrap--input {

@@ -52,23 +52,23 @@ class User extends Model
             }
         }
     }
+
     public static function login($login, $password)
     {
 
         $sql = new Sql();
 
-        $results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b ON a.idperson = b.idperson WHERE a.deslogin = :LOGIN", array(
+        $results = $sql->select("
+            SELECT * FROM tb_users a INNER JOIN tb_persons b ON a.idperson = b.idperson WHERE a.deslogin = :LOGIN", [
             ":LOGIN" => $login
-        ));
-		
-	
+        ]);
 
-        if (count($results) === 0) {
+        if (count($results) === 0)
             throw new \Exception("Usuário inexistente ou senha inválida.");
-        }
 
         $data = $results[0];
-        if (password_verify($password, $data["despassword"]) === true) {
+
+        if (password_verify($password, $data["despassword"])) :
 
             $user = new User();
 
@@ -79,31 +79,35 @@ class User extends Model
             $_SESSION[User::SESSION] = $user->getValues();
 
             return $user;
-        } else {
+
+        else :
+
             throw new \Exception("Usuário inexistente ou senha inválida.");
-        }
+
+        endif;
     }
 
-     /**
-      * Verifica se o usuário está logado e se é administrador ou não.
-      */
+    /**
+     * Verifica se o usuário está logado e se é administrador ou não.
+     */
     public static function verifyLogin($inadmin = true)
     {
 
-        if (!User::checkLogin($inadmin)) {
+        if (!User::checkLogin($inadmin)) :
 
-            if ($inadmin) {
+            if ($inadmin) 
                 header("Location: /admin/login");
-            } else {
+            else 
                 header("Location: /login");
-            }
+    
             exit;
-        }
+
+        endif;
     }
 
     public static function logout()
     {
-        $_SESSION[User::SESSION] = NULL;
+        $_SESSION[User::SESSION] = null;
     }
 
     public static function listAll()
@@ -139,9 +143,7 @@ class User extends Model
 
         $results = $sql->select(
             "SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = :iduser",
-            array(
-                ":iduser" => $iduser,
-            )
+            [ ":iduser" => $iduser ]
         );
 
         $this->setData($results[0]);
@@ -171,9 +173,7 @@ class User extends Model
     public function delete()
     {
         $sql = new Sql();
-        $sql->query("CALL sp_users_delete(:iduser)", array(
-            ":iduser" => $this->getiduser(),
-        ));
+        $sql->query("CALL sp_users_delete(:iduser)", [":iduser" => $this->getiduser()]);
     }
 
     public static function getForgot($email, $inadmin = true)
@@ -213,17 +213,21 @@ class User extends Model
                 $code = base64_encode($code);
 
                 if ($inadmin === true) {
-                    $link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=$code";
+                    $link = "https://portal.faam.com.br/admin/forgot/reset?code=$code";
                 } else {
-                    $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$code";
+                    $link = "https://portal.faam.com.br/forgot/reset?code=$code";
                 }
 
                 $mailer = new Mailer(
-                    $data["desemail"], $data["desperson"], "Redefinir senha da Hcode Store", "forgot", 
+                    $data["desemail"],
+                    $data["desperson"],
+                    "Redefinir senha da Hcode Store",
+                    "forgot",
                     array(
-                    "name" => $data["desperson"],
-                    "link" => $link)
-                    );
+                        "name" => $data["desperson"],
+                        "link" => $link
+                    )
+                );
 
                 $mailer->send();
 
@@ -263,9 +267,7 @@ class User extends Model
     {
         $sql = new Sql();
 
-        $sql->query("UPDATE tb_userspasswordsrecoveries SET dtrecovery = NOW() WHERE idrecovery = :idrecovery", array(
-            ":idrecovery" => $idrecovery,
-        ));
+        $sql->query("UPDATE tb_userspasswordsrecoveries SET dtrecovery = NOW() WHERE idrecovery = :idrecovery", [":idrecovery" => $idrecovery]);
     }
 
     public function setPassword($password)
@@ -281,7 +283,7 @@ class User extends Model
     public static function clearErrorRegister()
     {
 
-        $_SESSION[User::ERROR_REGISTER] = NULL;
+        $_SESSION[User::ERROR_REGISTER] = null;
     }
 
     public static function checkLoginExist($login)
@@ -382,7 +384,7 @@ class User extends Model
         return $results;
     }
 
-    
+
     public static function getPage($page = 1, $itensPerPage = 8)
     {
 
@@ -396,7 +398,8 @@ class User extends Model
             INNER JOIN tb_persons b USING(idperson)
             ORDER BY b.desperson
             LIMIT $start, $itensPerPage;
-        ");
+        "
+        );
 
         $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
 
@@ -405,7 +408,6 @@ class User extends Model
             'total' => (int) $resultTotal[0]['nrtotal'],
             'pages' => ceil($resultTotal[0]['nrtotal'] / $itensPerPage),
         ];
-
     }
     public static function getPageSearch($search, $page = 1, $itensPerPage = 8)
     {
@@ -421,9 +423,11 @@ class User extends Model
             WHERE b.desperson LIKE :search OR b.desemail = :search OR a.deslogin LIKE :search
             ORDER BY b.desperson
             LIMIT $start, $itensPerPage;
-        ",[
-            ':search' => '%'.$search.'%'
-        ]);
+        ",
+            [
+                ':search' => '%' . $search . '%'
+            ]
+        );
 
         $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
 
@@ -432,7 +436,5 @@ class User extends Model
             'total' => (int) $resultTotal[0]['nrtotal'],
             'pages' => ceil($resultTotal[0]['nrtotal'] / $itensPerPage),
         ];
-
     }
-
 }//Fim Classe
