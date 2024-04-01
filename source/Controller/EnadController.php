@@ -39,6 +39,14 @@ class EnadController extends Controller
     {
 
 		$data = $request->getParsedBody();
+        $captcha = $data['g-recaptcha-response'];
+
+        if(!$captcha){
+            header("Location:/enade?successfully=0");
+		    exit;
+        }
+
+        unset($data['g-recaptcha-response']);
 
 		$data['slug'] = (new SlugGenerator)->generate($data['name']);
 
